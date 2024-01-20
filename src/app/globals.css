@@ -4,7 +4,9 @@
 
 :root {
   /* --color-accent: #f43d1c; */
-  --color-accent: #036fdf;
+  /* --color-accent: #036fdf; */
+  /* --color-accent: #0c6cb6; */
+  --color-accent: #1876cc;
 }
 
 @media (prefers-color-scheme: dark) {
