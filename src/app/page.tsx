@@ -589,7 +589,7 @@ function Features1() {
                       className="absolute left-0 top-0 flex h-8 w-8 items-center justify-center rounded-lg bg-accent"
                       style={{ marginTop: "7px" }}
                     >
-                      <Image width={20} height={20} src={feature.img} />
+                      <Image width={20} height={20} src={feature.img} alt="feature" />
                     </div>
                     <div className="inline font-bold text-accent">
                       {feature.name}
@@ -640,7 +640,7 @@ function Features2() {
                         className="absolute left-0 top-0 flex h-8 w-8 items-center justify-center rounded-lg bg-accent"
                         style={{ marginTop: "7px" }}
                       >
-                        <Image width={20} height={20} src={feature.img} />
+                        <Image width={20} height={20} src={feature.img} alt="feature" />
                       </div>
                       <div className="inline font-bold text-accent">
                         {feature.name}
@@ -715,7 +715,7 @@ function Automations() {
                     className="absolute left-0 top-0 flex h-8 w-8 items-center justify-center rounded-lg bg-white"
                     style={{ marginTop: "7px" }}
                   >
-                    <Image width={20} height={20} src={feature.img} />
+                    <Image width={20} height={20} src={feature.img} alt="feature" />
                   </div>
                   <div className="inline font-bold text-white">
                     {feature.name}
@@ -758,7 +758,7 @@ function FeaturesForPowerUsers() {
                     className="absolute left-0 top-0 flex h-8 w-8 items-center justify-center rounded-lg bg-accent"
                     style={{ marginTop: "7px" }}
                   >
-                    <Image width={20} height={20} src={feature.img} />
+                    <Image width={20} height={20} src={feature.img} alt="feature" />
                   </div>
 
                   <div className="text-base font-semibold leading-7 text-gray-900">
