@@ -6,15 +6,7 @@ import ReactMarkdown from 'react-markdown';
 
 export default function Privacy() {
   return (
-    <main 
-    className="relative flex min-h-screen flex-col justify-between" 
-    style={{
-        padding: '1rem',
-        maxWidth: '800px',
-        gap: '1rem',
-        margin: '0 auto'
-      }}
-    >
+    <main className="privacy-policy">
       <ReactMarkdown>
        {PrivacyPolicyMarkdown}
       </ReactMarkdown>

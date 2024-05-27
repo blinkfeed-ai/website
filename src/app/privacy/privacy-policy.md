@@ -4,7 +4,9 @@
 
 ## 1. Introduction
 
-Welcome to Blinkfeed! Blinkfeed (“we,” “us,” or “our”) is an AI-first email client available on macOS. We are committed to protecting your privacy and ensuring you have a positive experience while using our services. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our application. By using Blinkfeed, you agree to the collection and use of information in accordance with this policy.
+Welcome to Blinkfeed!
+
+Blinkfeed (“we,” “us,” or “our”) is an AI-first email client available on macOS. We are committed to protecting your privacy and ensuring you have a positive experience while using our services. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our application. By using Blinkfeed, you agree to the collection and use of information in accordance with this policy.
 
 ## 2. Information We Collect
 
