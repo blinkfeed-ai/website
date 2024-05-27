@@ -333,9 +333,7 @@ const footerNavigation = {
     { name: "Partners", href: "#" },
   ],
   legal: [
-    { name: "Claim", href: "#" },
-    { name: "Privacy", href: "#" },
-    { name: "Terms", href: "#" },
+    { name: "Privacy", href: "privacy" },
   ],
 };
 
