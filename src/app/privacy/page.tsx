@@ -15,7 +15,9 @@ export default function Privacy() {
         margin: '0 auto'
       }}
     >
-      <ReactMarkdown children={PrivacyPolicyMarkdown} />
+      <ReactMarkdown>
+       {PrivacyPolicyMarkdown}
+      </ReactMarkdown>
     </main>
   );
 }
