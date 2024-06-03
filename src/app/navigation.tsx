@@ -35,7 +35,7 @@ function Rhs() {
     <div className='flex items-center gap-x-6'>
       <a
         href='#'
-        className='rounded-md bg-accent px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent'
+        className='rounded-xl bg-accent px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent'
       >
         Download for macOS
       </a>
@@ -50,7 +50,7 @@ export function Navigation() {
   return (
     <>
       <div className='h-4' />
-      <header className='sticky top-0 bg-white z-10'>
+      <header className='sticky top-0 bg-page z-10'>
         <nav>
           <Container>
             <div className='flex items-center py-4 gap-12'>

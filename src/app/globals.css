@@ -10,7 +10,7 @@
   /*--color-accent: #0285ff;*/
   /*--color-accent: #0285ff;*/
   --color-accent: rgb(92, 165, 85);
-
+  /*--color-accent: rgb(87 46 140);*/
 }
 
 .privacy-policy {
@@ -59,6 +59,13 @@ body {
     0px 22.3px 17.9px rgba(0, 0, 0, 0.012),
     0px 41.8px 33.4px rgba(0, 0, 0, 0.014),
     0px 100px 80px rgba(0, 0, 0, 0.02);
+}
+
+.hero-video-shadow {
+  box-shadow:
+          0px 0px 10px rgba(0, 0, 0, 0.025),
+          0px 0px 80px rgba(0, 0, 0, 0.05)
+;
 }
 
 .tooltip {

@@ -23,8 +23,10 @@ const config: Config = {
         '6xl': ['50px', '1.3'],
         '5xl': ['3rem', '1.2'],
         '4xl': ['2.25rem', '2.8rem'],
+        base: ['15px', '1.2'],
       },
       colors: {
+        page: 'rgba(250,250,250,1)',
         accent: 'var(--color-accent)',
       },
     },

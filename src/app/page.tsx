@@ -17,6 +17,7 @@ import {RadioGroup} from '@headlessui/react'
 import {Navigation} from '@/app/navigation'
 import {Container} from '@/app/Container'
 import {Tooltip} from 'react-tooltip'
+import {transform} from 'sucrase'
 
 const featuredTestimonial = {
   body: 'Integer id nunc sit semper purus. Bibendum at lacus ut arcu blandit montes vitae auctor libero. Hac condimentum dignissim nibh vulputate ut nunc. Amet nibh orci mi venenatis blandit vel et proin. Non hendrerit in vel ac diam.',
@@ -140,7 +141,7 @@ const frequencies = [
 
 const features = [
   {
-    name: 'Save time with instant summaries.',
+    name: 'Whole thread summaries.',
     description:
       'Quickly grasp action points and unresolved questions. No need to sift through long threads.',
     icon: CloudArrowUpIcon,
@@ -337,7 +338,11 @@ function Section({children}: {children: React.ReactNode}) {
 }
 
 function SectionT({children}: {children: React.ReactNode}) {
-  return <div className='mt-24 sm:mt-24'>{children}</div>
+  return <div className='mt-16'>{children}</div>
+}
+
+function SectionS({children}: {children: React.ReactNode}) {
+  return <div className='mt-16 sm:mt-16'>{children}</div>
 }
 
 function HeroFragment({
@@ -434,52 +439,76 @@ function Hero() {
     <SectionT>
       <Container>
         <div className='mx-auto'>
-          <h1 className='text-4xl font-bold tracking-tight text-gray-800 sm:text-6xl'>
-            Stop wasting time on{' '}
-            <HeroFragment
-              selectedFragment={selectedFragment}
-              selectFragment={selectFragment}
-              index={0}
-            >
-              reading and writing emails
-            </HeroFragment>
-            ,{' '}
-            <HeroFragment
-              selectedFragment={selectedFragment}
-              selectFragment={selectFragment}
-              index={1}
-            >
-              scheduling events
-            </HeroFragment>
-            , and{' '}
-            <HeroFragment
-              selectedFragment={selectedFragment}
-              selectFragment={selectFragment}
-              index={2}
-            >
-              fighting spam
-            </HeroFragment>
-            .
+          <h1
+            className='font-bold tracking-tight sm:text-6xl'
+            style={{fontSize: '70px', color: 'rgba(0,0,0,0.1)'}}
+          >
+            <span className='text-gray-800'>Never read emails again.</span>
+            {/*<HeroFragment*/}
+            {/*  selectedFragment={selectedFragment}*/}
+            {/*  selectFragment={selectFragment}*/}
+            {/*  index={0}*/}
+            {/*>*/}
+            {/*  reading and writing emails*/}
+            {/*</HeroFragment>*/}
+            {/*,{' '}*/}
+            {/*<HeroFragment*/}
+            {/*  selectedFragment={selectedFragment}*/}
+            {/*  selectFragment={selectFragment}*/}
+            {/*  index={1}*/}
+            {/*>*/}
+            {/*  scheduling events*/}
+            {/*</HeroFragment>*/}
+            {/*, and{' '}*/}
+            {/*<HeroFragment*/}
+            {/*  selectedFragment={selectedFragment}*/}
+            {/*  selectFragment={selectFragment}*/}
+            {/*  index={2}*/}
+            {/*>*/}
+            {/*  fighting spam*/}
+            {/*</HeroFragment>.*/}
           </h1>
-          {/*<p className='mt-6 text-lg leading-8 text-gray-600'>*/}
-          {/*  Read and reply to 100 emails in 10 minutes. Schedule meetings and generate <br />*/}
-          {/*  replies with AI aware of your calendar, preferences, and knowledge base.*/}
-          {/*</p>*/}
+          <p className='mt-6 text-lg leading-8 text-gray-600'>
+            Reply to 100 emails in 10 minutes. Schedule meetings and generate replies with AI aware
+            of <br />
+            your calendar, preferences, and knowledge base.
+          </p>
         </div>
       </Container>
-      <div className='relative overflow-hidden pt-24'>
+      <div className='relative pt-16'>
         <Container>
-          <Feeds />
-          <img
-            src='https://tailwindui.com/img/component-images/project-app-screenshot.png'
-            alt='App screenshot'
-            className='mt-8 mb-[-12%] rounded-xl shadow-2xl ring-1 ring-gray-900/10'
-            width={2432}
-            height={1442}
-          />
-          <div className='relative' aria-hidden='true'>
-            <div className='absolute -inset-x-20 bottom-0 bg-gradient-to-t from-white pt-[7%]' />
+          <div className='relative'>
+            <div
+              className=' overflow-hidden hero-video-shadow' // mb-[-12%] //
+              style={{
+                border: '2px solid rgba(255,255,255,1)',
+                borderRadius: '22px',
+              }}
+            >
+              <video
+                autoPlay
+                muted
+                loop
+                style={{
+                  // FIXME: REMOVE!!!
+                  marginTop: '-46px',
+                }}
+              >
+                <source src='/video/hero.mov' type='video/mp4' />
+              </video>
+            </div>
+            {/*<img*/}
+            {/*  src='https://tailwindui.com/img/component-images/project-app-screenshot.png'*/}
+            {/*  alt='App screenshot'*/}
+            {/*  className='mt-8 mb-[-12%] rounded-xl shadow-2xl ring-1 ring-gray-900/10'*/}
+            {/*  width={2432}*/}
+            {/*  height={1442}*/}
+            {/*/>*/}
+            {/*<div className='relative' aria-hidden='true'>*/}
+            {/*  <div className='absolute -inset-x-20 bottom-0 bg-gradient-to-t from-white pt-[7%]' />*/}
+            {/*</div>*/}
           </div>
+          {/*<Feeds />*/}
         </Container>
       </div>
     </SectionT>
@@ -539,6 +568,187 @@ function Logos() {
       </div>
     </Container>
   )
+}
+
+function ServiceIcon2(props: {src: string; alt: string; style: React.CSSProperties}) {
+  return (
+    <div style={{height: '32px', ...props.style}} className='flex items-center absolute'>
+      <Image width={32} height={32} src={`${props.src}.svg`} alt={props.alt} />
+    </div>
+  )
+}
+
+function Feeds2() {
+  const paths = [
+    '/icon/gmail',
+    '/icon/outlook',
+    '/icon/apple-mail',
+    '/icon/instagram',
+    '/icon/whatsapp',
+    '/icon/messenger',
+  ]
+  const icons = paths.map((path, i) => {
+    const dist = 100
+    const x = Math.cos((i / paths.length) * 2 * Math.PI) * dist
+    const y = Math.sin((i / paths.length) * 2 * Math.PI) * dist
+    return (
+      <ServiceIcon2
+        key={i}
+        src={path}
+        alt='Gmail'
+        style={{
+          transform: `translate(${x}px , ${y}px)`,
+        }}
+      />
+    )
+  })
+  return (
+    <div className='flex justify-center'>
+      <div className='flex items-center gap-6 rounded-full pl-4 pr-2 py-1.5 text-sm leading-6 text-gray-600 ring-1 ring-inset ring-gray-900/10'>
+        {icons}
+      </div>
+    </div>
+  )
+}
+
+interface FeatureCardProps {
+  order: 'left' | 'right'
+  title: string
+  features: {
+    name: string
+    description: string
+    icon: React.ComponentType
+    img: string
+  }[]
+}
+
+function FeatureCard({title, features, order}: FeatureCardProps) {
+  const description = (
+    <div>
+      <div className='lg:max-w-lg'>
+        <p className='text-3xl font-bold tracking-tight text-gray-800 sm:text-4xl'>{title}</p>
+        <dl className='mt-10 max-w-xl space-y-8 leading-7 text-gray-600 lg:max-w-none'>
+          {features.map(feature => (
+            <div key={feature.name} className='relative'>
+              <div className='flex gap-4 items-center'>
+                <div
+                  className='flex gap-3 items-center justify-center rounded-lg bg-accent'
+                  style={{
+                    paddingTop: '3px',
+                    paddingBottom: '3px',
+                    paddingRight: '14px',
+                    paddingLeft: '12px',
+                  }}
+                >
+                  <Image width={20} height={20} src={feature.img} alt='feature' />
+                  <div
+                    className='font-medium text-accent'
+                    style={{
+                      // fontSize: '16px',
+                      color: 'white',
+                    }}
+                  >
+                    {feature.name}
+                  </div>
+                </div>
+              </div>
+              <div className='mt-2'>{feature.description}</div>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </div>
+  )
+
+  const viz = (
+    <div className='flex rounded-xl overflow-hidden'>
+      <img
+        src='https://tailwindui.com/img/component-images/dark-project-app-screenshot.png'
+        alt='Product screenshot'
+        className='w-[48rem] max-w-none rounded-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0'
+        width={2432}
+        height={1442}
+      />
+    </div>
+  )
+  return (
+    <Section>
+      <Container>
+        <div className='mx-auto text-base grid max-w-2xl grid-cols-1 gap-x-12 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2'>
+          {order == 'left' && description}
+          {viz}
+          {order == 'right' && description}
+        </div>
+      </Container>
+    </Section>
+  )
+}
+
+function XFeatures1() {
+  const features = [
+    // {
+    //   name: 'Fastest email experience on the market',
+    //   description:
+    //     'Blinkfeed is a scrolling feed of email summaries, designed with AI at its core to provide the fastest email experience on the market.',
+    //   icon: CloudArrowUpIcon,
+    //   img: '/icon/ai-summary.svg',
+    // },
+    {
+      name: 'Best-in-class, whole thread summaries',
+      description:
+        'Blinkfeed analyzes the entire thread, not just latest messages. It is trained to provide short, yet highly-curated summaries.',
+      icon: CloudArrowUpIcon,
+      img: '/icon/ai-summary.svg',
+    },
+    {
+      name: 'Semantic spam filter',
+      description:
+        'Blinkfeed hides not just spam caught by your email provider, but also non-spam messages that are not important.',
+      icon: ArrowPathIcon,
+      img: '/icon/ai-security.svg',
+    },
+    {
+      name: 'Urgent messages discovery',
+      description:
+        'Blinkfeed notifies you about urgent messages, so you can respond fast where it matters most.',
+      icon: CloudArrowUpIcon,
+      img: '/icon/ai-summary.svg',
+    },
+  ]
+  return (
+    <FeatureCard
+      title='Understand what people want from you, in a blink.'
+      features={features}
+      order={'left'}
+    />
+  )
+}
+
+function XFeatures2() {
+  const features = [
+    {
+      name: 'Reply with a click',
+      description:
+        'Each email summary comes with a highly-tailored responses that you can review, edit, or simply send with one click.',
+      icon: CloudArrowUpIcon,
+      img: '/icon/ai-summary.svg',
+    },
+    {
+      name: 'Write entire emails with just a few words',
+      description:
+        'Type your thoughts and Blinkfeed will craft a polished email mirroring your voice and tone that you can review, edit, or simply send with one click.',
+      icon: CloudArrowUpIcon,
+      img: '/icon/ai-summary.svg',
+    },
+    {
+      name: 'Calendar and files, analyzed',
+      description:
+        'Blinkfeed analyzes your calendar and documents in your knowledge base to provide curated replies and suggestions.',
+      icon: ArrowPathIcon,
+      img: '/icon/ai-security.svg',
+    },
+  ]
+  return <FeatureCard title='Reply within seconds.' features={features} order={'right'} />
 }
 
 function Features1() {
@@ -1034,16 +1244,63 @@ function FAQ() {
   )
 }
 
+export function HeroTestimontial() {
+  return (
+    <Section>
+      <div className='pb-20 bg-accent sm:pb-24 xl:pb-0'>
+        <div className='mx-auto flex max-w-7xl flex-col items-center gap-x-8 gap-y-10 px-6 sm:gap-y-8 lg:px-8 xl:flex-row xl:items-stretch'>
+          <div className='-mt-8 w-full max-w-2xl xl:-mb-8 xl:w-96 xl:flex-none'>
+            <div className='relative aspect-[2/1] h-full md:-mx-8 xl:mx-0 xl:aspect-auto'>
+              <img
+                className='absolute inset-0 h-full w-full rounded-2xl bg-gray-800 object-cover shadow-2xl'
+                src='https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80'
+                alt=''
+              />
+            </div>
+          </div>
+          <div className='w-full max-w-2xl xl:max-w-none xl:flex-auto xl:px-16 xl:py-24'>
+            <figure className='relative isolate pt-6 sm:pt-12'>
+              <blockquote
+                className='text-lg font-semibold'
+                style={{color: 'rgba(255,255,255,0.5)'}}
+              >
+                <p>
+                  <span className='text-white'>Blinkfeed is unreal.</span> As someone who sends 50
+                  emails a day, I've tried numerous email clients over the years to enhance my
+                  productivity. While many of them incorporate AI, Blinkfeed stands out by being{' '}
+                  <span className='text-white'>built around AI from the ground up.</span> This
+                  foundational difference delivers a{' '}
+                  <span className='text-white'>
+                    user experience unlike anything I've encountered before.
+                  </span>
+                </p>
+              </blockquote>
+              <figcaption className='mt-8 text-base'>
+                <div className='font-semibold text-white'>Greg Ociepka</div>
+                <div className='mt-1 text-white opacity-50'>Founder & CTO of Simteract</div>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </Section>
+  )
+}
+
 function Example() {
   const sectionsMargin = 'my-80'
 
   return (
-    <div className='w-full bg-white'>
-      {/* Header */}
+    <div className='w-full'>
       <Navigation />
       <main>
         <Hero />
-        <Logos />
+        {/*<Logos />*/}
+        {/*<Features0 />*/}
+        {/*<Features0 />*/}
+        <HeroTestimontial />
+        <XFeatures1 />
+        <XFeatures2 />
         <Features1 />
         <Features2 />
         <Automations />
@@ -1144,7 +1401,7 @@ function Example() {
 
 export default function Home() {
   return (
-    <main className='relative flex min-h-screen flex-col items-center justify-between'>
+    <main className='relative flex min-h-screen flex-col items-center justify-between bg-page'>
       <Tooltip id='tooltip' className='tooltip' classNameArrow='arrow' style={{fontSize: '12px'}} />
       <Example />
     </main>
