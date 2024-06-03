@@ -439,11 +439,8 @@ function Hero() {
     <SectionT>
       <Container>
         <div className='mx-auto'>
-          <h1
-            className='font-bold tracking-tight sm:text-6xl'
-            style={{fontSize: '70px', color: 'rgba(0,0,0,0.1)'}}
-          >
-            <span className='text-gray-800'>Never read emails again.</span>
+          <h1 className='font-bold tracking-tight sm:text-6xl' style={{fontSize: '70px'}}>
+            <span>Never read emails again.</span>
             {/*<HeroFragment*/}
             {/*  selectedFragment={selectedFragment}*/}
             {/*  selectFragment={selectFragment}*/}
@@ -468,7 +465,7 @@ function Hero() {
             {/*  fighting spam*/}
             {/*</HeroFragment>.*/}
           </h1>
-          <p className='mt-6 text-lg leading-8 text-gray-600'>
+          <p className='mt-6 text-lg leading-8 opacity-80'>
             Reply to 100 emails in 10 minutes. Schedule meetings and generate replies with AI aware
             of <br />
             your calendar, preferences, and knowledge base.
@@ -479,10 +476,9 @@ function Hero() {
         <Container>
           <div className='relative'>
             <div
-              className=' overflow-hidden hero-video-shadow' // mb-[-12%] //
+              className=' overflow-hidden hero-video-shadow rounded-2xl' // mb-[-12%] //
               style={{
                 border: '2px solid rgba(255,255,255,1)',
-                borderRadius: '22px',
               }}
             >
               <video
@@ -623,61 +619,84 @@ interface FeatureCardProps {
 }
 
 function FeatureCard({title, features, order}: FeatureCardProps) {
+  const selected = 0
   const description = (
     <div>
-      <div className='lg:max-w-lg'>
-        <p className='text-3xl font-bold tracking-tight text-gray-800 sm:text-4xl'>{title}</p>
-        <dl className='mt-10 max-w-xl space-y-8 leading-7 text-gray-600 lg:max-w-none'>
-          {features.map(feature => (
-            <div key={feature.name} className='relative'>
-              <div className='flex gap-4 items-center'>
-                <div
-                  className='flex gap-3 items-center justify-center rounded-lg bg-accent'
-                  style={{
-                    paddingTop: '3px',
-                    paddingBottom: '3px',
-                    paddingRight: '14px',
-                    paddingLeft: '12px',
-                  }}
-                >
-                  <Image width={20} height={20} src={feature.img} alt='feature' />
-                  <div
-                    className='font-medium text-accent'
-                    style={{
-                      // fontSize: '16px',
-                      color: 'white',
-                    }}
-                  >
-                    {feature.name}
+      <div className=''>
+        <p className='text-3xl font-bold tracking-tight sm:text-4xl'>{title}</p>
+        <div className='mt-10 flex flex-col leading-7'>
+          {features.map((feature, index) => {
+            const isSelected = selected == index
+            const opacity = isSelected ? 1 : 0.3
+            const style = {} // isSelected ? {boxShadow: '0px 0px 0px 2px var(--color-accent)'} : {}
+            const cls = '' //isSelected ? 'hero-video-shadow' : ''
+            return (
+              <div
+                key={feature.name}
+                className={'relative rounded-2xl ' + cls}
+                style={{
+                  opacity,
+                  padding: '16px',
+                  marginLeft: '-16px',
+                  ...style,
+                }}
+              >
+                <div className='flex gap-4 items-center'>
+                  <div className='flex gap-3 items-center justify-center'>
+                    <Image
+                      width={20}
+                      height={20}
+                      src={feature.img}
+                      alt='feature'
+                      style={{
+                        //FIXME
+                        opacity: 0.8,
+                      }}
+                    />
+                    <div className='font-semibold'>{feature.name}</div>
                   </div>
                 </div>
+                <div className='mt-2 opacity-80'>{feature.description}</div>
               </div>
-              <div className='mt-2'>{feature.description}</div>
-            </div>
-          ))}
-        </dl>
+            )
+          })}
+        </div>
       </div>
     </div>
   )
 
   const viz = (
-    <div className='flex rounded-xl overflow-hidden'>
-      <img
-        src='https://tailwindui.com/img/component-images/dark-project-app-screenshot.png'
-        alt='Product screenshot'
-        className='w-[48rem] max-w-none rounded-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0'
-        width={2432}
-        height={1442}
-      />
+    <div className='flex overflow-hidden' style={{width: '870px'}}>
+      <video
+        autoPlay
+        muted
+        loop
+        style={{
+          maxWidth: 'none',
+          width: '1080px',
+
+          // FIXME: REMOVE!!!
+          marginTop: '-46px',
+          marginLeft: '-60px',
+        }}
+      >
+        <source src='/video/features1.mov' type='video/mp4' />
+      </video>
+      {/*<img*/}
+      {/*  src='https://tailwindui.com/img/component-images/dark-project-app-screenshot.png'*/}
+      {/*  alt='Product screenshot'*/}
+      {/*  className='w-[48rem] max-w-none rounded-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0'*/}
+      {/*  width={2432}*/}
+      {/*  height={1442}*/}
+      {/*/>*/}
     </div>
   )
   return (
     <Section>
       <Container>
-        <div className='mx-auto text-base grid max-w-2xl grid-cols-1 gap-x-12 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2'>
-          {order == 'left' && description}
-          {viz}
-          {order == 'right' && description}
+        <div className='z-0 absolute top-0 left-0 w-full flex justify-end'>{viz}</div>
+        <div className='z-10 flex relative text-base' style={{width: '42%'}}>
+          {description}
         </div>
       </Container>
     </Section>
@@ -770,7 +789,11 @@ function Features1() {
                   <div key={feature.name} className='relative pl-12'>
                     <div
                       className='absolute left-0 top-0 flex h-8 w-8 items-center justify-center rounded-lg bg-accent'
-                      style={{marginTop: '7px'}}
+                      style={{
+                        marginTop: '7px',
+                        // FIXME:
+                        opacity: 0.8,
+                      }}
                     >
                       <Image width={20} height={20} src={feature.img} alt='feature' />
                     </div>
@@ -1247,13 +1270,13 @@ function FAQ() {
 export function HeroTestimontial() {
   return (
     <Section>
-      <div className='pb-20 bg-accent sm:pb-24 xl:pb-0'>
+      <div className='pb-20 sm:pb-24 xl:pb-0' style={{backgroundColor: 'rgba(0,0,0,0.9)'}}>
         <div className='mx-auto flex max-w-7xl flex-col items-center gap-x-8 gap-y-10 px-6 sm:gap-y-8 lg:px-8 xl:flex-row xl:items-stretch'>
           <div className='-mt-8 w-full max-w-2xl xl:-mb-8 xl:w-96 xl:flex-none'>
             <div className='relative aspect-[2/1] h-full md:-mx-8 xl:mx-0 xl:aspect-auto'>
               <img
                 className='absolute inset-0 h-full w-full rounded-2xl bg-gray-800 object-cover shadow-2xl'
-                src='https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80'
+                src='/photo/greg-ociepka.jpg'
                 alt=''
               />
             </div>
@@ -1265,7 +1288,7 @@ export function HeroTestimontial() {
                 style={{color: 'rgba(255,255,255,0.5)'}}
               >
                 <p>
-                  <span className='text-white'>Blinkfeed is unreal.</span> As someone who sends 50
+                  <span className='text-white'>Blinkfeed is unreal.</span> As someone who sends 50+
                   emails a day, I've tried numerous email clients over the years to enhance my
                   productivity. While many of them incorporate AI, Blinkfeed stands out by being{' '}
                   <span className='text-white'>built around AI from the ground up.</span> This

@@ -20,7 +20,7 @@ function Logo() {
 
 function Items() {
   return (
-    <div className='hidden lg:flex lg:justify-center lg:gap-x-12 text-sm font-semibold leading-6 text-gray-800'>
+    <div className='hidden lg:flex lg:justify-center lg:gap-x-12 text-sm font-semibold leading-6'>
       {items.map(item => (
         <a key={item.name} href={item.href} target={item.target} className=''>
           {item.name}

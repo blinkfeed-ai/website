@@ -7,9 +7,9 @@ export function Container({
   className?: string
   wide?: boolean
 }) {
-  let className2 = 'container mx-auto px-12 lg:px-24'
+  let className2 = 'container relative mx-auto px-12 lg:px-24'
   if (wide) {
-    className2 = 'container mx-auto px-6 lg:px-12'
+    className2 = 'container relative mx-auto px-6 lg:px-12'
   }
   return (
     <div className={className2 + ' ' + (className ? className : '')}>

@@ -26,7 +26,7 @@ const config: Config = {
         base: ['15px', '1.2'],
       },
       colors: {
-        page: 'rgba(250,250,250,1)',
+        page: 'white',
         accent: 'var(--color-accent)',
       },
     },
