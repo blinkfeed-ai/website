@@ -334,7 +334,7 @@ function classNames(...classes: any[]) {
 }
 
 function Section({children}: {children: React.ReactNode}) {
-  return <div className='my-24 sm:my-64'>{children}</div>
+  return <div className='section my-24 sm:my-64'>{children}</div>
 }
 
 function SectionT({children}: {children: React.ReactNode}) {
@@ -615,48 +615,151 @@ interface FeatureCardProps {
     description: string
     icon: React.ComponentType
     img: string
+    timeEnd: number
   }[]
 }
 
+interface SpinnerProps {
+  progress: number
+  active: boolean
+}
+
+function Spinner({progress, active}: SpinnerProps) {
+  const size = 32
+  const bgWidth = 3
+  const width = 2
+  const radius = size / 2 - bgWidth / 2
+  const circumference = 2 * Math.PI * radius
+  return (
+    <div
+      style={{
+        width: `${size}px`,
+        height: `${size}px`,
+      }}
+    >
+      <svg height={size} width={size} xmlns='http://www.w3.org/2000/svg'>
+        <circle
+          className='transition duration-500'
+          r={size / 2 - width / 2 - (bgWidth - width) / 2}
+          cx={size / 2}
+          cy={size / 2}
+          fill='transparent'
+          stroke={active ? 'rgba(0,0,0,0.7)' : 'transparent'}
+          transform={`rotate(-90,${size / 2},${size / 2})`}
+          strokeLinecap='round'
+          strokeWidth={width}
+          strokeDasharray={circumference}
+          strokeDashoffset={circumference * (1 - progress)}
+        />
+        <circle
+          className='transition duration-500'
+          r={size / 2 - bgWidth / 2}
+          cx={size / 2}
+          cy={size / 2}
+          fill='transparent'
+          stroke={active ? 'rgba(0,0,0,0.05)' : 'transparent'}
+          strokeWidth={bgWidth}
+        />
+      </svg>
+    </div>
+  )
+}
+
 function FeatureCard({title, features, order}: FeatureCardProps) {
+  const video = React.useRef<HTMLVideoElement>(null)
+  const [currentVideoTime, setCurrentVideoTime] = useState(0)
   const selected = 0
+
+  const raf = React.useRef<number>()
+
+  const onFrame = () => {
+    if (video.current) {
+      setCurrentVideoTime(video.current.currentTime)
+    }
+    requestAnimationFrame()
+  }
+
+  const requestAnimationFrame = () => {
+    raf.current = window.requestAnimationFrame(onFrame)
+  }
+
+  React.useEffect(() => {
+    requestAnimationFrame()
+    return () => {
+      if (raf.current) window.cancelAnimationFrame(raf.current)
+    }
+  }, [])
+
+  let nextFeatureStartTime = 0
   const description = (
     <div>
       <div className=''>
         <p className='text-3xl font-bold tracking-tight sm:text-4xl'>{title}</p>
         <div className='mt-10 flex flex-col leading-7'>
           {features.map((feature, index) => {
-            const isSelected = selected == index
-            const opacity = isSelected ? 1 : 0.3
             const style = {} // isSelected ? {boxShadow: '0px 0px 0px 2px var(--color-accent)'} : {}
             const cls = '' //isSelected ? 'hero-video-shadow' : ''
+            const icon = (
+              <Image
+                width={24}
+                height={24}
+                src={feature.img}
+                alt='feature'
+                style={{
+                  //FIXME
+                  opacity: 0.7,
+                }}
+              />
+            )
+            const featureStartTime = nextFeatureStartTime
+            nextFeatureStartTime = feature.timeEnd
+            const featureTime = currentVideoTime - featureStartTime
+            const duration = feature.timeEnd - featureStartTime
+            const progress = Math.min(1, Math.max(0, featureTime / duration))
+
+            const active = featureTime >= 0 && featureTime <= duration
+
+            const opacity = active ? 1 : 0.3
             return (
               <div
                 key={feature.name}
-                className={'relative rounded-2xl ' + cls}
+                className={'relative transition duration-500 cursor-pointer ' + cls}
                 style={{
                   opacity,
-                  padding: '16px',
-                  marginLeft: '-16px',
+                  paddingTop: '16px',
+                  paddingBottom: '16px',
                   ...style,
                 }}
+                onMouseDown={() => {
+                  if (video.current) video.current.currentTime = featureStartTime
+                }}
               >
-                <div className='flex gap-4 items-center'>
-                  <div className='flex gap-3 items-center justify-center'>
-                    <Image
-                      width={20}
-                      height={20}
-                      src={feature.img}
-                      alt='feature'
+                <div className='flex' style={{gap: '8px'}}>
+                  <div>
+                    <div className='relative flex-shrink-0'>
+                      <div className='absolute w-full h-full flex justify-center items-center'>
+                        {icon}
+                      </div>
+                      <Spinner progress={progress} active={active} />
+                    </div>
+                  </div>
+                  <div
+                    className='flex flex-col gap-1'
+                    style={{
+                      marginTop: '2px',
+                    }}
+                  >
+                    <div
+                      className='font-semibold'
                       style={{
-                        //FIXME
-                        opacity: 0.8,
+                        fontSize: '16px',
                       }}
-                    />
-                    <div className='font-semibold'>{feature.name}</div>
+                    >
+                      {feature.name}
+                    </div>
+                    <div className='opacity-80'>{feature.description}</div>
                   </div>
                 </div>
-                <div className='mt-2 opacity-80'>{feature.description}</div>
               </div>
             )
           })}
@@ -668,6 +771,7 @@ function FeatureCard({title, features, order}: FeatureCardProps) {
   const viz = (
     <div className='flex overflow-hidden' style={{width: '870px'}}>
       <video
+        ref={video}
         autoPlay
         muted
         loop
@@ -705,19 +809,21 @@ function FeatureCard({title, features, order}: FeatureCardProps) {
 
 function XFeatures1() {
   const features = [
-    // {
-    //   name: 'Fastest email experience on the market',
-    //   description:
-    //     'Blinkfeed is a scrolling feed of email summaries, designed with AI at its core to provide the fastest email experience on the market.',
-    //   icon: CloudArrowUpIcon,
-    //   img: '/icon/ai-summary.svg',
-    // },
     {
       name: 'Best-in-class, whole thread summaries',
       description:
         'Blinkfeed analyzes the entire thread, not just latest messages. It is trained to provide short, yet highly-curated summaries.',
       icon: CloudArrowUpIcon,
       img: '/icon/ai-summary.svg',
+      timeEnd: 2,
+    },
+    {
+      name: 'Urgent messages discovery',
+      description:
+        'Blinkfeed notifies you about urgent messages, so you can respond fast where it matters most.',
+      icon: CloudArrowUpIcon,
+      img: '/icon/important-mails-first.svg',
+      timeEnd: 4,
     },
     {
       name: 'Semantic spam filter',
@@ -725,13 +831,7 @@ function XFeatures1() {
         'Blinkfeed hides not just spam caught by your email provider, but also non-spam messages that are not important.',
       icon: ArrowPathIcon,
       img: '/icon/ai-security.svg',
-    },
-    {
-      name: 'Urgent messages discovery',
-      description:
-        'Blinkfeed notifies you about urgent messages, so you can respond fast where it matters most.',
-      icon: CloudArrowUpIcon,
-      img: '/icon/ai-summary.svg',
+      timeEnd: 6,
     },
   ]
   return (
@@ -750,21 +850,24 @@ function XFeatures2() {
       description:
         'Each email summary comes with a highly-tailored responses that you can review, edit, or simply send with one click.',
       icon: CloudArrowUpIcon,
-      img: '/icon/ai-summary.svg',
+      img: '/icon/select-response.svg',
+      timeEnd: 2,
     },
     {
       name: 'Write entire emails with just a few words',
       description:
         'Type your thoughts and Blinkfeed will craft a polished email mirroring your voice and tone that you can review, edit, or simply send with one click.',
       icon: CloudArrowUpIcon,
-      img: '/icon/ai-summary.svg',
+      img: '/icon/ai-write.svg',
+      timeEnd: 4,
     },
     {
       name: 'Calendar and files, analyzed',
       description:
         'Blinkfeed analyzes your calendar and documents in your knowledge base to provide curated replies and suggestions.',
       icon: ArrowPathIcon,
-      img: '/icon/ai-security.svg',
+      img: '/icon/data-catalog.svg',
+      timeEnd: 6,
     },
   ]
   return <FeatureCard title='Reply within seconds.' features={features} order={'right'} />
@@ -1278,11 +1381,14 @@ export function HeroTestimontial() {
                 className='absolute inset-0 h-full w-full rounded-2xl bg-gray-800 object-cover shadow-2xl'
                 src='/photo/greg-ociepka.jpg'
                 alt=''
+                style={{
+                  filter: 'brightness(0.85) contrast(1.1)',
+                }}
               />
             </div>
           </div>
           <div className='w-full max-w-2xl xl:max-w-none xl:flex-auto xl:px-16 xl:py-24'>
-            <figure className='relative isolate pt-6 sm:pt-12'>
+            <figure className='relative isolate '>
               <blockquote
                 className='text-lg font-semibold'
                 style={{color: 'rgba(255,255,255,0.5)'}}
@@ -1321,11 +1427,11 @@ function Example() {
         {/*<Logos />*/}
         {/*<Features0 />*/}
         {/*<Features0 />*/}
-        <HeroTestimontial />
+        {/*<HeroTestimontial />*/}
         <XFeatures1 />
         <XFeatures2 />
-        <Features1 />
-        <Features2 />
+        {/*<Features1 />*/}
+        {/*<Features2 />*/}
         <Automations />
         <FeaturesForPowerUsers />
         <Pricing />
