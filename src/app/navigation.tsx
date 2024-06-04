@@ -50,7 +50,7 @@ export function Navigation() {
   return (
     <>
       <div className='h-4' />
-      <header className='sticky top-0 bg-page z-10'>
+      <header className='sticky top-0 bg-page z-50'>
         <nav>
           <Container>
             <div className='flex items-center py-4 gap-12'>

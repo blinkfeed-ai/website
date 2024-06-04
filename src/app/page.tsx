@@ -657,7 +657,7 @@ function Spinner({progress, active}: SpinnerProps) {
           cx={size / 2}
           cy={size / 2}
           fill='transparent'
-          stroke={active ? 'rgba(0,0,0,0.05)' : 'transparent'}
+          stroke={active && progress > 0 ? 'rgba(0,0,0,0.05)' : 'transparent'}
           strokeWidth={bgWidth}
         />
       </svg>
@@ -666,15 +666,55 @@ function Spinner({progress, active}: SpinnerProps) {
 }
 
 function FeatureCard({title, features, order}: FeatureCardProps) {
-  const video = React.useRef<HTMLVideoElement>(null)
+  const videoRef = React.useRef<HTMLVideoElement>(null)
   const [currentVideoTime, setCurrentVideoTime] = useState(0)
-  const selected = 0
+
+  const rootRef = React.useRef<HTMLDivElement>(null)
+  const [isVisible, setIsVisible] = React.useState(false)
+  const wasPlayed = React.useRef(false)
+
+  // === Intersection observer ===
+
+  React.useEffect(() => {
+    const thresholdIn = 0.5
+    const thresholdOut = 0
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          const top = entry.boundingClientRect.top
+          const bottom = entry.boundingClientRect.bottom
+          const ratio = entry.intersectionRatio
+          const isVisible =
+            ratio > 0 && (wasPlayed.current || bottom < window.innerHeight || top < 0)
+          wasPlayed.current = isVisible
+          console.log(isVisible)
+          setIsVisible(isVisible)
+        })
+      },
+      {
+        threshold: Array(11)
+          .fill(0)
+          .map((_, i) => i * 0.1),
+      },
+      // {threshold: [thresholdIn, thresholdOut]},
+    )
+    if (rootRef.current) observer.observe(rootRef.current)
+    return () => observer.disconnect()
+  }, [])
+
+  React.useEffect(() => {
+    if (videoRef.current) {
+      if (isVisible) videoRef.current.play()
+      else videoRef.current.pause()
+    }
+  }, [isVisible])
+
+  // === On frame video progress tracking ===
 
   const raf = React.useRef<number>()
-
   const onFrame = () => {
-    if (video.current) {
-      setCurrentVideoTime(video.current.currentTime)
+    if (videoRef.current) {
+      setCurrentVideoTime(videoRef.current.currentTime)
     }
     requestAnimationFrame()
   }
@@ -731,7 +771,7 @@ function FeatureCard({title, features, order}: FeatureCardProps) {
                   ...style,
                 }}
                 onMouseDown={() => {
-                  if (video.current) video.current.currentTime = featureStartTime
+                  if (videoRef.current) videoRef.current.currentTime = featureStartTime
                 }}
               >
                 <div className='flex' style={{gap: '8px'}}>
@@ -771,8 +811,7 @@ function FeatureCard({title, features, order}: FeatureCardProps) {
   const viz = (
     <div className='flex overflow-hidden' style={{width: '870px'}}>
       <video
-        ref={video}
-        autoPlay
+        ref={videoRef}
         muted
         loop
         style={{
@@ -786,21 +825,16 @@ function FeatureCard({title, features, order}: FeatureCardProps) {
       >
         <source src='/video/features1.mov' type='video/mp4' />
       </video>
-      {/*<img*/}
-      {/*  src='https://tailwindui.com/img/component-images/dark-project-app-screenshot.png'*/}
-      {/*  alt='Product screenshot'*/}
-      {/*  className='w-[48rem] max-w-none rounded-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0'*/}
-      {/*  width={2432}*/}
-      {/*  height={1442}*/}
-      {/*/>*/}
     </div>
   )
   return (
     <Section>
       <Container>
-        <div className='z-0 absolute top-0 left-0 w-full flex justify-end'>{viz}</div>
-        <div className='z-10 flex relative text-base' style={{width: '42%'}}>
-          {description}
+        <div ref={rootRef}>
+          <div className='z-0 absolute top-0 left-0 w-full flex justify-end'>{viz}</div>
+          <div className='z-10 flex relative text-base' style={{width: '42%'}}>
+            {description}
+          </div>
         </div>
       </Container>
     </Section>
