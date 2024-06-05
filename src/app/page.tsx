@@ -22,10 +22,9 @@ import {transform} from 'sucrase'
 const featuredTestimonial = {
   body: 'Integer id nunc sit semper purus. Bibendum at lacus ut arcu blandit montes vitae auctor libero. Hac condimentum dignissim nibh vulputate ut nunc. Amet nibh orci mi venenatis blandit vel et proin. Non hendrerit in vel ac diam.',
   author: {
-    name: 'Brenna Goyette',
-    handle: 'brennagoyette',
-    imageUrl:
-      'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=1024&h=1024&q=80',
+    name: 'Greg Ociepka',
+    handle: 'gregociepka',
+    imageUrl: '/photo/greg-ociepka.jpg',
     logoUrl: 'https://tailwindui.com/img/logos/savvycal-logo-gray-900.svg',
   },
 }
@@ -1063,8 +1062,8 @@ function Automations() {
                     >
                       <Image width={20} height={20} src={feature.img} alt='feature' />
                     </div>
-                    <div className='inline font-bold text-white'>{feature.name}</div>{' '}
-                    <dd className='inline'>{feature.description}</dd>
+                    <div className='inline font-bold text-primary-inv'>{feature.name}</div>{' '}
+                    <dd className='inline text-secondary-inv'>{feature.description}</dd>
                   </div>
                 ))}
               </dl>
@@ -1335,7 +1334,7 @@ function Testimontials() {
             </p>
           </div>
           <div className='mx-auto mt-16 grid max-w-2xl grid-cols-1 grid-rows-1 gap-8 text-sm leading-6 sm:mt-20 sm:grid-cols-2 xl:mx-0 xl:max-w-none xl:grid-flow-col xl:grid-cols-4'>
-            <figure className='rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5 sm:col-span-2 xl:col-start-2 xl:row-end-1'>
+            <figure className='rounded-2xl bg-white shadow-lg  sm:col-span-2 xl:col-start-2 xl:row-end-1'>
               <blockquote className='p-6 text-lg font-semibold leading-7 tracking-tight sm:p-12 sm:text-xl sm:leading-8'>
                 <p>{`“${featuredTestimonial.body}”`}</p>
               </blockquote>
@@ -1373,7 +1372,7 @@ function Testimontials() {
                     {column.map(testimonial => (
                       <figure
                         key={testimonial.author.handle}
-                        className='rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5'
+                        className='rounded-2xl bg-white p-6 shadow-lg'
                       >
                         <blockquote className=''>
                           <p>{`“${testimonial.body}”`}</p>
