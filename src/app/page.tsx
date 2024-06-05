@@ -187,16 +187,9 @@ const features2 = [
 
 const featuresAutomations = [
   {
-    name: 'Automate everything.',
+    name: 'Review before send.',
     description:
-      'From sending emails and creating labels to checking availability and utilizing external APIs, the possibilities are growing every day.',
-    icon: CloudArrowUpIcon,
-    img: '/icon/automate-everything.svg',
-  },
-  {
-    name: 'Inspect before you act.',
-    description:
-      "Accidental messages? Not on our watch. You have the power to inspect and approve all of the automation's actions before they're set in motion.",
+      "Accidental messages? Not on our watch. Inspect and approve all of the automation's actions before they're set in motion.",
     icon: ArrowPathIcon,
     img: '/icon/check-before-run.svg',
   },
@@ -206,6 +199,13 @@ const featuresAutomations = [
       'Stay in the know by browsing detailed logs of your automations, unraveling the what and why behind each action.',
     icon: LockClosedIcon,
     img: '/icon/monitor-automations.svg',
+  },
+  {
+    name: 'Automate the boring stuff.',
+    description:
+      'Sending follow-ups, responding to repetitive questions, and organizing emails are easy to automate. Just do it.',
+    icon: CloudArrowUpIcon,
+    img: '/icon/automate-everything.svg',
   },
 ]
 
@@ -252,9 +252,9 @@ const tiers = [
     timeSpan: '/forever',
     description:
       'Submit your plugin idea, free or paid. As long as you maintain it, enjoy Blinkfeed for free.',
-    features: [{available: true, label: 'Analyze up to 1000 mails/month'}],
+    features: [{available: true, label: 'Analyze up to 1000 email threads / month'}],
     featuresComingSoon: [
-      {available: true, label: 'Integrations (Calendar, etc.)'},
+      {available: true, label: 'Integrations (calendar, etc.)'},
       {available: true, label: 'Automations'},
     ],
     mostPopular: true,
@@ -267,9 +267,9 @@ const tiers = [
     price: {monthly: '$30', annually: '$25'},
     timeSpan: '/month',
     description: 'For individuals who manage a moderate volume of emails.',
-    features: [{available: true, label: 'Analyze up to 1000 mails/month'}],
+    features: [{available: true, label: 'Analyze up to 1000 email threads / month'}],
     featuresComingSoon: [
-      {available: true, label: 'Integrations (Calendar, etc.)'},
+      {available: true, label: 'Integrations (calendar, etc.)'},
       {available: false, label: 'Automations'},
     ],
     mostPopular: true,
@@ -282,9 +282,9 @@ const tiers = [
     price: {monthly: '$50', annually: '$40'},
     timeSpan: '/month',
     description: 'For professionals handling high-volume correspondence.',
-    features: [{available: true, label: 'Analyze up to 3000 mails/month'}],
+    features: [{available: true, label: 'Analyze up to 3000 email threads / month'}],
     featuresComingSoon: [
-      {available: true, label: 'Integrations (Calendar, etc.)'},
+      {available: true, label: 'Integrations (calendar, etc.)'},
       {available: true, label: 'Automations'},
     ],
     mostPopular: false,
@@ -799,7 +799,7 @@ function FeatureCard({title, features}: FeatureCardProps) {
                       >
                         {feature.name}
                       </div>
-                      {feature.comingSoon && <ComingSoon />}
+                      <div className='text-tertiary'>{feature.comingSoon && <ComingSoon />}</div>
                     </div>
                     <div className='leading-7 text-secondary'>{feature.description}</div>
                   </div>
@@ -1022,8 +1022,8 @@ function Automations() {
           <Container>
             <div className='mx-auto max-w-7xl'>
               <div className='mx-auto max-w-2xl sm:text-center'>
-                <div className='flex justify-center text-white mb-4'>
-                  <ComingSoon />
+                <div className='flex justify-center text-teriary-inv mb-4'>
+                  <ComingSoon big={true} />
                 </div>
                 <p className='text-3xl font-bold tracking-tight text-white sm:text-4xl'>
                   Set up automations in plain English
@@ -1034,7 +1034,9 @@ function Automations() {
                       {`"Send a follow-up for my 'collaboration opportunity' emails if no reply in 3 days."`}
                     </div>
                   </div>
-                  <div className='mt-4'>Start as simple as this and refine as you go.</div>
+                  <div className='mt-4 text-secondary-inv'>
+                    Start as simple as this and refine as you go.
+                  </div>
                 </div>
               </div>
             </div>
@@ -1052,18 +1054,18 @@ function Automations() {
                 </div>
               </div>
             </div>
-            <div className='mx-auto mt-16 max-w-7xl px-6 sm:mt-20 md:mt-20 lg:px-8'>
+            <div className='mx-auto mt-16 max-w-7xl sm:mt-20 md:mt-20'>
               <dl className='mx-auto grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10 text-base leading-7 text-gray-300 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-x-8 lg:gap-y-16'>
                 {featuresAutomations.map(feature => (
                   <div key={feature.name} className='relative pl-12'>
                     <div
-                      className='absolute left-0 top-0 flex h-8 w-8 items-center justify-center rounded-lg bg-white'
+                      className='absolute left-0 top-0 flex h-8 w-8 items-center justify-center rounded-lg bg-primary-inv'
                       style={{marginTop: '7px'}}
                     >
-                      <Image width={20} height={20} src={feature.img} alt='feature' />
+                      <Image width={24} height={24} src={feature.img} alt='feature' />
                     </div>
-                    <div className='inline font-bold text-primary-inv'>{feature.name}</div>{' '}
-                    <dd className='inline text-secondary-inv'>{feature.description}</dd>
+                    <div className='font-bold text-primary-inv'>{feature.name}</div>{' '}
+                    <dd className='text-secondary-inv'>{feature.description}</dd>
                   </div>
                 ))}
               </dl>
@@ -1075,10 +1077,19 @@ function Automations() {
   )
 }
 
-function ComingSoon() {
+function ComingSoon({big}: {big?: boolean}) {
+  const padding = big ? '8px' : '5px'
   return (
-    <div className='flex text-xs opacity-40'>
-      <div className='rounded-full py-1 px-2 border border-current'>Coming Soon</div>
+    <div className='flex text-xs'>
+      <div
+        className='rounded-full px-2 border border-current'
+        style={{
+          paddingTop: padding,
+          paddingBottom: padding,
+        }}
+      >
+        Coming Soon
+      </div>
     </div>
   )
 }
@@ -1099,7 +1110,7 @@ function FeaturesForPowerUsers() {
             {featuresPowerUsers.map(feature => (
               <div key={feature.name}>
                 {!feature.ready && (
-                  <div className='pl-12 pb-2'>
+                  <div className='pl-12 pb-2 text-tertiary'>
                     <ComingSoon />
                   </div>
                 )}
@@ -1151,7 +1162,7 @@ function Pricing() {
                   value={option}
                   className={({checked}) =>
                     classNames(
-                      checked ? 'bg-accent text-white' : 'text-secondary',
+                      checked ? 'bg-primary text-white' : 'text-secondary',
                       'cursor-pointer rounded-full px-2.5 py-1',
                     )
                   }
@@ -1242,7 +1253,10 @@ function Pricing() {
                             {feature.available ? (
                               <>
                                 <CheckCircleIcon
-                                  className='text-accent h-6 w-5 flex-none'
+                                  className={
+                                    'h-6 w-5 flex-none ' +
+                                    (tier.featured ? 'text-accent' : 'text-accent')
+                                  }
                                   aria-hidden='true'
                                 />
                                 <div>{feature.label}</div>
@@ -1280,7 +1294,10 @@ function Pricing() {
                             {feature.available ? (
                               <>
                                 <CheckCircleIcon
-                                  className='text-accent h-6 w-5 flex-none'
+                                  className={
+                                    'h-6 w-5 flex-none ' +
+                                    (tier.featured ? 'text-accent' : 'text-accent')
+                                  }
                                   aria-hidden='true'
                                 />
                                 <div>{feature.label}</div>
@@ -1302,9 +1319,9 @@ function Pricing() {
                         aria-describedby={tier.id}
                         className={classNames(
                           tier.featured
-                            ? 'bg-accent text-white shadow-sm hover:bg-accent focus-visible:outline-accent'
-                            : 'text-accent ring-1 ring-inset ring-accent hover:ring-accent focus-visible:outline-accent',
-                          'mt-8 block rounded-md py-2.5 px-3.5 text-center text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 sm:mt-10',
+                            ? 'bg-accent text-dark-card shadow-sm hover:bg-accent focus-visible:outline-accent'
+                            : 'ring-1 ring-inset ring-primary focus-visible:outline-accent',
+                          'mt-8 block rounded-xl py-2.5 px-3.5 text-center text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 sm:mt-10',
                         )}
                       >
                         {tierIdx === 0 ? 'Submit your idea' : 'Download for macOS'}
