@@ -28,6 +28,11 @@ const config: Config = {
       colors: {
         page: 'white',
         accent: 'var(--color-accent)',
+        'dark-card': 'rgb(23, 23, 23)',
+        'pricing-card-border': 'rgb(230,230,230)',
+        'primary-inv': 'rgb(230,230,230)',
+        'secondary-inv': 'rgb(180,180,180)',
+        secondary: 'rgba(0,0,0,0.6)',
       },
     },
   },

@@ -9,11 +9,11 @@ export function Container({
 }) {
   let className2 = 'container relative mx-auto px-12 lg:px-24'
   if (wide) {
-    className2 = 'container relative mx-auto px-6 lg:px-12'
+    className2 = 'container relative mx-auto '
   }
   return (
     <div className={className2 + ' ' + (className ? className : '')}>
-      <div className='mx-auto max-w-6xl'>{children}</div>
+      <div className='mx-auto'>{children}</div>
     </div>
   )
 }

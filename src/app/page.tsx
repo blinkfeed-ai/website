@@ -220,9 +220,9 @@ const featuresPowerUsers = [
     ready: true,
   },
   {
-    name: 'Extend AI Mail with plugins.',
+    name: 'Extend Blinkfeed with plugins.',
     description:
-      "Extend AI Mail with plugins to mix, match, and customize your way. It's open and flexible, so you can tweak it to fit your groove.",
+      "Extend Blinkfeed with plugins to mix, match, and customize your way. It's open and flexible, so you can tweak it to fit your groove.",
     icon: CloudArrowUpIcon,
     img: '/icon/plugin.svg',
     ready: true,
@@ -252,9 +252,9 @@ const tiers = [
     price: {monthly: '$0', annually: '$0'},
     timeSpan: '/forever',
     description:
-      'Submit your plugin idea, free or paid. Once approved, enjoy AI Email for free, forever.',
-    features: [
-      {available: true, label: 'Analyze up to 1000 mails/month'},
+      'Submit your plugin idea, free or paid. As long as you maintain it, enjoy Blinkfeed for free.',
+    features: [{available: true, label: 'Analyze up to 1000 mails/month'}],
+    featuresComingSoon: [
       {available: true, label: 'Integrations (Calendar, etc.)'},
       {available: true, label: 'Automations'},
     ],
@@ -268,8 +268,8 @@ const tiers = [
     price: {monthly: '$30', annually: '$25'},
     timeSpan: '/month',
     description: 'For individuals who manage a moderate volume of emails.',
-    features: [
-      {available: true, label: 'Analyze up to 1000 mails/month'},
+    features: [{available: true, label: 'Analyze up to 1000 mails/month'}],
+    featuresComingSoon: [
       {available: true, label: 'Integrations (Calendar, etc.)'},
       {available: false, label: 'Automations'},
     ],
@@ -283,8 +283,8 @@ const tiers = [
     price: {monthly: '$50', annually: '$40'},
     timeSpan: '/month',
     description: 'For professionals handling high-volume correspondence.',
-    features: [
-      {available: true, label: 'Analyze up to 3000 mails/month'},
+    features: [{available: true, label: 'Analyze up to 3000 mails/month'}],
+    featuresComingSoon: [
       {available: true, label: 'Integrations (Calendar, etc.)'},
       {available: true, label: 'Automations'},
     ],
@@ -465,7 +465,7 @@ function Hero() {
             {/*  fighting spam*/}
             {/*</HeroFragment>.*/}
           </h1>
-          <p className='mt-6 text-lg leading-8 opacity-80'>
+          <p className='mt-6 text-lg leading-8 text-secondary'>
             Reply to 100 emails in 10 minutes. Schedule meetings and generate replies with AI aware
             of <br />
             your calendar, preferences, and knowledge base.
@@ -616,6 +616,7 @@ interface FeatureCardProps {
     icon: React.ComponentType
     img: string
     timeEnd: number
+    comingSoon?: boolean
   }[]
 }
 
@@ -665,7 +666,7 @@ function Spinner({progress, active}: SpinnerProps) {
   )
 }
 
-function FeatureCard({title, features, order}: FeatureCardProps) {
+function FeatureCard({title, features}: FeatureCardProps) {
   const videoRef = React.useRef<HTMLVideoElement>(null)
   const [currentVideoTime, setCurrentVideoTime] = useState(0)
 
@@ -696,7 +697,6 @@ function FeatureCard({title, features, order}: FeatureCardProps) {
           .fill(0)
           .map((_, i) => i * 0.1),
       },
-      // {threshold: [thresholdIn, thresholdOut]},
     )
     if (rootRef.current) observer.observe(rootRef.current)
     return () => observer.disconnect()
@@ -789,15 +789,20 @@ function FeatureCard({title, features, order}: FeatureCardProps) {
                       marginTop: '2px',
                     }}
                   >
-                    <div
-                      className='font-semibold'
-                      style={{
-                        fontSize: '16px',
-                      }}
-                    >
-                      {feature.name}
+                    <div className='flex items-center gap-4'>
+                      <div
+                        className='font-semibold'
+                        style={
+                          {
+                            // fontSize: '16px',
+                          }
+                        }
+                      >
+                        {feature.name}
+                      </div>
+                      {feature.comingSoon && <ComingSoon />}
                     </div>
-                    <div className='opacity-80'>{feature.description}</div>
+                    <div className='leading-7 text-secondary'>{feature.description}</div>
                   </div>
                 </div>
               </div>
@@ -901,6 +906,7 @@ function XFeatures2() {
         'Blinkfeed analyzes your calendar and documents in your knowledge base to provide curated replies and suggestions.',
       icon: ArrowPathIcon,
       img: '/icon/data-catalog.svg',
+      comingSoon: true,
       timeEnd: 6,
     },
   ]
@@ -1013,55 +1019,68 @@ function Automations() {
   return (
     <Section>
       <Container wide={true}>
-        <div className='bg-gray-900 rounded-3xl overflow-hidden py-24'>
-          <div className='mx-auto max-w-7xl px-6 lg:px-8'>
-            <div className='mx-auto max-w-2xl sm:text-center'>
-              <p className='text-3xl font-bold tracking-tight text-white sm:text-4xl'>
-                Set up automations in plain English
-              </p>
-              <div className='mt-6 text-lg leading-8 text-gray-300'>
-                <div className='flex justify-center'>
-                  <div className='rounded-2xl bg-accent text-black font-bold text-sm py-2 px-3'>
-                    {`"Send a follow-up for my 'collaboration opportunity' emails if no reply in 3 days."`}
-                  </div>
+        <div className='rounded-3xl overflow-hidden py-24 bg-dark-card'>
+          <Container>
+            <div className='mx-auto max-w-7xl'>
+              <div className='mx-auto max-w-2xl sm:text-center'>
+                <div className='flex justify-center text-white mb-4'>
+                  <ComingSoon />
                 </div>
-                <div className='mt-1'>Start as simple as this and refine as you go.</div>
+                <p className='text-3xl font-bold tracking-tight text-white sm:text-4xl'>
+                  Set up automations in plain English
+                </p>
+                <div className='mt-4 text-lg leading-8 text-gray-300'>
+                  <div className='flex justify-center'>
+                    <div className='rounded-2xl bg-accent text-black font-bold text-sm py-2 px-3'>
+                      {`"Send a follow-up for my 'collaboration opportunity' emails if no reply in 3 days."`}
+                    </div>
+                  </div>
+                  <div className='mt-4'>Start as simple as this and refine as you go.</div>
+                </div>
               </div>
             </div>
-          </div>
-          <div className='relative overflow-hidden pt-16'>
-            <div className='mx-auto max-w-7xl px-6 lg:px-8'>
-              <img
-                src='https://tailwindui.com/img/component-images/dark-project-app-screenshot.png'
-                alt='App screenshot'
-                className='mb-[-12%] rounded-xl shadow-2xl ring-1 ring-white/10'
-                width={2432}
-                height={1442}
-              />
-              <div className='relative' aria-hidden='true'>
-                <div className='absolute -inset-x-20 bottom-0 bg-gradient-to-t from-gray-900 pt-[7%]' />
+            <div className='relative overflow-hidden pt-20'>
+              <div className='mx-auto max-w-7xl'>
+                <img
+                  src='/photo/automations.png'
+                  alt='App screenshot'
+                  className='mb-[-12%] rounded-xl shadow-2xl ring-1 ring-white/5'
+                  width={2432}
+                  height={1442}
+                />
+                <div className='relative' aria-hidden='true'>
+                  <div className='absolute -inset-x-20 bottom-0 bg-gradient-to-t from-dark-card pt-[7%]' />
+                </div>
               </div>
             </div>
-          </div>
-          <div className='mx-auto mt-16 max-w-7xl px-6 sm:mt-20 md:mt-24 lg:px-8'>
-            <dl className='mx-auto grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10 text-base leading-7 text-gray-300 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-x-8 lg:gap-y-16'>
-              {featuresAutomations.map(feature => (
-                <div key={feature.name} className='relative pl-12'>
-                  <div
-                    className='absolute left-0 top-0 flex h-8 w-8 items-center justify-center rounded-lg bg-white'
-                    style={{marginTop: '7px'}}
-                  >
-                    <Image width={20} height={20} src={feature.img} alt='feature' />
+            <div className='mx-auto mt-16 max-w-7xl px-6 sm:mt-20 md:mt-20 lg:px-8'>
+              <dl className='mx-auto grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10 text-base leading-7 text-gray-300 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-x-8 lg:gap-y-16'>
+                {featuresAutomations.map(feature => (
+                  <div key={feature.name} className='relative pl-12'>
+                    <div
+                      className='absolute left-0 top-0 flex h-8 w-8 items-center justify-center rounded-lg bg-white'
+                      style={{marginTop: '7px'}}
+                    >
+                      <Image width={20} height={20} src={feature.img} alt='feature' />
+                    </div>
+                    <div className='inline font-bold text-white'>{feature.name}</div>{' '}
+                    <dd className='inline'>{feature.description}</dd>
                   </div>
-                  <div className='inline font-bold text-white'>{feature.name}</div>{' '}
-                  <dd className='inline'>{feature.description}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
+                ))}
+              </dl>
+            </div>
+          </Container>
         </div>
       </Container>
     </Section>
+  )
+}
+
+function ComingSoon() {
+  return (
+    <div className='flex text-xs opacity-40'>
+      <div className='rounded-full py-1 px-2 border border-current'>Coming Soon</div>
+    </div>
   )
 }
 
@@ -1070,7 +1089,7 @@ function FeaturesForPowerUsers() {
     <Section>
       <Container>
         <div className='mx-auto max-w-2xl lg:text-center'>
-          <p className='mt-2 text-3xl font-bold tracking-tight text-gray-800 sm:text-4xl'>
+          <p className='mt-2 text-3xl font-bold tracking-tight sm:text-4xl'>
             We got even more for power users,
             <br />
             just like you.
@@ -1081,8 +1100,8 @@ function FeaturesForPowerUsers() {
             {featuresPowerUsers.map(feature => (
               <div key={feature.name}>
                 {!feature.ready && (
-                  <div className='pl-12 pb-2 flex text-xs opacity-40'>
-                    <div className='rounded-full py-1 px-2 border border-black'>Coming Soon</div>
+                  <div className='pl-12 pb-2'>
+                    <ComingSoon />
                   </div>
                 )}
                 <div className='relative pl-12'>
@@ -1090,13 +1109,11 @@ function FeaturesForPowerUsers() {
                     className='absolute left-0 top-0 flex h-8 w-8 items-center justify-center rounded-lg bg-accent'
                     style={{marginTop: '7px'}}
                   >
-                    <Image width={20} height={20} src={feature.img} alt='feature' />
+                    <Image width={24} height={24} src={feature.img} alt='feature' />
                   </div>
 
-                  <div className='text-base font-semibold leading-7 text-gray-800'>
-                    {feature.name}
-                  </div>
-                  <dd className='text-base leading-7 text-gray-600'>{feature.description}</dd>
+                  <div className='text-base font-semibold leading-7'>{feature.name}</div>
+                  <dd className='text-base leading-7 text-secondary'>{feature.description}</dd>
                 </div>
               </div>
             ))}
@@ -1113,15 +1130,15 @@ function Pricing() {
     <Section>
       <Container>
         <div className='mx-auto max-w-2xl text-center lg:max-w-4xl'>
-          <p className='mt-2 text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl'>
+          <p className='mt-2 text-4xl font-bold tracking-tight sm:text-5xl'>
             Save up to 90% of your email time.
           </p>
         </div>
-        <p className='mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-gray-600'>
+        <p className='mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-secondary'>
           {'Spend it on more important things.'}
         </p>
 
-        <div className='mt-16 sm:mt-20'>
+        <div className='mt-16 sm:mt-16'>
           <div className='mt-16 flex justify-center'>
             <RadioGroup
               value={frequency}
@@ -1135,7 +1152,7 @@ function Pricing() {
                   value={option}
                   className={({checked}) =>
                     classNames(
-                      checked ? 'bg-accent text-white' : 'text-gray-500',
+                      checked ? 'bg-accent text-white' : 'text-secondary',
                       'cursor-pointer rounded-full px-2.5 py-1',
                     )
                   }
@@ -1148,20 +1165,18 @@ function Pricing() {
           <div className='mx-auto grid max-w-lg grid-cols-1 items-center gap-y-6  sm:gap-y-0 lg:max-w-4xl lg:grid-cols-3 mb-44'>
             {tiers.map((tier, tierIdx) => {
               const featuredTierHDiff = 50
-              const tierH = 550
+              const tierH = 580
               return (
                 <div
                   key={tier.id}
                   className={classNames(
-                    tier.featured
-                      ? 'relative bg-gray-900 shadow-2xl'
-                      : 'bg-white/60 sm:mx-8 lg:mx-0',
+                    tier.featured ? 'relative bg-dark-card shadow-2xl' : 'bg-white sm:mx-8 lg:mx-0',
                     tier.featured
                       ? 'rounded-3xl '
                       : tierIdx === 0
                         ? 'rounded-t-3xl sm:rounded-b-none lg:rounded-tr-none lg:rounded-bl-3xl'
                         : '',
-                    'relative flex p-8 ring-1 ring-gray-900/10 sm:p-10',
+                    'relative flex p-8 ring-1 ring-pricing-card-border sm:p-10',
                   )}
                   style={{
                     height: tier.featured ? `${tierH + featuredTierHDiff}px` : `${tierH}px`,
@@ -1178,16 +1193,17 @@ function Pricing() {
                       <h3
                         id={tier.id}
                         className={classNames(
-                          tier.featured ? 'text-accent' : 'text-accent',
+                          tier.featured ? 'text-primary-inv' : '',
                           'text-base font-semibold leading-7',
                         )}
+                        style={{fontSize: '17px'}}
                       >
                         {tier.name}
                       </h3>
                       <p className='mt-4 flex items-baseline gap-x-2'>
                         <span
                           className={classNames(
-                            tier.featured ? 'text-white' : 'text-gray-800',
+                            tier.featured ? 'text-primary-inv' : '',
                             'text-5xl font-bold tracking-tight',
                           )}
                         >
@@ -1198,7 +1214,7 @@ function Pricing() {
                         </span>
                         <span
                           className={classNames(
-                            tier.featured ? 'text-gray-400' : 'text-gray-500',
+                            tier.featured ? 'text-primary-inv' : '',
                             'text-base',
                           )}
                         >
@@ -1207,7 +1223,7 @@ function Pricing() {
                       </p>
                       <p
                         className={classNames(
-                          tier.featured ? 'text-gray-300' : 'text-gray-600',
+                          tier.featured ? 'text-secondary-inv' : 'text-secondary',
                           'mt-6 text-base leading-7',
                         )}
                       >
@@ -1218,11 +1234,49 @@ function Pricing() {
                       <ul
                         role='list'
                         className={classNames(
-                          tier.featured ? 'text-gray-300' : 'text-gray-600',
-                          'mt-8 space-y-3 text-sm leading-6 sm:mt-10',
+                          tier.featured ? 'text-primary-inv' : '',
+                          'space-y-3 text-sm leading-6',
                         )}
                       >
                         {tier.features.map(feature => (
+                          <li key={feature.label} className='flex gap-x-2'>
+                            {feature.available ? (
+                              <>
+                                <CheckCircleIcon
+                                  className='text-accent h-6 w-5 flex-none'
+                                  aria-hidden='true'
+                                />
+                                <div>{feature.label}</div>
+                              </>
+                            ) : (
+                              <>
+                                <XCircleIcon
+                                  className='text-gray-300 h-6 w-5 flex-none'
+                                  aria-hidden='true'
+                                />
+                                <div style={{opacity: 0.5}}>{feature.label}</div>
+                              </>
+                            )}
+                          </li>
+                        ))}
+                      </ul>
+
+                      <div
+                        className={classNames(
+                          'text-sm mt-8',
+                          tier.featured ? 'text-primary-inv' : '',
+                        )}
+                      >
+                        Coming soon:
+                      </div>
+                      <ul
+                        role='list'
+                        className={classNames(
+                          tier.featured ? 'text-primary-inv' : '',
+                          'space-y-3 text-sm leading-6 sm:mt-4',
+                        )}
+                      >
+                        {tier.featuresComingSoon.map(feature => (
                           <li key={feature.label} className='flex gap-x-2'>
                             {feature.available ? (
                               <>
@@ -1250,7 +1304,7 @@ function Pricing() {
                         className={classNames(
                           tier.featured
                             ? 'bg-accent text-white shadow-sm hover:bg-accent focus-visible:outline-accent'
-                            : 'text-accent ring-1 ring-inset ring-indigo-200 hover:ring-indigo-300 focus-visible:outline-accent',
+                            : 'text-accent ring-1 ring-inset ring-accent hover:ring-accent focus-visible:outline-accent',
                           'mt-8 block rounded-md py-2.5 px-3.5 text-center text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 sm:mt-10',
                         )}
                       >
@@ -1274,15 +1328,15 @@ function Testimontials() {
       <Container>
         <div className='mx-auto max-w-7xl px-6 lg:px-8'>
           <div className='mx-auto max-w-xl text-center'>
-            <p className='mt-2 text-3xl font-bold tracking-tight text-gray-800 sm:text-4xl'>
+            <p className='mt-2 text-3xl font-bold tracking-tight sm:text-4xl'>
               They switched
               <br />
               and are not looking back.
             </p>
           </div>
-          <div className='mx-auto mt-16 grid max-w-2xl grid-cols-1 grid-rows-1 gap-8 text-sm leading-6 text-gray-800 sm:mt-20 sm:grid-cols-2 xl:mx-0 xl:max-w-none xl:grid-flow-col xl:grid-cols-4'>
+          <div className='mx-auto mt-16 grid max-w-2xl grid-cols-1 grid-rows-1 gap-8 text-sm leading-6 sm:mt-20 sm:grid-cols-2 xl:mx-0 xl:max-w-none xl:grid-flow-col xl:grid-cols-4'>
             <figure className='rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5 sm:col-span-2 xl:col-start-2 xl:row-end-1'>
-              <blockquote className='p-6 text-lg font-semibold leading-7 tracking-tight text-gray-800 sm:p-12 sm:text-xl sm:leading-8'>
+              <blockquote className='p-6 text-lg font-semibold leading-7 tracking-tight sm:p-12 sm:text-xl sm:leading-8'>
                 <p>{`“${featuredTestimonial.body}”`}</p>
               </blockquote>
               <figcaption className='flex flex-wrap items-center gap-x-4 gap-y-4 border-t border-gray-900/10 px-6 py-4 sm:flex-nowrap'>
@@ -1293,7 +1347,7 @@ function Testimontials() {
                 />
                 <div className='flex-auto'>
                   <div className='font-semibold'>{featuredTestimonial.author.name}</div>
-                  <div className='text-gray-600'>{`@${featuredTestimonial.author.handle}`}</div>
+                  <div className=''>{`@${featuredTestimonial.author.handle}`}</div>
                 </div>
                 <img
                   className='h-10 w-auto flex-none'
@@ -1321,7 +1375,7 @@ function Testimontials() {
                         key={testimonial.author.handle}
                         className='rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5'
                       >
-                        <blockquote className='text-gray-800'>
+                        <blockquote className=''>
                           <p>{`“${testimonial.body}”`}</p>
                         </blockquote>
                         <figcaption className='mt-6 flex items-center gap-x-4'>
@@ -1332,7 +1386,7 @@ function Testimontials() {
                           />
                           <div>
                             <div className='font-semibold'>{testimonial.author.name}</div>
-                            <div className='text-gray-600'>{`@${testimonial.author.handle}`}</div>
+                            <div className=''>{`@${testimonial.author.handle}`}</div>
                           </div>
                         </figcaption>
                       </figure>
@@ -1383,17 +1437,15 @@ function FAQ() {
     <Section>
       <Container>
         <div className='divide-y divide-gray-900/10 px-6 pb-8 sm:pb-24 sm:pt-12 lg:max-w-7xl lg:px-8 lg:pb-32'>
-          <h2 className='text-2xl font-bold leading-10 tracking-tight text-gray-800'>
+          <h2 className='text-2xl font-bold leading-10 tracking-tight'>
             Frequently asked questions
           </h2>
           <dl className='mt-10 space-y-8 divide-y divide-gray-900/10'>
             {faqs.map(faq => (
               <div key={faq.id} className='pt-8 lg:grid lg:grid-cols-12 lg:gap-8'>
-                <dt className='text-base font-semibold leading-7 text-gray-800 lg:col-span-5'>
-                  {faq.question}
-                </dt>
+                <dt className='text-base font-semibold leading-7 lg:col-span-5'>{faq.question}</dt>
                 <dd className='mt-4 lg:col-span-7 lg:mt-0'>
-                  <p className='text-base leading-7 text-gray-600'>{faq.answer}</p>
+                  <p className='text-base leading-7'>{faq.answer}</p>
                 </dd>
               </div>
             ))}
@@ -1492,14 +1544,11 @@ function Example() {
             <div className='mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0'>
               <div className='md:grid md:grid-cols-2 md:gap-8'>
                 <div>
-                  <h3 className='text-sm font-semibold leading-6 text-gray-800'>Solutions</h3>
+                  <h3 className='text-sm font-semibold leading-6'>Solutions</h3>
                   <ul role='list' className='mt-6 space-y-4'>
                     {footerNavigation.solutions.map(item => (
                       <li key={item.name}>
-                        <a
-                          href={item.href}
-                          className='text-sm leading-6 text-gray-600 hover:text-gray-800'
-                        >
+                        <a href={item.href} className='text-sm leading-6 text-gray-600'>
                           {item.name}
                         </a>
                       </li>
@@ -1507,14 +1556,11 @@ function Example() {
                   </ul>
                 </div>
                 <div className='mt-10 md:mt-0'>
-                  <h3 className='text-sm font-semibold leading-6 text-gray-800'>Support</h3>
+                  <h3 className='text-sm font-semibold leading-6'>Support</h3>
                   <ul role='list' className='mt-6 space-y-4'>
                     {footerNavigation.support.map(item => (
                       <li key={item.name}>
-                        <a
-                          href={item.href}
-                          className='text-sm leading-6 text-gray-600 hover:text-gray-800'
-                        >
+                        <a href={item.href} className='text-sm leading-6 text-gray-600'>
                           {item.name}
                         </a>
                       </li>
@@ -1524,14 +1570,11 @@ function Example() {
               </div>
               <div className='md:grid md:grid-cols-2 md:gap-8'>
                 <div>
-                  <h3 className='text-sm font-semibold leading-6 text-gray-800'>Company</h3>
+                  <h3 className='text-sm font-semibold leading-6'>Company</h3>
                   <ul role='list' className='mt-6 space-y-4'>
                     {footerNavigation.company.map(item => (
                       <li key={item.name}>
-                        <a
-                          href={item.href}
-                          className='text-sm leading-6 text-gray-600 hover:text-gray-800'
-                        >
+                        <a href={item.href} className='text-sm leading-6 text-gray-600'>
                           {item.name}
                         </a>
                       </li>
@@ -1539,14 +1582,11 @@ function Example() {
                   </ul>
                 </div>
                 <div className='mt-10 md:mt-0'>
-                  <h3 className='text-sm font-semibold leading-6 text-gray-800'>Legal</h3>
+                  <h3 className='text-sm font-semibold leading-6'>Legal</h3>
                   <ul role='list' className='mt-6 space-y-4'>
                     {footerNavigation.legal.map(item => (
                       <li key={item.name}>
-                        <a
-                          href={item.href}
-                          className='text-sm leading-6 text-gray-600 hover:text-gray-800'
-                        >
+                        <a href={item.href} className='text-sm leading-6 text-gray-600'>
                           {item.name}
                         </a>
                       </li>
