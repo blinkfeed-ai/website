@@ -18,9 +18,16 @@ import {Navigation} from '@/app/navigation'
 import {Container} from '@/app/Container'
 import {Tooltip} from 'react-tooltip'
 import {transform} from 'sucrase'
+import * as Button from '@/app/Button'
+import Class from 'classnames'
+
+const gregOciepkaTestimontial =
+  "Blinkfeed is unreal. As someone who sends 50+ emails daily, I've tried numerous email " +
+  'clients for productivity. Many use AI, but Blinkfeed, built entirely around AI, offers a ' +
+  "unique user experience unlike anything I've seen before."
 
 const featuredTestimonial = {
-  body: 'Integer id nunc sit semper purus. Bibendum at lacus ut arcu blandit montes vitae auctor libero. Hac condimentum dignissim nibh vulputate ut nunc. Amet nibh orci mi venenatis blandit vel et proin. Non hendrerit in vel ac diam.',
+  body: gregOciepkaTestimontial,
   author: {
     name: 'Greg Ociepka',
     handle: 'gregociepka',
@@ -28,11 +35,12 @@ const featuredTestimonial = {
     logoUrl: 'https://tailwindui.com/img/logos/savvycal-logo-gray-900.svg',
   },
 }
+
 const testimonials = [
   [
     [
       {
-        body: 'Laborum quis quam. Dolorum et ut quod quia. Voluptas numquam delectus nihil. Aut enim doloremque et ipsam.',
+        body: 'I’m blown away by the summaries from @blinkfeed_ai! They’re so detailed and always get the whole thread context right. Nothing else comes close.',
         author: {
           name: 'Leslie Alexander',
           handle: 'lesliealexander',
@@ -41,7 +49,7 @@ const testimonials = [
         },
       },
       {
-        body: 'Laborum quis quam. Dolorum et ut quod quia. Voluptas numquam delectus nihil. Aut enim doloremque et ipsam.',
+        body: 'Using @blinkfeed_ai feels like flying through emails. The UI is so well designed, it makes handling emails faster than I ever thought possible.',
         author: {
           name: 'Leslie Alexander',
           handle: 'lesliealexander2',
@@ -50,7 +58,7 @@ const testimonials = [
         },
       },
       {
-        body: 'Laborum quis quam. Dolorum et ut quod quia. Voluptas numquam delectus nihil. Aut enim doloremque et ipsam.',
+        body: 'The auto-generated replies from @blinkfeed_ai are amazing. They’re always on point and feel like I wrote them myself, not just random text.',
         author: {
           name: 'Leslie Alexander',
           handle: 'lesliealexander3',
@@ -61,7 +69,7 @@ const testimonials = [
     ],
     [
       {
-        body: 'Aut reprehenderit voluptatem eum asperiores beatae id. Iure molestiae ipsam ut officia rem nulla blanditiis.',
+        body: 'I love how @blinkfeed_ai flags urgent messages for me. I can focus on what’s important and tackle the rest in the evening without distractions.',
         author: {
           name: 'Lindsay Walton',
           handle: 'lindsaywalton',
@@ -70,7 +78,7 @@ const testimonials = [
         },
       },
       {
-        body: 'Aut reprehenderit voluptatem eum asperiores beatae id. Iure molestiae ipsam ut officia rem nulla blanditiis.',
+        body: 'The semantic spam filter from @blinkfeed_ai is a lifesaver. It’s so much better than Gmail’s, catching all the junk and letting the important stuff through.',
         author: {
           name: 'Lindsay Walton',
           handle: 'lindsaywalton2',
@@ -83,7 +91,7 @@ const testimonials = [
   [
     [
       {
-        body: 'Voluptas quos itaque ipsam in voluptatem est. Iste eos blanditiis repudiandae. Earum deserunt enim molestiae ipsum perferendis recusandae saepe corrupti.',
+        body: "Writing emails with @blinkfeed_ai is like having a genius assistant. I just type 'Monday?' and it crafts the perfect message. I don’t even have to think about it!",
         author: {
           name: 'Tom Cook',
           handle: 'tomcook',
@@ -92,7 +100,7 @@ const testimonials = [
         },
       },
       {
-        body: 'Voluptas quos itaque ipsam in voluptatem est. Iste eos blanditiis repudiandae. Earum deserunt enim molestiae ipsum perferendis recusandae saepe corrupti.',
+        body: 'Got early access to @blinkfeed_ai’s automations and wow, even if it’s a bit glitchy, it’s a total game changer for my workflow.',
         author: {
           name: 'Tom Cook',
           handle: 'tomcook2',
@@ -103,7 +111,7 @@ const testimonials = [
     ],
     [
       {
-        body: 'Molestias ea earum quos nostrum doloremque sed. Quaerat quasi aut velit incidunt excepturi rerum voluptatem minus harum.',
+        body: 'As a power user, @blinkfeed_ai’s all-keyboard workflow is a dream. I thought Superhuman was good, but this takes it to another level!',
         author: {
           name: 'Leonard Krasner',
           handle: 'leonardkrasner',
@@ -112,7 +120,7 @@ const testimonials = [
         },
       },
       {
-        body: 'Molestias ea earum quos nostrum doloremque sed. Quaerat quasi aut velit incidunt excepturi rerum voluptatem minus harum.',
+        body: 'I’m really looking forward to the calendar and files integration in @blinkfeed_ai. If it’s anything like the rest of the features, it’s going to be a huge help.',
         author: {
           name: 'Leonard Krasner',
           handle: 'leonardkrasner2',
@@ -121,7 +129,7 @@ const testimonials = [
         },
       },
       {
-        body: 'Molestias ea earum quos nostrum doloremque sed. Quaerat quasi aut velit incidunt excepturi rerum voluptatem minus harum.',
+        body: 'Sure, @blinkfeed_ai is a bit pricey, but the time it’s saved me has paid for itself many times over. Totally worth it!',
         author: {
           name: 'Leonard Krasner',
           handle: 'leonardkrasner3',
@@ -187,6 +195,13 @@ const features2 = [
 
 const featuresAutomations = [
   {
+    name: 'Automate the boring stuff.',
+    description:
+      'Sending follow-ups, responding to repetitive questions, and organizing emails are easy to automate. Just do it.',
+    icon: CloudArrowUpIcon,
+    img: '/icon/automate-everything.svg',
+  },
+  {
     name: 'Review before send.',
     description:
       "Accidental messages? Not on our watch. Inspect and approve all of the automation's actions before they're set in motion.",
@@ -199,13 +214,6 @@ const featuresAutomations = [
       'Stay in the know by browsing detailed logs of your automations, unraveling the what and why behind each action.',
     icon: LockClosedIcon,
     img: '/icon/monitor-automations.svg',
-  },
-  {
-    name: 'Automate the boring stuff.',
-    description:
-      'Sending follow-ups, responding to repetitive questions, and organizing emails are easy to automate. Just do it.',
-    icon: CloudArrowUpIcon,
-    img: '/icon/automate-everything.svg',
   },
 ]
 
@@ -227,19 +235,19 @@ const featuresPowerUsers = [
     ready: true,
   },
   {
-    name: 'Track when people read your email or follow your links.',
-    description:
-      'Gain insights for precise follow-ups, closing deals, and boosting team efficiency.',
-    icon: LockClosedIcon,
-    img: '/icon/eye.svg',
-    ready: false,
-  },
-  {
     name: 'Keyboard-centric navigation.',
     description:
       'Keyboard-centric navigation lets you reply, switch threads, and manage emails swiftly with minimal keystrokes, boosting productivity.',
     icon: ArrowPathIcon,
     img: '/icon/keyboard-centric.svg',
+    ready: true,
+  },
+  {
+    name: 'Track when people open your emails or links.',
+    description:
+      'Gain insights for precise follow-ups, closing deals, and boosting team efficiency.',
+    icon: LockClosedIcon,
+    img: '/icon/eye.svg',
     ready: false,
   },
 ]
@@ -850,7 +858,7 @@ function XFeatures1() {
     {
       name: 'Best-in-class, whole thread summaries',
       description:
-        'Blinkfeed analyzes the entire thread, not just latest messages. It is trained to provide short, yet highly-curated summaries.',
+        'Blinkfeed analyzes entire email threads, not just the latest messages, to deliver concise summaries that capture all essential information, ensuring you never miss a detail.',
       icon: CloudArrowUpIcon,
       img: '/icon/ai-summary.svg',
       timeEnd: 2,
@@ -1077,6 +1085,51 @@ function Automations() {
   )
 }
 
+function About() {
+  return (
+    <Section>
+      <Container>
+        <div className='rounded-3xl overflow-hidden py-24 bg-dark-card'>
+          <div className='mx-auto max-w-7xl'>
+            <div className='mx-auto max-w-2xl'>
+              <p
+                className='text-3xl font-bold tracking-tight text-white sm:text-4xl'
+                style={{
+                  lineHeight: '1.4',
+                }}
+              >
+                Blinkfeed is a feed of email summaries, built on top of AI trained for accuracy.
+              </p>
+              <div className='mt-4 text-lg leading-8 text-gray-300'>
+                <figure className='relative'>
+                  <blockquote className='text-secondary-inv'>
+                    <p>“{gregOciepkaTestimontial}”</p>
+                  </blockquote>
+                  <figcaption className='mt-8 text-base'>
+                    <div className='flex gap-4 items-center'>
+                      <img
+                        className='h-12 w-12 flex-none rounded-full'
+                        src='/photo/greg-ociepka2.jpg'
+                        alt=''
+                      />
+                      <div className='flex flex-col gap-2'>
+                        <div className='font-semibold text-secondary-inv'>Greg Ociepka</div>
+                        <div className='text-secondary-inv opacity-50'>
+                          Founder & CTO of Simteract
+                        </div>
+                      </div>
+                    </div>
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Container>
+    </Section>
+  )
+}
+
 function ComingSoon({big}: {big?: boolean}) {
   const padding = big ? '8px' : '5px'
   return (
@@ -1106,12 +1159,14 @@ function FeaturesForPowerUsers() {
           </p>
         </div>
         <div className='mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl'>
-          <dl className='grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16'>
+          <dl className='grid max-w-xl grid-cols-1 gap-x-8 gap-y-8 lg:max-w-none lg:grid-cols-2 lg:gap-y-16'>
             {featuresPowerUsers.map(feature => (
-              <div key={feature.name}>
+              <div className='relative' key={feature.name}>
                 {!feature.ready && (
-                  <div className='pl-12 pb-2 text-tertiary'>
-                    <ComingSoon />
+                  <div className='absolute' style={{top: '-32px'}}>
+                    <div className='pl-12 pb-2 text-tertiary'>
+                      <ComingSoon />
+                    </div>
                   </div>
                 )}
                 <div className='relative pl-12'>
@@ -1314,18 +1369,13 @@ function Pricing() {
                           </li>
                         ))}
                       </ul>
-                      <a
-                        href={tier.href}
-                        aria-describedby={tier.id}
-                        className={classNames(
-                          tier.featured
-                            ? 'bg-accent text-dark-card shadow-sm hover:bg-accent focus-visible:outline-accent'
-                            : 'ring-1 ring-inset ring-primary focus-visible:outline-accent',
-                          'mt-8 block rounded-xl py-2.5 px-3.5 text-center text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 sm:mt-10',
+                      <div className='mt-8 sm:mt-10'>
+                        {tierIdx === 0 ? (
+                          <Button.SubmitPluginIdea style='outlined' />
+                        ) : (
+                          <Button.SignUp style={tier.featured ? 'filled' : 'outlined'} />
                         )}
-                      >
-                        {tierIdx === 0 ? 'Submit your idea' : 'Download for macOS'}
-                      </a>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1339,6 +1389,7 @@ function Pricing() {
 }
 
 function Testimontials() {
+  const backgroundColor = 'rgba(0,0,0,0.025)'
   return (
     <Section>
       <Container>
@@ -1351,17 +1402,20 @@ function Testimontials() {
             </p>
           </div>
           <div className='mx-auto mt-16 grid max-w-2xl grid-cols-1 grid-rows-1 gap-8 text-sm leading-6 sm:mt-20 sm:grid-cols-2 xl:mx-0 xl:max-w-none xl:grid-flow-col xl:grid-cols-4'>
-            <figure className='rounded-2xl bg-white shadow-lg  sm:col-span-2 xl:col-start-2 xl:row-end-1'>
-              <blockquote className='p-6 text-lg font-semibold leading-7 tracking-tight sm:p-12 sm:text-xl sm:leading-8'>
+            <figure
+              className='rounded-2xl sm:col-span-2 xl:col-start-2 xl:row-end-1'
+              style={{backgroundColor}}
+            >
+              <blockquote className='p-6 text-lg font-bold leading-6 tracking-tight sm:p-12 sm:text-lg sm:leading-7'>
                 <p>{`“${featuredTestimonial.body}”`}</p>
               </blockquote>
-              <figcaption className='flex flex-wrap items-center gap-x-4 gap-y-4 border-t border-gray-900/10 px-6 py-4 sm:flex-nowrap'>
+              <figcaption className='flex flex-wrap items-center gap-x-4 gap-y-4 border-t border-black/10 px-12 py-4 sm:flex-nowrap'>
                 <img
                   className='h-10 w-10 flex-none rounded-full bg-gray-50'
                   src={featuredTestimonial.author.imageUrl}
                   alt=''
                 />
-                <div className='flex-auto'>
+                <div className='flex-auto leading-5'>
                   <div className='font-semibold'>{featuredTestimonial.author.name}</div>
                   <div className=''>{`@${featuredTestimonial.author.handle}`}</div>
                 </div>
@@ -1384,15 +1438,20 @@ function Testimontials() {
                         ? 'xl:row-span-2'
                         : 'xl:row-start-1',
                       'space-y-8',
+                      (columnGroupIdx === 0 && columnIdx === 0) ||
+                        (columnGroupIdx === 1 && columnIdx === 1)
+                        ? 'pt-16'
+                        : '',
                     )}
                   >
                     {column.map(testimonial => (
                       <figure
                         key={testimonial.author.handle}
-                        className='rounded-2xl bg-white p-6 shadow-lg'
+                        className='rounded-2xl bg-white p-6'
+                        style={{backgroundColor}}
                       >
-                        <blockquote className=''>
-                          <p>{`“${testimonial.body}”`}</p>
+                        <blockquote className='leading-5'>
+                          <p>{`${testimonial.body}`}</p>
                         </blockquote>
                         <figcaption className='mt-6 flex items-center gap-x-4'>
                           <img
@@ -1400,9 +1459,9 @@ function Testimontials() {
                             src={testimonial.author.imageUrl}
                             alt=''
                           />
-                          <div>
+                          <div className='leading-5'>
                             <div className='font-semibold'>{testimonial.author.name}</div>
-                            <div className=''>{`@${testimonial.author.handle}`}</div>
+                            <div className='text-secondary'>{`@${testimonial.author.handle}`}</div>
                           </div>
                         </figcaption>
                       </figure>
@@ -1411,36 +1470,6 @@ function Testimontials() {
                 ))}
               </div>
             ))}
-          </div>
-        </div>
-      </Container>
-    </Section>
-  )
-}
-
-function LastCTA() {
-  return (
-    <Section>
-      <Container>
-        <div className='mx-auto max-w-2xl text-center'>
-          <h2 className='text-3xl font-bold tracking-tight text-gray-800 sm:text-4xl'>
-            Let your email work for you,
-            <br />
-            not the other way around.
-          </h2>
-          <p className='mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-600'>
-            {"Help us build the next email experience, let's do it together."}
-          </p>
-          <div className='mt-10 flex items-center justify-center gap-x-6'>
-            <a
-              href='#'
-              className='rounded-md bg-accent px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent'
-            >
-              Download for macOS
-            </a>
-            <a href='#' className='text-sm font-semibold leading-6 text-gray-800'>
-              Other platforms <span aria-hidden='true'>→</span>
-            </a>
           </div>
         </div>
       </Container>
@@ -1530,6 +1559,7 @@ function Example() {
         {/*<Features0 />*/}
         {/*<Features0 />*/}
         {/*<HeroTestimontial />*/}
+        <About />
         <XFeatures1 />
         <XFeatures2 />
         {/*<Features1 />*/}

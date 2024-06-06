@@ -1,5 +1,6 @@
 import {Bars3Icon} from '@heroicons/react/24/outline'
 import {Container} from '@/app/Container'
+import * as Button from '@/app/Button'
 
 const items = [
   {name: 'Blinkfeed', href: '#'},
@@ -32,16 +33,8 @@ function Items() {
 
 function Rhs() {
   return (
-    <div className='flex items-center gap-x-6'>
-      <a
-        href='#'
-        className='rounded-xl bg-accent px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent'
-      >
-        Download for macOS
-      </a>
-      {/*<a href='#' className='text-sm font-semibold leading-6 text-gray-900'>*/}
-      {/*  Other platforms <span aria-hidden='true'>→</span>*/}
-      {/*</a>*/}
+    <div className='flex items-center gap-x-6 text-white'>
+      <Button.SignUp />
     </div>
   )
 }
