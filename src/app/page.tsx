@@ -20,6 +20,7 @@ import {Tooltip} from 'react-tooltip'
 import {transform} from 'sucrase'
 import * as Button from '@/app/Button'
 import Class from 'classnames'
+import {Footer} from '@/app/footer'
 
 const gregOciepkaTestimontial =
   "Blinkfeed is unreal. As someone who sends 50+ emails daily, I've tried numerous email " +
@@ -32,7 +33,7 @@ const featuredTestimonial = {
     name: 'Greg Ociepka',
     handle: 'gregociepka',
     imageUrl: '/photo/greg-ociepka.jpg',
-    logoUrl: 'https://tailwindui.com/img/logos/savvycal-logo-gray-900.svg',
+    logoUrl: '/logo/simteract.svg',
   },
 }
 
@@ -258,8 +259,7 @@ const tiers = [
     href: '#',
     price: {monthly: '$0', annually: '$0'},
     timeSpan: '/forever',
-    description:
-      'Submit your plugin idea, free or paid. As long as you maintain it, enjoy Blinkfeed for free.',
+    description: 'Implement a plugin, free or paid. Enjoy Blinkfeed for free.',
     features: [{available: true, label: 'Analyze up to 1000 email threads / month'}],
     featuresComingSoon: [
       {available: true, label: 'Integrations (calendar, etc.)'},
@@ -302,39 +302,16 @@ const tiers = [
 const faqs = [
   {
     id: 1,
-    question: 'Which email providers are compatible with AI Email?',
-    answer:
-      "At the moment, AI Email seamlessly integrates with GMail. We're excited to announce that integration with Outlook is in the pipeline and will be available soon.",
+    question: 'Which email providers are compatible with Blinkfeed?',
+    answer: "At the moment, Blinkfeed supports GMail. We're working on Outlook integration.",
   },
   {
     id: 2,
-    question: 'Are there any current limitations I should be aware of with AI Email?',
+    question: 'Are there any current limitations I should be aware of with Blinkfeed?',
     answer:
-      "As AI Email is currently in its public beta phase, occasional, minor issues may arise. We're committed to providing prompt and efficient support. Should you encounter any problem, our team will collaborate with you to ensure a swift resolution, aiming for the same day resolution whenever possible.",
+      "As Blinkfeed is currently in its private beta phase, occasional, minor issues may arise. We're committed to providing prompt and efficient support. Should you encounter any problem, our team will collaborate with you to ensure a swift resolution, aiming for the same day resolution whenever possible.",
   },
 ]
-const footerNavigation = {
-  solutions: [
-    {name: 'Hosting', href: '#'},
-    {name: 'Data Services', href: '#'},
-    {name: 'Uptime Monitoring', href: '#'},
-    {name: 'Enterprise Services', href: '#'},
-  ],
-  support: [
-    {name: 'Pricing', href: '#'},
-    {name: 'Documentation', href: '#'},
-    {name: 'Guides', href: '#'},
-    {name: 'API Reference', href: '#'},
-  ],
-  company: [
-    {name: 'About', href: '#'},
-    {name: 'Blog', href: '#'},
-    {name: 'Jobs', href: '#'},
-    {name: 'Press', href: '#'},
-    {name: 'Partners', href: '#'},
-  ],
-  legal: [{name: 'Privacy', href: 'privacy'}],
-}
 
 function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(' ')
@@ -561,7 +538,7 @@ function Logos() {
       <div className='mt-16 flex justify-center'>
         <p className='relative rounded-full px-4 py-1.5 text-sm leading-6 text-gray-600 ring-1 ring-inset ring-gray-900/10 hover:ring-gray-900/20'>
           <span className='hidden md:inline'>
-            Enso saves up to $10,000 per year, per employee by using AI Email.
+            Enso saves up to $10,000 per year, per employee by using Blinkfeed.
           </span>
           <a href='#' className='font-semibold text-accent'>
             <span className='absolute inset-0' aria-hidden='true' /> Read our case study{' '}
@@ -1230,7 +1207,7 @@ function Pricing() {
           <div className='mx-auto grid max-w-lg grid-cols-1 items-center gap-y-6  sm:gap-y-0 lg:max-w-4xl lg:grid-cols-3 mb-44'>
             {tiers.map((tier, tierIdx) => {
               const featuredTierHDiff = 50
-              const tierH = 580
+              const tierH = 600
               return (
                 <div
                   key={tier.id}
@@ -1371,9 +1348,11 @@ function Pricing() {
                       </ul>
                       <div className='mt-8 sm:mt-10'>
                         {tierIdx === 0 ? (
-                          <Button.SubmitPluginIdea style='outlined' />
+                          <Button.SubmitPluginIdea display='outlined' style={{marginTop: '72px'}} />
                         ) : (
-                          <Button.SignUp style={tier.featured ? 'filled' : 'outlined'} />
+                          <Button.SignUpWithDiscount
+                            display={tier.featured ? 'filled' : 'outlined'}
+                          />
                         )}
                       </div>
                     </div>
@@ -1389,11 +1368,11 @@ function Pricing() {
 }
 
 function Testimontials() {
-  const backgroundColor = 'rgba(0,0,0,0.025)'
+  const backgroundColor = 'rgba(0,10,0,0.02)'
   return (
     <Section>
       <Container>
-        <div className='mx-auto max-w-7xl px-6 lg:px-8'>
+        <div className='mx-auto max-w-7xl'>
           <div className='mx-auto max-w-xl text-center'>
             <p className='mt-2 text-3xl font-bold tracking-tight sm:text-4xl'>
               They switched
@@ -1407,9 +1386,9 @@ function Testimontials() {
               style={{backgroundColor}}
             >
               <blockquote className='p-6 text-lg font-bold leading-6 tracking-tight sm:p-12 sm:text-lg sm:leading-7'>
-                <p>{`“${featuredTestimonial.body}”`}</p>
+                <p>{`${featuredTestimonial.body}`}</p>
               </blockquote>
-              <figcaption className='flex flex-wrap items-center gap-x-4 gap-y-4 border-t border-black/10 px-12 py-4 sm:flex-nowrap'>
+              <figcaption className='flex flex-wrap items-center gap-x-4 gap-y-4 border-t-2 border-white px-12 py-4 sm:flex-nowrap'>
                 <img
                   className='h-10 w-10 flex-none rounded-full bg-gray-50'
                   src={featuredTestimonial.author.imageUrl}
@@ -1417,10 +1396,11 @@ function Testimontials() {
                 />
                 <div className='flex-auto leading-5'>
                   <div className='font-semibold'>{featuredTestimonial.author.name}</div>
-                  <div className=''>{`@${featuredTestimonial.author.handle}`}</div>
+                  <div className='text-secondary'>{`@${featuredTestimonial.author.handle}`}</div>
                 </div>
                 <img
-                  className='h-10 w-auto flex-none'
+                  className='w-auto flex-none opacity-80'
+                  style={{height: '27px'}}
                   src={featuredTestimonial.author.logoUrl}
                   alt=''
                 />
@@ -1501,52 +1481,6 @@ function FAQ() {
   )
 }
 
-export function HeroTestimontial() {
-  return (
-    <Section>
-      <div className='pb-20 sm:pb-24 xl:pb-0' style={{backgroundColor: 'rgba(0,0,0,0.9)'}}>
-        <div className='mx-auto flex max-w-7xl flex-col items-center gap-x-8 gap-y-10 px-6 sm:gap-y-8 lg:px-8 xl:flex-row xl:items-stretch'>
-          <div className='-mt-8 w-full max-w-2xl xl:-mb-8 xl:w-96 xl:flex-none'>
-            <div className='relative aspect-[2/1] h-full md:-mx-8 xl:mx-0 xl:aspect-auto'>
-              <img
-                className='absolute inset-0 h-full w-full rounded-2xl bg-gray-800 object-cover shadow-2xl'
-                src='/photo/greg-ociepka.jpg'
-                alt=''
-                style={{
-                  filter: 'brightness(0.85) contrast(1.1)',
-                }}
-              />
-            </div>
-          </div>
-          <div className='w-full max-w-2xl xl:max-w-none xl:flex-auto xl:px-16 xl:py-24'>
-            <figure className='relative isolate '>
-              <blockquote
-                className='text-lg font-semibold'
-                style={{color: 'rgba(255,255,255,0.5)'}}
-              >
-                <p>
-                  <span className='text-white'>Blinkfeed is unreal.</span> As someone who sends 50+
-                  emails a day, I've tried numerous email clients over the years to enhance my
-                  productivity. While many of them incorporate AI, Blinkfeed stands out by being{' '}
-                  <span className='text-white'>built around AI from the ground up.</span> This
-                  foundational difference delivers a{' '}
-                  <span className='text-white'>
-                    user experience unlike anything I've encountered before.
-                  </span>
-                </p>
-              </blockquote>
-              <figcaption className='mt-8 text-base'>
-                <div className='font-semibold text-white'>Greg Ociepka</div>
-                <div className='mt-1 text-white opacity-50'>Founder & CTO of Simteract</div>
-              </figcaption>
-            </figure>
-          </div>
-        </div>
-      </div>
-    </Section>
-  )
-}
-
 function Example() {
   const sectionsMargin = 'my-80'
 
@@ -1571,79 +1505,7 @@ function Example() {
       </main>
 
       <FAQ />
-
-      {/* Footer */}
-      <div className='mx-auto mt-32 max-w-7xl px-6 lg:px-8'>
-        <footer
-          aria-labelledby='footer-heading'
-          className='relative border-t border-gray-900/10 py-24 sm:mt-56 sm:py-32'
-        >
-          <h2 id='footer-heading' className='sr-only'>
-            Footer
-          </h2>
-          <div className='xl:grid xl:grid-cols-3 xl:gap-8'>
-            <img
-              className='h-7'
-              src='https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600'
-              alt='Company name'
-            />
-            <div className='mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0'>
-              <div className='md:grid md:grid-cols-2 md:gap-8'>
-                <div>
-                  <h3 className='text-sm font-semibold leading-6'>Solutions</h3>
-                  <ul role='list' className='mt-6 space-y-4'>
-                    {footerNavigation.solutions.map(item => (
-                      <li key={item.name}>
-                        <a href={item.href} className='text-sm leading-6 text-gray-600'>
-                          {item.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className='mt-10 md:mt-0'>
-                  <h3 className='text-sm font-semibold leading-6'>Support</h3>
-                  <ul role='list' className='mt-6 space-y-4'>
-                    {footerNavigation.support.map(item => (
-                      <li key={item.name}>
-                        <a href={item.href} className='text-sm leading-6 text-gray-600'>
-                          {item.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-              <div className='md:grid md:grid-cols-2 md:gap-8'>
-                <div>
-                  <h3 className='text-sm font-semibold leading-6'>Company</h3>
-                  <ul role='list' className='mt-6 space-y-4'>
-                    {footerNavigation.company.map(item => (
-                      <li key={item.name}>
-                        <a href={item.href} className='text-sm leading-6 text-gray-600'>
-                          {item.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className='mt-10 md:mt-0'>
-                  <h3 className='text-sm font-semibold leading-6'>Legal</h3>
-                  <ul role='list' className='mt-6 space-y-4'>
-                    {footerNavigation.legal.map(item => (
-                      <li key={item.name}>
-                        <a href={item.href} className='text-sm leading-6 text-gray-600'>
-                          {item.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </footer>
-      </div>
+      <Footer />
     </div>
   )
 }
