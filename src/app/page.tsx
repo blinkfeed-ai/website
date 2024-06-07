@@ -14,7 +14,7 @@ import {
 } from '@heroicons/react/24/outline'
 import {CheckIcon, CheckCircleIcon, XCircleIcon} from '@heroicons/react/20/solid'
 import {RadioGroup} from '@headlessui/react'
-import {Navigation} from '@/app/navigation'
+import * as Navigation from '@/app/navigation'
 import {Container} from '@/app/Container'
 import {Tooltip} from 'react-tooltip'
 import {transform} from 'sucrase'
@@ -301,15 +301,30 @@ const tiers = [
 ]
 const faqs = [
   {
-    id: 1,
     question: 'Which email providers are compatible with Blinkfeed?',
-    answer: "At the moment, Blinkfeed supports GMail. We're working on Outlook integration.",
+    answer: (
+      <p>
+        Currently, Blinkfeed supports Gmail. We are actively working on integrating Outlook and plan
+        to support additional providers soon. Please visit our{' '}
+        <a href='https://google.com'>Feature Request</a> page to vote for the next integration you
+        need.
+      </p>
+    ),
   },
   {
-    id: 2,
+    question: 'Which systems does Blinkfeed work on?',
+    answer:
+      'Blinkfeed is compatible with Windows, macOS, and Linux. We are planning to release mobile versions later this year.',
+  },
+  {
     question: 'Are there any current limitations I should be aware of with Blinkfeed?',
     answer:
-      "As Blinkfeed is currently in its private beta phase, occasional, minor issues may arise. We're committed to providing prompt and efficient support. Should you encounter any problem, our team will collaborate with you to ensure a swift resolution, aiming for the same day resolution whenever possible.",
+      'As Blinkfeed is in its private beta phase, you may encounter occasional minor issues. We are dedicated to providing prompt support and aim for same-day resolution whenever possible. If you experience any problems, our team will work with you to resolve them quickly.',
+  },
+  {
+    question: 'Is using Blinkfeed safe?',
+    answer:
+      'Yes, Blinkfeed is designed with security as a top priority. All your data, including email cache and Gmail access tokens, remains on your computer. Parts of your emails are sent to OpenAI, which complies with CCPA, CSA STAR, GDPR, SOC2, and SOC3 standards. While Blinkfeed has not yet received official compliance ratings, it adheres to these best practices.',
   },
 ]
 
@@ -317,38 +332,44 @@ function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-function Section({children}: {children: React.ReactNode}) {
-  return <div className='section my-24 sm:my-64'>{children}</div>
+function Section({children, id}: {children: React.ReactNode; id?: string}) {
+  const minTopOffset = 32
+  const ref = React.useRef<HTMLDivElement>(null)
+  const anchorRef = React.useRef<HTMLDivElement>(null)
+  const screenRef = React.useRef<HTMLDivElement>(null)
+  const [anchorOffset, setAnchorOffset] = useState(-Navigation.HEIGHT - minTopOffset)
+
+  useEffect(() => {
+    const observer = new ResizeObserver(() => {
+      if (ref.current) {
+        const viewHeight = window.innerHeight - Navigation.HEIGHT
+        const freeSpace = Math.max(0, viewHeight - ref.current.clientHeight)
+        const topOffset = Math.max(minTopOffset, freeSpace / 2)
+        setAnchorOffset(-topOffset - Navigation.HEIGHT)
+      }
+    })
+    if (ref.current && screenRef.current) {
+      observer.observe(ref.current)
+      observer.observe(screenRef.current)
+    }
+    return () => observer.disconnect()
+  }, [])
+  return (
+    <div ref={ref} className='section relative my-24 sm:my-64'>
+      <div ref={screenRef} className='absolute left-0 top-0 w-0 h-screen pointer-events-none' />
+      <div
+        ref={anchorRef}
+        id={id}
+        className='anchor absolute left-0 w-0 h-0'
+        style={{top: `${anchorOffset}px`}}
+      />
+      {children}
+    </div>
+  )
 }
 
 function SectionT({children}: {children: React.ReactNode}) {
   return <div className='mt-16'>{children}</div>
-}
-
-function SectionS({children}: {children: React.ReactNode}) {
-  return <div className='mt-16 sm:mt-16'>{children}</div>
-}
-
-function HeroFragment({
-  selectedFragment,
-  selectFragment,
-  index,
-  children,
-}: {
-  selectedFragment: number
-  selectFragment: (f: (oldIndex: number) => number) => void
-  index: number
-  children: React.ReactNode
-}) {
-  return (
-    <span
-      className='transition duration-300 cursor-pointer'
-      style={{color: selectedFragment == index ? 'var(--color-accent)' : undefined}}
-      onClick={() => selectFragment(() => index)}
-    >
-      {children}
-    </span>
-  )
 }
 
 function ServiceIcon(props: {src: string; alt: string; comingSoon: boolean}) {
@@ -396,58 +417,12 @@ function Feeds() {
 }
 
 function Hero() {
-  const fragmentCount = 3
-  const [selectedFragment, setSelectedFragment] = React.useState(0)
-  const timeoutRef = React.useRef<NodeJS.Timeout>()
-
-  const scheduleSwitchingFragment = () => {
-    clearTimeout(timeoutRef.current)
-    timeoutRef.current = setTimeout(nextFragment, 5000)
-  }
-
-  const nextFragment = () => {
-    selectFragment(i => (i + 1) % fragmentCount)
-  }
-
-  const selectFragment = (f: (oldIndex: number) => number) => {
-    setSelectedFragment(i => f(i))
-    scheduleSwitchingFragment()
-  }
-
-  useEffect(() => {
-    scheduleSwitchingFragment()
-    return () => clearTimeout(timeoutRef.current)
-  }, [])
-
   return (
     <SectionT>
       <Container>
         <div className='mx-auto'>
           <h1 className='font-bold tracking-tight sm:text-6xl' style={{fontSize: '70px'}}>
             <span>Never read emails again.</span>
-            {/*<HeroFragment*/}
-            {/*  selectedFragment={selectedFragment}*/}
-            {/*  selectFragment={selectFragment}*/}
-            {/*  index={0}*/}
-            {/*>*/}
-            {/*  reading and writing emails*/}
-            {/*</HeroFragment>*/}
-            {/*,{' '}*/}
-            {/*<HeroFragment*/}
-            {/*  selectedFragment={selectedFragment}*/}
-            {/*  selectFragment={selectFragment}*/}
-            {/*  index={1}*/}
-            {/*>*/}
-            {/*  scheduling events*/}
-            {/*</HeroFragment>*/}
-            {/*, and{' '}*/}
-            {/*<HeroFragment*/}
-            {/*  selectedFragment={selectedFragment}*/}
-            {/*  selectFragment={selectFragment}*/}
-            {/*  index={2}*/}
-            {/*>*/}
-            {/*  fighting spam*/}
-            {/*</HeroFragment>.*/}
           </h1>
           <p className='mt-6 text-lg leading-8 text-secondary'>
             Reply to 100 emails in 10 minutes. Schedule meetings and generate replies with AI aware
@@ -460,7 +435,7 @@ function Hero() {
         <Container>
           <div className='relative'>
             <div
-              className=' overflow-hidden hero-video-shadow rounded-2xl' // mb-[-12%] //
+              className=' overflow-hidden hero-video-shadow rounded-2xl'
               style={{
                 border: '2px solid rgba(255,255,255,1)',
               }}
@@ -472,23 +447,14 @@ function Hero() {
                 style={{
                   // FIXME: REMOVE!!!
                   marginTop: '-46px',
+                  width: '1084px',
+                  aspectRatio: '1084 / 579',
                 }}
               >
                 <source src='/video/hero.mov' type='video/mp4' />
               </video>
             </div>
-            {/*<img*/}
-            {/*  src='https://tailwindui.com/img/component-images/project-app-screenshot.png'*/}
-            {/*  alt='App screenshot'*/}
-            {/*  className='mt-8 mb-[-12%] rounded-xl shadow-2xl ring-1 ring-gray-900/10'*/}
-            {/*  width={2432}*/}
-            {/*  height={1442}*/}
-            {/*/>*/}
-            {/*<div className='relative' aria-hidden='true'>*/}
-            {/*  <div className='absolute -inset-x-20 bottom-0 bg-gradient-to-t from-white pt-[7%]' />*/}
-            {/*</div>*/}
           </div>
-          {/*<Feeds />*/}
         </Container>
       </div>
     </SectionT>
@@ -672,7 +638,6 @@ function FeatureCard({title, features}: FeatureCardProps) {
           const isVisible =
             ratio > 0 && (wasPlayed.current || bottom < window.innerHeight || top < 0)
           wasPlayed.current = isVisible
-          console.log(isVisible)
           setIsVisible(isVisible)
         })
       },
@@ -1086,7 +1051,7 @@ function About() {
                     <div className='flex gap-4 items-center'>
                       <img
                         className='h-12 w-12 flex-none rounded-full'
-                        src='/photo/greg-ociepka2.jpg'
+                        src='/photo/greg-ociepka.jpg'
                         alt=''
                       />
                       <div className='flex flex-col gap-2'>
@@ -1169,7 +1134,7 @@ function FeaturesForPowerUsers() {
 function Pricing() {
   const [frequency, setFrequency] = useState(frequencies[1])
   return (
-    <Section>
+    <Section id='pricing'>
       <Container>
         <div className='mx-auto max-w-2xl text-center lg:max-w-4xl'>
           <p className='mt-2 text-4xl font-bold tracking-tight sm:text-5xl'>
@@ -1461,16 +1426,16 @@ function FAQ() {
   return (
     <Section>
       <Container>
-        <div className='divide-y divide-gray-900/10 px-6 pb-8 sm:pb-24 sm:pt-12 lg:max-w-7xl lg:px-8 lg:pb-32'>
+        <div className='divide-y divide-gray-900/10 pb-8 sm:pb-24 sm:pt-12 lg:max-w-7xl'>
           <h2 className='text-2xl font-bold leading-10 tracking-tight'>
             Frequently asked questions
           </h2>
           <dl className='mt-10 space-y-8 divide-y divide-gray-900/10'>
-            {faqs.map(faq => (
-              <div key={faq.id} className='pt-8 lg:grid lg:grid-cols-12 lg:gap-8'>
+            {faqs.map((faq, ix) => (
+              <div key={ix} className='pt-8 lg:grid lg:grid-cols-12 lg:gap-8'>
                 <dt className='text-base font-semibold leading-7 lg:col-span-5'>{faq.question}</dt>
                 <dd className='mt-4 lg:col-span-7 lg:mt-0'>
-                  <p className='text-base leading-7'>{faq.answer}</p>
+                  <div className='text-base leading-7'>{faq.answer}</div>
                 </dd>
               </div>
             ))}
@@ -1486,18 +1451,12 @@ function Example() {
 
   return (
     <div className='w-full'>
-      <Navigation />
+      <Navigation.Navigation />
       <main>
         <Hero />
-        {/*<Logos />*/}
-        {/*<Features0 />*/}
-        {/*<Features0 />*/}
-        {/*<HeroTestimontial />*/}
         <About />
         <XFeatures1 />
         <XFeatures2 />
-        {/*<Features1 />*/}
-        {/*<Features2 />*/}
         <Automations />
         <FeaturesForPowerUsers />
         <Pricing />
