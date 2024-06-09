@@ -784,9 +784,9 @@ function FeatureCard({title, features}: FeatureCardProps) {
   return (
     <Section>
       <Container>
-        <div ref={rootRef}>
-          <div className='z-0 absolute top-0 left-0 w-full flex justify-end'>{viz}</div>
-          <div className='z-10 flex relative text-base' style={{width: '42%'}}>
+        <div ref={rootRef} className='flex flex-col md:flex-row-reverse'>
+          <div className='z-0 flex justify-end overflow-hidden grow'>{viz}</div>
+          <div className='z-10 flex relative text-base shrink md:max-w-2xl lg:max-w-xl'>
             {description}
           </div>
         </div>
@@ -1033,7 +1033,7 @@ function About() {
       <Container>
         <div className='rounded-3xl overflow-hidden py-24 bg-dark-card'>
           <div className='mx-auto max-w-7xl'>
-            <div className='mx-auto max-w-2xl'>
+            <div className='mx-auto max-w-72 md:max-w-xl lg:max-w-2xl'>
               <p
                 className='text-3xl font-bold tracking-tight text-white sm:text-4xl'
                 style={{
@@ -1077,7 +1077,7 @@ function ComingSoon({big}: {big?: boolean}) {
   return (
     <div className='flex text-xs'>
       <div
-        className='rounded-full px-2 border border-current'
+        className='rounded-full px-2 border text-align-center'
         style={{
           paddingTop: padding,
           paddingBottom: padding,
