@@ -763,7 +763,7 @@ function FeatureCard({title, features}: FeatureCardProps) {
   )
 
   const viz = (
-    <div className='flex overflow-hidden' style={{width: '870px'}}>
+    <div className='flex overflow-hidden justify-center md:justify-start' style={{width: '870px'}}>
       <video
         ref={videoRef}
         muted
@@ -785,7 +785,7 @@ function FeatureCard({title, features}: FeatureCardProps) {
     <Section>
       <Container>
         <div ref={rootRef} className='flex flex-col md:flex-row-reverse'>
-          <div className='z-0 flex justify-end overflow-hidden grow'>{viz}</div>
+          <div className='z-0 flex justify-center md:justify-end overflow-hidden grow'>{viz}</div>
           <div className='z-10 flex relative text-base shrink md:max-w-2xl lg:max-w-xl'>
             {description}
           </div>
@@ -1077,7 +1077,7 @@ function ComingSoon({big}: {big?: boolean}) {
   return (
     <div className='flex text-xs'>
       <div
-        className='rounded-full px-2 border text-align-center'
+        className='rounded-full px-2 border text-center'
         style={{
           paddingTop: padding,
           paddingBottom: padding,
