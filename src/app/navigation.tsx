@@ -37,7 +37,6 @@ export default function HamburgerMenu() {
           <div className="m-4 mt-2 flow-root">
             <div className="divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
-                {/* TODO: Close menu on click */}
                 {items.map((item) => (
                   <a
                     key={item.name}
