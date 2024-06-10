@@ -33,8 +33,8 @@ function HamburgerMenu() {
       </nav>
       <Dialog className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
         <div className="fixed inset-0 z-10" />
-        <Dialog.Panel className="fixed inset-y-0 left-0 z-50 w-72 overflow-y-auto bg-white px-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-          <div className="m-4 mt-2 flow-root">
+        <Dialog.Panel className="fixed top-0 left-0 z-50 w-full h-auto overflow-y-auto bg-white px-6 sm:ring-1 sm:ring-gray-900/10">
+          <div className="m-4 my-2 flow-root">
             <div className="divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
                 {items.map((item) => (
