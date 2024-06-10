@@ -355,7 +355,7 @@ function Section({children, id}: {children: React.ReactNode; id?: string}) {
     return () => observer.disconnect()
   }, [])
   return (
-    <div ref={ref} className='section relative my-24 sm:my-64'>
+    <div ref={ref} className='section relative my-24 md:my-32 lg:my-64'>
       <div ref={screenRef} className='absolute left-0 top-0 w-0 h-screen pointer-events-none' />
       <div
         ref={anchorRef}
@@ -1145,12 +1145,12 @@ function Pricing() {
           {'Spend it on more important things.'}
         </p>
 
-        <div className='mt-16 sm:mt-16'>
-          <div className='mt-16 flex justify-center'>
+        <div className='mt-8 lg:mt-16'>
+          <div className='flex justify-center'>
             <RadioGroup
               value={frequency}
               onChange={setFrequency}
-              className='grid grid-cols-2 gap-x-1 rounded-full p-1 text-center text-xs font-semibold leading-5 ring-1 ring-inset ring-gray-200'
+              className='grid grid-cols-2 gap-x-1 rounded-full p-1 text-center text-xs font-semibold leading-5 ring-1 ring-inset ring-gray-200 mb-4 lg:mb-0'
             >
               <RadioGroup.Label className='sr-only'>Payment frequency</RadioGroup.Label>
               {frequencies.map(option => (

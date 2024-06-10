@@ -18,7 +18,7 @@ function HamburgerMenu() {
 
   return (
     <header className="bg-white w-full lg:w-auto">
-      <nav className="mx-auto flex flex-row w-full lg:w-auto" aria-label="Global">
+      <nav className="mx-auto flex flex-shrink flex-row w-full lg:w-auto" aria-label="Global">
           <Logo />
         <div className="absolute left-1/2 transform -translate-x-1/2 lg:hidden">
           <button
@@ -109,7 +109,7 @@ function Items() {
 
 function Rhs() {
   return (
-    <div className='flex flex-shrink-0 items-center gap-x-6 text-white'>
+    <div className='flex items-center gap-x-6 text-white'>
       <Button.SignUp />
     </div>
   )
@@ -126,7 +126,7 @@ export function Navigation() {
           <Container>
             <div className='flex items-center lg:gap-12' style={{height: `${HEIGHT}px`}}>
               <HamburgerMenu />
-              <div className='flex-grow flex justify-between items-center'>
+              <div className='flex-grow flex-shrink-0 flex justify-between items-center'>
                 <Items />
                 <Rhs />
               </div>
