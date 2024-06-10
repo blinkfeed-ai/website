@@ -13,7 +13,7 @@ const items = [
   {name: 'Feature Request', href: 'https://blinkfeed.featurebase.app', target: '_blank'},
 ]
 
-export default function HamburgerMenu() {
+function HamburgerMenu() {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
 
   return (
