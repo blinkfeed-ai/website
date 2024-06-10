@@ -4,7 +4,7 @@ import { Dialog } from '@headlessui/react'
 
 import * as Button from '@/app/Button'
 
-import React from 'react'
+import React, { MouseEventHandler } from 'react'
 
 const items = [
   {name: 'Blinkfeed', href: '#'},
@@ -19,7 +19,8 @@ export default function HamburgerMenu() {
   return (
     <header className="bg-white w-full lg:w-auto">
       <nav className="mx-auto flex flex-row w-full lg:w-auto" aria-label="Global">
-        <div className="flex lg:hidden mr-auto">
+          <Logo />
+        <div className="absolute left-1/2 transform -translate-x-1/2 lg:hidden">
           <button
             type="button"
             className="-ml-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
@@ -29,22 +30,22 @@ export default function HamburgerMenu() {
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
           </button>
         </div>
-        <Logo />
       </nav>
       <Dialog className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
         <div className="fixed inset-0 z-10" />
-        <Dialog.Panel className="fixed inset-y-0 left-0 z-50 w-full overflow-y-auto bg-white px-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <Dialog.Panel className="fixed inset-y-0 left-0 z-50 w-72 overflow-y-auto bg-white px-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="m-4 mt-2 flow-root">
             <div className="divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
-              <div className="mb-6 text-white">
-                  <Button.SignUp />
-                </div>
                 {/* TODO: Close menu on click */}
                 {items.map((item) => (
                   <a
                     key={item.name}
                     href={item.href}
+                    onClick={() => {
+                      setMobileMenuOpen(false)
+                      return true
+                    }}
                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   >
                     {item.name}
@@ -109,7 +110,7 @@ function Items() {
 
 function Rhs() {
   return (
-    <div className='hidden lg:flex items-center gap-x-6 text-white'>
+    <div className='flex flex-shrink-0 items-center gap-x-6 text-white'>
       <Button.SignUp />
     </div>
   )
