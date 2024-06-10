@@ -1,10 +1,10 @@
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Bars3Icon } from '@heroicons/react/24/outline'
 import {Container} from '@/app/Container'
 import { Dialog } from '@headlessui/react'
 
 import * as Button from '@/app/Button'
 
-import React, { MouseEventHandler } from 'react'
+import React from 'react'
 
 const items = [
   {name: 'Blinkfeed', href: '#'},
