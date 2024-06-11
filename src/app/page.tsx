@@ -435,7 +435,7 @@ function Hero() {
         <Container wide={true} className='sm:px-6 md:px-12 lg:px-24'>
           <div className='relative'>
             <div
-              className='sm:hidden overflow-hidden hero-video-shadow'
+              className='md:hidden overflow-hidden hero-video-shadow sm:rounded-2xl'
               style={{
                 border: '2px solid rgba(255,255,255,1)',
               }}
@@ -447,37 +447,18 @@ function Hero() {
                 style={{
                   // FIXME: REMOVE!!!
                   marginTop: '-2px',
+                  position: 'relative',
                   width: '800px',
-                  aspectRatio: '10/9',
+                  aspectRatio: '1000/944',
                   objectFit: 'cover',
+                  objectPosition: 'left 51.5% top 0px',
                 }}
               >
                 <source src='/video/hero.mov' type='video/mp4' />
               </video>
             </div>
             <div
-              className='hidden sm:block lg:hidden overflow-hidden hero-video-shadow rounded-2xl'
-              style={{
-                border: '2px solid rgba(255,255,255,1)',
-              }}
-            >
-              <video
-                autoPlay
-                muted
-                loop
-                style={{
-                  // FIXME: REMOVE!!!
-                  marginTop: '-2px',
-                  width: '800px',
-                  aspectRatio: '10/9',
-                  objectFit: 'cover',
-                }}
-              >
-                <source src='/video/hero.mov' type='video/mp4' />
-              </video>
-            </div>
-            <div
-              className='hidden lg:block overflow-hidden hero-video-shadow rounded-2xl'
+              className='hidden md:block overflow-hidden hero-video-shadow rounded-2xl'
               style={{
                 border: '2px solid rgba(255,255,255,1)',
               }}
