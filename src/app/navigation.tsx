@@ -13,6 +13,10 @@ const items = [
   {name: 'Feature Request', href: 'https://blinkfeed.featurebase.app', target: '_blank'},
 ]
 
+// ======================
+// === Hamburger Menu ===
+// ======================
+
 function HamburgerMenu() {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
 
@@ -59,6 +63,10 @@ function HamburgerMenu() {
   )
 }
 
+// ======================
+// === Blinkfeed Logo ===
+// ======================
+
 function Logo() {
   return (
     <div className='flex '>
@@ -68,6 +76,10 @@ function Logo() {
     </div>
   )
 }
+
+// ========================
+// === Navigation Items ===
+// ========================
 
 function Items() {
   return (
@@ -107,6 +119,10 @@ function Items() {
   )
 }
 
+// ======================
+// === Sign up button ===
+// ======================
+
 function Rhs() {
   return (
     <div className='flex items-center gap-x-6 text-white'>
@@ -114,6 +130,10 @@ function Rhs() {
     </div>
   )
 }
+
+// ==========================
+// === Top Navigation Bar ===
+// ==========================
 
 export const HEIGHT = 72
 
