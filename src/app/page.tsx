@@ -369,7 +369,7 @@ function Section({children, id}: {children: React.ReactNode; id?: string}) {
 }
 
 function SectionT({children}: {children: React.ReactNode}) {
-  return <div className='mt-16'>{children}</div>
+  return <div className='mt-6 md:mt-12 lg:mt-16'>{children}</div>
 }
 
 function ServiceIcon(props: {src: string; alt: string; comingSoon: boolean}) {
@@ -431,11 +431,11 @@ function Hero() {
           </p>
         </div>
       </Container>
-      <div className='relative pt-16'>
-        <Container>
+      <div className='relative pt-6 sm:pt-12 md: pt-16'>
+        <Container wide={true} className='sm:px-6 md:px-12 lg:px-24'>
           <div className='relative'>
             <div
-              className='md:hidden overflow-hidden hero-video-shadow rounded-2xl'
+              className='sm:hidden overflow-hidden hero-video-shadow'
               style={{
                 border: '2px solid rgba(255,255,255,1)',
               }}
@@ -456,7 +456,28 @@ function Hero() {
               </video>
             </div>
             <div
-              className='hidden md:block overflow-hidden hero-video-shadow rounded-2xl'
+              className='hidden sm:block lg:hidden overflow-hidden hero-video-shadow rounded-2xl'
+              style={{
+                border: '2px solid rgba(255,255,255,1)',
+              }}
+            >
+              <video
+                autoPlay
+                muted
+                loop
+                style={{
+                  // FIXME: REMOVE!!!
+                  marginTop: '-2px',
+                  width: '800px',
+                  aspectRatio: '10/9',
+                  objectFit: 'cover',
+                }}
+              >
+                <source src='/video/hero.mov' type='video/mp4' />
+              </video>
+            </div>
+            <div
+              className='hidden lg:block overflow-hidden hero-video-shadow rounded-2xl'
               style={{
                 border: '2px solid rgba(255,255,255,1)',
               }}
@@ -1051,8 +1072,8 @@ function Automations() {
 function About() {
   return (
     <Section>
-      <Container>
-        <div className='rounded-3xl overflow-hidden py-24 bg-dark-card'>
+      <Container wide={true} className='sm:px-6 md:px-12 lg:px-24'>
+        <div className='sm:rounded-3xl overflow-hidden py-12 sm:py-16 md:py-24 bg-dark-card'>
           <div className='mx-auto max-w-7xl'>
             <div className='mx-auto max-w-72 md:max-w-xl lg:max-w-2xl'>
               <p
