@@ -421,7 +421,7 @@ function Hero() {
     <SectionT>
       <Container>
         <div className='mx-auto'>
-          <h1 className='font-bold tracking-tight sm:text-6xl' style={{fontSize: '70px'}}>
+          <h1 className='font-bold tracking-tight text-5xl sm:text-6xl md:text-7xl'>
             <span>Never read emails again.</span>
           </h1>
           <p className='mt-6 text-lg leading-8 text-secondary'>
@@ -435,7 +435,28 @@ function Hero() {
         <Container>
           <div className='relative'>
             <div
-              className=' overflow-hidden hero-video-shadow rounded-2xl'
+              className='md:hidden overflow-hidden hero-video-shadow rounded-2xl'
+              style={{
+                border: '2px solid rgba(255,255,255,1)',
+              }}
+            >
+              <video
+                autoPlay
+                muted
+                loop
+                style={{
+                  // FIXME: REMOVE!!!
+                  marginTop: '-2px',
+                  width: '800px',
+                  aspectRatio: '10/9',
+                  objectFit: 'cover',
+                }}
+              >
+                <source src='/video/hero.mov' type='video/mp4' />
+              </video>
+            </div>
+            <div
+              className='hidden md:block overflow-hidden hero-video-shadow rounded-2xl'
               style={{
                 border: '2px solid rgba(255,255,255,1)',
               }}

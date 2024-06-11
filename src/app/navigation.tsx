@@ -24,7 +24,7 @@ function HamburgerMenu() {
     <header className="bg-white w-full lg:w-auto">
       <nav className="mx-auto flex flex-shrink flex-row w-full lg:w-auto" aria-label="Global">
           <Logo />
-        <div className="absolute left-1/2 transform -translate-x-1/2 lg:hidden">
+        <div className="lg:hidden pl-6">
           <button
             type="button"
             className="-ml-2.5 inline-flex items-center justify-center rounded-md p-2.5"
