@@ -435,28 +435,13 @@ function Hero() {
         <Container wide={true} className='sm:px-6 md:px-12 lg:px-24'>
           <div className='relative'>
             <div
-              className='md:hidden overflow-hidden hero-video-shadow sm:rounded-2xl'
+              className='overflow-hidden hero-video-shadow sm:rounded-2xl'
             >
               <video
                 autoPlay
                 muted
                 loop
-                className='hero-video-small-screen'
-              >
-                <source src='/video/hero.mov' type='video/mp4' />
-              </video>
-            </div>
-            <div
-              className='hidden md:block overflow-hidden hero-video-shadow rounded-2xl'
-              style={{
-                border: '2px solid rgba(255,255,255,1)',
-              }}
-            >
-              <video
-                autoPlay
-                muted
-                loop
-                className='hero-video-big-screen'
+                className='hero-video'
               >
                 <source src='/video/hero.mov' type='video/mp4' />
               </video>
@@ -975,7 +960,7 @@ function Automations() {
   return (
     <Section>
       <Container wide={true}>
-        <div className='rounded-3xl overflow-hidden py-24 bg-dark-card'>
+        <div className='sm:rounded-3xl overflow-hidden py-24 bg-dark-card'>
           <Container>
             <div className='mx-auto max-w-7xl'>
               <div className='mx-auto max-w-2xl sm:text-center'>
@@ -1176,7 +1161,7 @@ function Pricing() {
               ))}
             </RadioGroup>
           </div>
-          <div className='mx-auto grid max-w-lg grid-cols-1 items-center gap-y-6  sm:gap-y-0 lg:max-w-4xl lg:grid-cols-3 mb-44'>
+          <div className='mx-auto grid max-w-lg grid-cols-1 items-center gap-y-0 lg:max-w-4xl lg:grid-cols-3 mb-44'>
             {tiers.map((tier, tierIdx) => {
               const featuredTierHDiff = 50
               const tierH = 600
