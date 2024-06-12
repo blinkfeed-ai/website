@@ -424,10 +424,10 @@ function Hero() {
           <h1 className='font-bold tracking-tight text-5xl sm:text-6xl md:text-7xl'>
             <span>Never read emails again.</span>
           </h1>
-          <p className='mt-6 text-lg leading-8 text-secondary'>
+          {/* TODO: Maybe a better way to set a max width? (I want it to break on "of" on big screens) */}
+          <p className='mt-6 text-lg leading-8 text-secondary' style={{maxWidth: '740px'}}>
             Reply to 100 emails in 10 minutes. Schedule meetings and generate replies with AI aware
-            of <br />
-            your calendar, preferences, and knowledge base.
+            of your calendar, preferences, and knowledge base.
           </p>
         </div>
       </Container>
@@ -1056,7 +1056,7 @@ function About() {
       <Container wide={true} className='sm:px-6 md:px-12 lg:px-24'>
         <div className='sm:rounded-3xl overflow-hidden py-12 sm:py-16 md:py-24 bg-dark-card'>
           <div className='mx-auto max-w-7xl'>
-            <div className='mx-auto max-w-72 md:max-w-xl lg:max-w-2xl'>
+            <div className='mx-auto px-4 sm:px-0 sm:px-12 md:px-0 md:max-w-xl lg:max-w-2xl'>
               <p
                 className='text-3xl font-bold tracking-tight text-white sm:text-4xl'
                 style={{
