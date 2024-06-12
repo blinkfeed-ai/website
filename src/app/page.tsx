@@ -441,15 +441,7 @@ function Hero() {
                 autoPlay
                 muted
                 loop
-                style={{
-                  // FIXME: REMOVE!!!
-                  marginTop: '-2px',
-                  position: 'relative',
-                  width: '800px',
-                  aspectRatio: '1000/944',
-                  objectFit: 'cover',
-                  objectPosition: 'left 51.5% top 0px',
-                }}
+                className='hero-video-small-screen'
               >
                 <source src='/video/hero.mov' type='video/mp4' />
               </video>
@@ -464,12 +456,7 @@ function Hero() {
                 autoPlay
                 muted
                 loop
-                style={{
-                  // FIXME: REMOVE!!!
-                  marginTop: '-46px',
-                  width: '1084px',
-                  aspectRatio: '1084 / 579',
-                }}
+                className='hero-video-big-screen'
               >
                 <source src='/video/hero.mov' type='video/mp4' />
               </video>

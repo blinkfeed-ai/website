@@ -70,6 +70,21 @@ body {
 ;
 }
 
+.hero-video-small-screen {
+  margin-top: -2px;
+  position: relative;
+  width: 800px;
+  aspect-ratio: 1000/944;
+  object-fit: cover;
+  object-position: left 51.5% top 0px;
+}
+
+.hero-video-big-screen {
+  margin-top: -46px;
+  width: 1084px;
+  aspect-ratio: 1084 / 579;
+}
+
 .tooltip {
   border-radius: 100px!important;
   background-color: rgba(0,0,0,0.8);
