@@ -436,9 +436,6 @@ function Hero() {
           <div className='relative'>
             <div
               className='md:hidden overflow-hidden hero-video-shadow sm:rounded-2xl'
-              style={{
-                border: '2px solid rgba(255,255,255,1)',
-              }}
             >
               <video
                 autoPlay
