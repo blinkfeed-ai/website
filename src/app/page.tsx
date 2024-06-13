@@ -418,11 +418,13 @@ function Feeds() {
 }
 
 function Hero() {
+  const {width} = Dimensions.useWindowDimensions()
+
   return (
     <SectionT>
       <Container>
         <div className='mx-auto'>
-          <h1 className='font-bold tracking-tight text-5xl sm:text-6xl md:text-7xl md:leading-tight'>
+          <h1 className='font-bold tracking-tight text-5xl sm:text-6xl' style={{fontSize: width >= Dimensions.SIZE_LG ? '70px' : undefined}}>
             <span>Never read emails again.</span>
           </h1>
           {/* TODO: Maybe a better way to set a max width? (I want it to break on "of" on big screens) */}
@@ -677,7 +679,7 @@ function FeatureCard({title, features}: FeatureCardProps) {
   const description = (
     <div>
       <div className=''>
-        <p className='hidden lg:flex text-3xl font-bold tracking-tight'>{title}</p>
+        <p className='hidden lg:flex text-4xl font-bold tracking-tight'>{title}</p>
         <div className='mt-10 flex flex-col leading-7'>
           {features.map((feature, index) => {
             const style = {} // isSelected ? {boxShadow: '0px 0px 0px 2px var(--color-accent)'} : {}
@@ -1125,7 +1127,7 @@ function FeaturesForPowerUsers() {
 
 function Pricing() {
   const [frequency, setFrequency] = useState(frequencies[1])
-  const { width, height } = Dimensions.useWindowDimensions()
+  const { width } = Dimensions.useWindowDimensions()
 
   return (
     <Section id='pricing'>
