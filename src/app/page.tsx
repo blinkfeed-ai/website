@@ -432,7 +432,7 @@ function Hero() {
           </p>
         </div>
       </Container>
-      <div className='relative pt-6 sm:pt-12 md:pt-16'>
+      <div className='relative pt-16'>
         <Container wide={true} className='sm:px-6 md:px-12 lg:px-24'>
           <div className='relative'>
             <div
@@ -774,7 +774,7 @@ function FeatureCard({title, features}: FeatureCardProps) {
     <Section>
       <Container wide={true} className='sm:px-6 md:px-12 lg:px-24'>
         <div ref={rootRef} className='flex flex-col lg:flex-row-reverse'>
-          <div className='z-10 flex lg:hidden flex relative text-base shrink px-6 sm:px-0 pb-6 sm:pb:12 md:pb-16'>
+          <div className='z-10 flex lg:hidden flex relative text-base shrink px-6 sm:px-0 pb-12 md:pb-16'>
             <p className='text-3xl font-bold tracking-tight sm:text-4xl'>{title}</p>
           </div>
           <div className='z-0 flex justify-center md:justify-end overflow-hidden grow lg:self-center'>{viz}</div>
@@ -960,7 +960,7 @@ function Automations() {
   return (
     <Section>
       <Container wide={true}>
-        <div className='sm:rounded-3xl overflow-hidden py-24 bg-dark-card'>
+        <div className='sm:rounded-3xl overflow-hidden py-6 md:py-16 lg:py-24 bg-dark-card'>
           <Container>
             <div className='mx-auto max-w-7xl'>
               <div className='mx-auto max-w-2xl sm:text-center'>
@@ -972,7 +972,7 @@ function Automations() {
                 </p>
                 <div className='mt-4 text-lg leading-8 text-gray-300'>
                   <div className='flex justify-center'>
-                    <div className='rounded-2xl bg-accent text-black font-bold text-sm py-2 px-3'>
+                    <div className='rounded-2xl bg-accent text-black text-center font-bold text-sm py-2 px-3'>
                       {`"Send a follow-up for my 'collaboration opportunity' emails if no reply in 3 days."`}
                     </div>
                   </div>
@@ -1023,7 +1023,7 @@ function About() {
   return (
     <Section>
       <Container wide={true} className='sm:px-6 md:px-12 lg:px-24'>
-        <div className='sm:rounded-3xl overflow-hidden py-12 sm:py-16 md:py-24 bg-dark-card'>
+        <div className='sm:rounded-3xl overflow-hidden py-10 sm:py-16 lg:py-24 bg-dark-card'>
           <div className='mx-auto max-w-7xl'>
             <div className='mx-auto px-4 sm:px-0 sm:px-12 md:px-0 md:max-w-xl lg:max-w-2xl'>
               <p
@@ -1125,13 +1125,13 @@ function FeaturesForPowerUsers() {
 
 function Pricing() {
   const [frequency, setFrequency] = useState(frequencies[1])
-  const { _, width } = Dimensions.useWindowDimensions()
+  const { width, height } = Dimensions.useWindowDimensions()
 
   return (
     <Section id='pricing'>
       <Container>
         <div className='mx-auto max-w-2xl text-center lg:max-w-4xl'>
-          <p className='mt-2 text-4xl font-bold tracking-tight sm:text-5xl'>
+          <p className='mt-2 text-4xl font-bold tracking-tight lg:text-5xl'>
             Save up to 90% of your email time.
           </p>
         </div>
