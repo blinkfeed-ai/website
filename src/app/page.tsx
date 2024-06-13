@@ -21,6 +21,7 @@ import {transform} from 'sucrase'
 import * as Button from '@/app/Button'
 import Class from 'classnames'
 import {Footer} from '@/app/footer'
+import * as Dimensions from '@/app/window-dimension'
 
 const gregOciepkaTestimontial =
   "Blinkfeed is unreal. As someone who sends 50+ emails daily, I've tried numerous email " +
@@ -1096,7 +1097,7 @@ function FeaturesForPowerUsers() {
             {featuresPowerUsers.map(feature => (
               <div className='relative' key={feature.name}>
                 {!feature.ready && (
-                  <div className='absolute' style={{top: '-32px'}}>
+                  <div className='sticky lg:absolute' style={{top: '-32px'}}>
                     <div className='pl-12 pb-2 text-tertiary'>
                       <ComingSoon />
                     </div>
@@ -1124,6 +1125,8 @@ function FeaturesForPowerUsers() {
 
 function Pricing() {
   const [frequency, setFrequency] = useState(frequencies[1])
+  const { _, width } = Dimensions.useWindowDimensions()
+
   return (
     <Section id='pricing'>
       <Container>
@@ -1174,17 +1177,17 @@ function Pricing() {
                       : tierIdx === 0
                         ? 'rounded-t-3xl sm:rounded-b-none lg:rounded-tr-none lg:rounded-bl-3xl'
                         : '',
-                    'relative flex justify-center p-8 ring-1 ring-pricing-card-border sm:p-10',
+                    'relative flex justify-center p-8 ring-1 ring-pricing-card-border sm:p-10 h-auto',
                   )}
                   style={{
-                    height: tier.featured ? `${tierH + featuredTierHDiff}px` : `${tierH}px`,
+                    height: width >= Dimensions.SIZE_LG ? (tier.featured ? `${tierH + featuredTierHDiff}px` : `${tierH}px`): undefined,
                   }}
                 >
                   <div
                     className='flex flex-col justify-between'
                     style={{
-                      marginTop: tier.featured ? `${featuredTierHDiff / 2}px` : 0,
-                      marginBottom: tier.featured ? `${featuredTierHDiff / 2}px` : 0,
+                      marginTop: tier.featured && width >= Dimensions.SIZE_LG ? `${featuredTierHDiff / 2}px` : 0,
+                      marginBottom: tier.featured && width >= Dimensions.SIZE_LG ? `${featuredTierHDiff / 2}px` : 0,
                     }}
                   >
                     <div>
@@ -1228,7 +1231,7 @@ function Pricing() {
                         {tier.description}
                       </p>
                     </div>
-                    <div>
+                    <div className='pt-6 lg:pt-0'>
                       <ul
                         role='list'
                         className={classNames(
