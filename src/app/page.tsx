@@ -441,6 +441,7 @@ function Hero() {
                 autoPlay
                 muted
                 loop
+                playsInline
                 className='hero-video'
               >
                 <source src='/video/hero.mov' type='video/mp4' />
