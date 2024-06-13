@@ -959,6 +959,14 @@ function Features2() {
 }
 
 function Automations() {
+  const {width} = Dimensions.useWindowDimensions()
+  const automationsSmallStyle: React.CSSProperties = {
+    aspectRatio: '1000/1000',
+    objectFit: 'cover',
+    objectPosition: 'left 74% top 0px',
+    marginBottom: '-104px'
+  }
+
   return (
     <Section>
       <Container wide={true}>
@@ -992,6 +1000,7 @@ function Automations() {
                   className='mb-[-12%] rounded-xl shadow-2xl ring-1 ring-white/5'
                   width={2432}
                   height={1442}
+                  style={width < Dimensions.SIZE_LG ? automationsSmallStyle : undefined}
                 />
                 <div className='relative' aria-hidden='true'>
                   <div className='absolute -inset-x-20 bottom-0 bg-gradient-to-t from-dark-card pt-[7%]' />
