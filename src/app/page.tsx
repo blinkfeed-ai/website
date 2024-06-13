@@ -439,6 +439,7 @@ function Hero() {
           <div className='relative'>
             <div
               className='overflow-hidden hero-video-shadow sm:rounded-2xl'
+              style={{border: width >= Dimensions.SIZE_SM ? '2px solid rgba(255,255,255,1)': undefined}}
             >
               <video
                 autoPlay
@@ -992,7 +993,7 @@ function Automations() {
                 </div>
               </div>
             </div>
-            <div className='relative overflow-hidden pt-20'>
+            <div className='relative overflow-hidden pt-12 md:pt-20'>
               <div className='mx-auto max-w-7xl'>
                 <img
                   src='/photo/automations.png'
