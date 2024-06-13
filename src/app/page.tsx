@@ -1170,7 +1170,7 @@ function Pricing() {
                   className={classNames(
                     tier.featured ? 'relative bg-dark-card shadow-2xl' : 'bg-white sm:mx-8 lg:mx-0',
                     tier.featured
-                      ? 'rounded-3xl '
+                      ? 'rounded-3xl rounded-t-none sm:rounded-t-3xl'
                       : tierIdx === 0
                         ? 'rounded-t-3xl sm:rounded-b-none lg:rounded-tr-none lg:rounded-bl-3xl'
                         : '',
@@ -1274,7 +1274,7 @@ function Pricing() {
                         role='list'
                         className={classNames(
                           tier.featured ? 'text-primary-inv' : '',
-                          'space-y-3 text-sm leading-6 sm:mt-4',
+                          'space-y-3 text-sm leading-6 mt-4',
                         )}
                       >
                         {tier.featuresComingSoon.map(feature => (
@@ -1376,7 +1376,7 @@ function Testimontials() {
                       'space-y-8',
                       (columnGroupIdx === 0 && columnIdx === 0) ||
                         (columnGroupIdx === 1 && columnIdx === 1)
-                        ? 'pt-16'
+                        ? 'xl:pt-16'
                         : '',
                     )}
                   >

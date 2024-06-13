@@ -27,7 +27,7 @@ function HamburgerMenu() {
         <div className="lg:hidden pl-6">
           <button
             type="button"
-            className="-ml-2.5 inline-flex items-center justify-center rounded-md p-2.5"
+            className="mx-auto inline-flex items-center justify-center rounded-md p-2.5"
             onClick={() => setMobileMenuOpen(true)}
           >
             <span className="sr-only">Open main menu</span>
