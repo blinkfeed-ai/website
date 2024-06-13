@@ -421,7 +421,7 @@ function Hero() {
     <SectionT>
       <Container>
         <div className='mx-auto'>
-          <h1 className='font-bold tracking-tight text-5xl sm:text-6xl md:text-7xl'>
+          <h1 className='font-bold tracking-tight text-5xl sm:text-6xl md:text-7xl md:leading-tight'>
             <span>Never read emails again.</span>
           </h1>
           {/* TODO: Maybe a better way to set a max width? (I want it to break on "of" on big screens) */}
@@ -431,7 +431,7 @@ function Hero() {
           </p>
         </div>
       </Container>
-      <div className='relative pt-6 sm:pt-12 md: pt-16'>
+      <div className='relative pt-6 sm:pt-12 md:pt-16'>
         <Container wide={true} className='sm:px-6 md:px-12 lg:px-24'>
           <div className='relative'>
             <div
@@ -676,7 +676,7 @@ function FeatureCard({title, features}: FeatureCardProps) {
   const description = (
     <div>
       <div className=''>
-        <p className='text-3xl font-bold tracking-tight sm:text-4xl'>{title}</p>
+        <p className='hidden lg:flex text-3xl font-bold tracking-tight'>{title}</p>
         <div className='mt-10 flex flex-col leading-7'>
           {features.map((feature, index) => {
             const style = {} // isSelected ? {boxShadow: '0px 0px 0px 2px var(--color-accent)'} : {}
@@ -742,7 +742,7 @@ function FeatureCard({title, features}: FeatureCardProps) {
                       >
                         {feature.name}
                       </div>
-                      <div className='text-tertiary'>{feature.comingSoon && <ComingSoon />}</div>
+                      <div className='flex grow shrink-0 text-tertiary'>{feature.comingSoon && <ComingSoon />}</div>
                     </div>
                     <div className='leading-7 text-secondary'>{feature.description}</div>
                   </div>
@@ -759,16 +759,11 @@ function FeatureCard({title, features}: FeatureCardProps) {
     <div className='flex overflow-hidden justify-center md:justify-start' style={{width: '870px'}}>
       <video
         ref={videoRef}
+        autoPlay
         muted
         loop
-        style={{
-          maxWidth: 'none',
-          width: '1080px',
-
-          // FIXME: REMOVE!!!
-          marginTop: '-46px',
-          marginLeft: '-60px',
-        }}
+        playsInline
+        className='feature-video'
       >
         <source src='/video/features1.mov' type='video/mp4' />
       </video>
@@ -776,10 +771,13 @@ function FeatureCard({title, features}: FeatureCardProps) {
   )
   return (
     <Section>
-      <Container>
-        <div ref={rootRef} className='flex flex-col md:flex-row-reverse'>
-          <div className='z-0 flex justify-center md:justify-end overflow-hidden grow'>{viz}</div>
-          <div className='z-10 flex relative text-base shrink md:max-w-2xl lg:max-w-xl'>
+      <Container wide={true} className='sm:px-6 md:px-12 lg:px-24'>
+        <div ref={rootRef} className='flex flex-col lg:flex-row-reverse'>
+          <div className='z-10 flex lg:hidden flex relative text-base shrink px-6 sm:px-0 pb-6 sm:pb:12 md:pb-16'>
+            <p className='text-3xl font-bold tracking-tight sm:text-4xl'>{title}</p>
+          </div>
+          <div className='z-0 flex justify-center md:justify-end overflow-hidden grow lg:self-center'>{viz}</div>
+          <div className='z-10 flex relative text-base shrink md:max-w-2xl lg:max-w-xl px-6 sm:px-0'>
             {description}
           </div>
         </div>
@@ -1176,7 +1174,7 @@ function Pricing() {
                       : tierIdx === 0
                         ? 'rounded-t-3xl sm:rounded-b-none lg:rounded-tr-none lg:rounded-bl-3xl'
                         : '',
-                    'relative flex p-8 ring-1 ring-pricing-card-border sm:p-10',
+                    'relative flex justify-center p-8 ring-1 ring-pricing-card-border sm:p-10',
                   )}
                   style={{
                     height: tier.featured ? `${tierH + featuredTierHDiff}px` : `${tierH}px`,
