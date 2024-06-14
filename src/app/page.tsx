@@ -1155,7 +1155,6 @@ function FeaturesForPowerUsers() {
 
 function Pricing() {
   const [frequency, setFrequency] = useState(frequencies[1])
-  const { width } = Dimensions.useWindowDimensions()
 
   return (
     <Section id='pricing'>
@@ -1195,13 +1194,11 @@ function Pricing() {
           </div>
           <div className='mx-auto grid max-w-lg grid-cols-1 items-center gap-y-0 lg:max-w-4xl lg:grid-cols-3 mb-44'>
             {tiers.map((tier, tierIdx) => {
-              const featuredTierHDiff = 50
-              const tierH = 600
               return (
                 <div
                   key={tier.id}
                   className={classNames(
-                    tier.featured ? 'relative bg-dark-card shadow-2xl' : 'bg-white sm:mx-8 lg:mx-0',
+                    tier.featured ? 'relative bg-dark-card shadow-2xl lg:h-featured' : 'bg-white sm:mx-8 lg:mx-0 lg:h-tier',
                     tier.featured
                       ? 'rounded-3xl rounded-t-none sm:rounded-t-3xl'
                       : tierIdx === 0
@@ -1209,9 +1206,6 @@ function Pricing() {
                         : '',
                     'relative flex justify-center p-8 ring-1 ring-pricing-card-border sm:p-10 h-auto',
                   )}
-                  style={{
-                    height: width >= Dimensions.SIZE_LG ? (tier.featured ? `${tierH + featuredTierHDiff}px` : `${tierH}px`): undefined,
-                  }}
                 >
                   <div
                     className={Class('flex flex-col justify-between', tier.featured && `lg:m-featured`)}

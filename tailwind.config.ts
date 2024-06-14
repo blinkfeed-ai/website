@@ -29,6 +29,10 @@ const config: Config = {
       margin: {
         'featured': '25px 0',
       },
+      height: {
+        'tier': '600px',
+        'featured': '650px',
+      },
       colors: {
         page: 'white',
         accent: 'var(--color-accent)',
