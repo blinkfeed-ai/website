@@ -21,7 +21,6 @@ import {transform} from 'sucrase'
 import * as Button from '@/app/Button'
 import Class from 'classnames'
 import {Footer} from '@/app/footer'
-import * as Dimensions from '@/app/window-dimension'
 
 const gregOciepkaTestimontial =
   "Blinkfeed is unreal. As someone who sends 50+ emails daily, I've tried numerous email " +
@@ -619,25 +618,6 @@ function FeatureCard({title, features}: FeatureCardProps) {
   const [isVisible, setIsVisible] = React.useState(false)
   const wasPlayed = React.useRef(false)
 
-  const {width} = Dimensions.useWindowDimensions()
-  const vizStyle: React.CSSProperties = {
-      maxWidth: 'none',
-      width: '1080px',
-
-      // FIXME: REMOVE!!!
-      marginTop: '-46px',
-      marginLeft: '-60px',
-  }
-
-  const vizStyleSmall: React.CSSProperties = {
-    marginTop: '-2px',
-    position: 'relative',
-    width: '800px',
-    aspectRatio: '1000/944',
-    objectFit: 'cover',
-    objectPosition: 'left 51.5% top 0px'
-  }
-
   // === Intersection observer ===
 
   React.useEffect(() => {
@@ -777,17 +757,20 @@ function FeatureCard({title, features}: FeatureCardProps) {
   )
 
   const viz = (
-    <div className='flex sm:overflow-hidden' style={{width: '870px'}}>
-      <video
-        ref={videoRef}
-        autoPlay
-        muted
-        loop
-        playsInline
-        style={width >= Dimensions.SIZE_XL ? vizStyle : vizStyleSmall}
-      >
-        <source src='/video/features1.mov' type='video/mp4' />
-      </video>
+    <div className='flex sm:overflow-hidden xl:w-[870px]'>
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          loop
+          playsInline
+          className='object-cover aspect-[1000/944] xl:aspect-[1084/579] xl:object-contain -mt-[46px] xl:-ml-[60px] xl:max-w-none xl:w-[1080px]'
+          style={{
+            objectPosition: 'left 51.5% top 2px'
+          }}
+        >
+          <source src='/video/features1.mov' type='video/mp4' />
+        </video>
     </div>
   )
   return (
@@ -799,7 +782,7 @@ function FeatureCard({title, features}: FeatureCardProps) {
           </div>
           <div className='z-0 hidden xl:flex absolute top-0 left-0 w-full justify-end'>{viz}</div>
           <div className='z-0 xl:hidden flex justify-center md:justify-end overflow-hidden grow lg:self-center'>{viz}</div>
-          <div className='z-10 flex relative text-base shrink md:max-w-2xl lg:max-w-xl px-6 sm:px-0' style={{width: width >= Dimensions.SIZE_XL ? '42%' : undefined}}>
+          <div className='z-10 flex relative text-base shrink md:max-w-2xl lg:max-w-xl px-6 sm:px-0 xl:w-[42%]'>
             {description}
           </div>
         </div>
@@ -978,14 +961,6 @@ function Features2() {
 }
 
 function Automations() {
-  const {width} = Dimensions.useWindowDimensions()
-  const automationsSmallStyle: React.CSSProperties = {
-    aspectRatio: '1000/1000',
-    objectFit: 'cover',
-    objectPosition: 'left 74% top 0px',
-    marginBottom: '-104px'
-  }
-
   return (
     <Section>
       <Container wide={true}>
@@ -1016,10 +991,12 @@ function Automations() {
                 <img
                   src='/photo/automations.png'
                   alt='App screenshot'
-                  className='mb-[-12%] rounded-xl shadow-2xl ring-1 ring-white/5'
+                  className='mb-[-104px] lg:-mb-[12%] rounded-xl shadow-2xl ring-1 ring-white/5 aspect-[1/1] object-cover lg:aspect-auto '
                   width={2432}
                   height={1442}
-                  style={width < Dimensions.SIZE_LG ? automationsSmallStyle : undefined}
+                  style={{
+                    objectPosition: 'left 74% top 0px',
+                  }}
                 />
                 <div className='relative' aria-hidden='true'>
                   <div className='absolute -inset-x-20 bottom-0 bg-gradient-to-t from-dark-card pt-[7%]' />
