@@ -427,9 +427,9 @@ function Hero() {
           <h1 className='font-bold tracking-tight text-5xl sm:text-6xl' style={{fontSize: width >= Dimensions.SIZE_LG ? '70px' : undefined}}>
             <span>Never read emails again.</span>
           </h1>
-          {/* TODO: Maybe a better way to set a max width? (I want it to break on "of" on big screens) */}
-          <p className='mt-6 text-lg leading-8 text-secondary' style={{maxWidth: '740px'}}>
+          <p className='mt-6 text-lg leading-8 text-secondary'>
             Reply to 100 emails in 10 minutes. Schedule meetings and generate replies with AI aware
+            {width >= Dimensions.SIZE_LG ? <br /> : ' '}
             of your calendar, preferences, and knowledge base.
           </p>
         </div>
@@ -1101,7 +1101,7 @@ function ComingSoon({big}: {big?: boolean}) {
   return (
     <div className='flex text-xs'>
       <div
-        className='rounded-full px-2 border text-center'
+        className='rounded-full px-2 border border-current text-center'
         style={{
           paddingTop: padding,
           paddingBottom: padding,
