@@ -27,11 +27,11 @@ const config: Config = {
         base: ['15px', '1.2'],
       },
       margin: {
-        'featured': '25px 0',
+        featured: '25px 0',
       },
       height: {
-        'tier': '600px',
-        'featured': '650px',
+        tier: '600px',
+        featured: '650px',
       },
       colors: {
         page: 'white',

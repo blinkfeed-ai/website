@@ -3,7 +3,7 @@
 import * as React from 'react'
 import Image from 'next/image'
 import {useEffect, useState} from 'react'
-import {ArrowPathIcon, CloudArrowUpIcon, LockClosedIcon} from '@heroicons/react/24/outline';
+import {ArrowPathIcon, CloudArrowUpIcon, LockClosedIcon} from '@heroicons/react/24/outline'
 import {CheckCircleIcon, XCircleIcon} from '@heroicons/react/20/solid'
 import {RadioGroup} from '@headlessui/react'
 import * as Navigation from '@/app/navigation'
@@ -13,9 +13,10 @@ import * as Button from '@/app/Button'
 import Class from 'classnames'
 import {Footer} from '@/app/footer'
 
-const gregOciepkaTestimontial = "Blinkfeed is unreal. As someone who sends 50+ emails daily, I've tried numerous email " +
+const gregOciepkaTestimontial =
+  "Blinkfeed is unreal. As someone who sends 50+ emails daily, I've tried numerous email " +
   'clients for productivity. Many use AI, but Blinkfeed, built entirely around AI, offers a ' +
-  "unique user experience unlike anything I've seen before.";
+  "unique user experience unlike anything I've seen before."
 
 const featuredTestimonial = {
   body: gregOciepkaTestimontial,
@@ -25,7 +26,7 @@ const featuredTestimonial = {
     imageUrl: '/photo/greg-ociepka.jpg',
     logoUrl: '/logo/simteract.svg',
   },
-};
+}
 
 const testimonials = [
   [
@@ -35,7 +36,8 @@ const testimonials = [
         author: {
           name: 'Leslie Alexander',
           handle: 'lesliealexander',
-          imageUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+          imageUrl:
+            'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
         },
       },
       {
@@ -43,7 +45,8 @@ const testimonials = [
         author: {
           name: 'Leslie Alexander',
           handle: 'lesliealexander2',
-          imageUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+          imageUrl:
+            'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
         },
       },
       {
@@ -51,7 +54,8 @@ const testimonials = [
         author: {
           name: 'Leslie Alexander',
           handle: 'lesliealexander3',
-          imageUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+          imageUrl:
+            'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
         },
       },
     ],
@@ -61,7 +65,8 @@ const testimonials = [
         author: {
           name: 'Lindsay Walton',
           handle: 'lindsaywalton',
-          imageUrl: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+          imageUrl:
+            'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
         },
       },
       {
@@ -69,7 +74,8 @@ const testimonials = [
         author: {
           name: 'Lindsay Walton',
           handle: 'lindsaywalton2',
-          imageUrl: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+          imageUrl:
+            'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
         },
       },
     ],
@@ -81,7 +87,8 @@ const testimonials = [
         author: {
           name: 'Tom Cook',
           handle: 'tomcook',
-          imageUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+          imageUrl:
+            'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
         },
       },
       {
@@ -89,7 +96,8 @@ const testimonials = [
         author: {
           name: 'Tom Cook',
           handle: 'tomcook2',
-          imageUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+          imageUrl:
+            'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
         },
       },
     ],
@@ -99,7 +107,8 @@ const testimonials = [
         author: {
           name: 'Leonard Krasner',
           handle: 'leonardkrasner',
-          imageUrl: 'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+          imageUrl:
+            'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
         },
       },
       {
@@ -107,7 +116,8 @@ const testimonials = [
         author: {
           name: 'Leonard Krasner',
           handle: 'leonardkrasner2',
-          imageUrl: 'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+          imageUrl:
+            'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
         },
       },
       {
@@ -115,43 +125,48 @@ const testimonials = [
         author: {
           name: 'Leonard Krasner',
           handle: 'leonardkrasner3',
-          imageUrl: 'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+          imageUrl:
+            'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
         },
       },
     ],
   ],
-];
+]
 
 const frequencies = [
-  { value: 'monthly', label: 'Monthly', priceSuffix: '/month' },
-  { value: 'annually', label: 'Annually', priceSuffix: '/year' },
-];
+  {value: 'monthly', label: 'Monthly', priceSuffix: '/month'},
+  {value: 'annually', label: 'Annually', priceSuffix: '/year'},
+]
 
 const features = [
   {
     name: 'Whole thread summaries.',
-    description: 'Quickly grasp action points and unresolved questions. No need to sift through long threads.',
+    description:
+      'Quickly grasp action points and unresolved questions. No need to sift through long threads.',
     icon: CloudArrowUpIcon,
     img: '/icon/ai-summary.svg',
   },
   {
     name: 'Respond with a click.',
-    description: "Proposed answers base on your calendar and knowledge base, like your business metrics. If any info is missing, you'll be prompted to fill it in.",
+    description:
+      "Proposed answers base on your calendar and knowledge base, like your business metrics. If any info is missing, you'll be prompted to fill it in.",
     icon: ArrowPathIcon,
     img: '/icon/select-response.svg',
   },
   {
     name: 'Write entire emails with just a few words.',
-    description: 'AI crafts them into polished emails that mirror your unique voice and tone, learned from your previous messages.',
+    description:
+      'AI crafts them into polished emails that mirror your unique voice and tone, learned from your previous messages.',
     icon: LockClosedIcon,
     img: '/icon/ai-write.svg',
   },
-];
+]
 
 const features2 = [
   {
     name: 'Focus on what needs your attention.',
-    description: 'AI automatically triages incoming email. Urgent messages appear at the top even when your inbox is overflowing.',
+    description:
+      'AI automatically triages incoming email. Urgent messages appear at the top even when your inbox is overflowing.',
     icon: ArrowPathIcon,
     img: '/icon/important-mails-first.svg',
   },
@@ -163,76 +178,84 @@ const features2 = [
   },
   {
     name: 'Feel secure with AI spam and scam filters.',
-    description: 'With an advanced understanding of your emails, AI robustly eliminates spam, scams, and unwanted promotions.',
+    description:
+      'With an advanced understanding of your emails, AI robustly eliminates spam, scams, and unwanted promotions.',
     icon: CloudArrowUpIcon,
     img: '/icon/ai-security.svg',
   },
-];
+]
 
 const featuresAutomations = [
   {
     name: 'Automate the boring stuff.',
-    description: 'Sending follow-ups, responding to repetitive questions, and organizing emails are easy to automate. Just do it.',
+    description:
+      'Sending follow-ups, responding to repetitive questions, and organizing emails are easy to automate. Just do it.',
     icon: CloudArrowUpIcon,
     img: '/icon/automate-everything.svg',
   },
   {
     name: 'Review before send.',
-    description: "Accidental messages? Not on our watch. Inspect and approve all of the automation's actions before they're set in motion.",
+    description:
+      "Accidental messages? Not on our watch. Inspect and approve all of the automation's actions before they're set in motion.",
     icon: ArrowPathIcon,
     img: '/icon/check-before-run.svg',
   },
   {
     name: 'Monitor automations history.',
-    description: 'Stay in the know by browsing detailed logs of your automations, unraveling the what and why behind each action.',
+    description:
+      'Stay in the know by browsing detailed logs of your automations, unraveling the what and why behind each action.',
     icon: LockClosedIcon,
     img: '/icon/monitor-automations.svg',
   },
-];
+]
 
 const featuresPowerUsers = [
   {
     name: 'Use Markdown to edit your messages.',
-    description: 'Speed matters. Markdown lets you format messages as you type, with quick shortcuts for bold text, bullet lists, headers, and more. Effortless formatting for the fast-paced.',
+    description:
+      'Speed matters. Markdown lets you format messages as you type, with quick shortcuts for bold text, bullet lists, headers, and more. Effortless formatting for the fast-paced.',
     icon: LockClosedIcon,
     img: '/icon/markdown.svg',
     ready: true,
   },
   {
     name: 'Extend Blinkfeed with plugins.',
-    description: "Extend Blinkfeed with plugins to mix, match, and customize your way. It's open and flexible, so you can tweak it to fit your groove.",
+    description:
+      "Extend Blinkfeed with plugins to mix, match, and customize your way. It's open and flexible, so you can tweak it to fit your groove.",
     icon: CloudArrowUpIcon,
     img: '/icon/plugin.svg',
     ready: true,
   },
   {
     name: 'Keyboard-centric navigation.',
-    description: 'Keyboard-centric navigation lets you reply, switch threads, and manage emails swiftly with minimal keystrokes, boosting productivity.',
+    description:
+      'Keyboard-centric navigation lets you reply, switch threads, and manage emails swiftly with minimal keystrokes, boosting productivity.',
     icon: ArrowPathIcon,
     img: '/icon/keyboard-centric.svg',
     ready: true,
   },
   {
     name: 'Track when people open your emails or links.',
-    description: 'Gain insights for precise follow-ups, closing deals, and boosting team efficiency.',
+    description:
+      'Gain insights for precise follow-ups, closing deals, and boosting team efficiency.',
     icon: LockClosedIcon,
     img: '/icon/eye.svg',
     ready: false,
   },
-];
+]
 
 const tiers = [
   {
     name: 'For developers',
     id: 'tier-developers',
     href: '#',
-    price: { monthly: '$0', annually: '$0' },
+    price: {monthly: '$0', annually: '$0'},
     timeSpan: '/forever',
     description: 'Implement a plugin, free or paid. Enjoy Blinkfeed for free.',
-    features: [{ available: true, label: 'Analyze up to 1000 email threads / month' }],
+    features: [{available: true, label: 'Analyze up to 1000 email threads / month'}],
     featuresComingSoon: [
-      { available: true, label: 'Integrations (calendar, etc.)' },
-      { available: true, label: 'Automations' },
+      {available: true, label: 'Integrations (calendar, etc.)'},
+      {available: true, label: 'Automations'},
     ],
     mostPopular: true,
     featured: false,
@@ -241,13 +264,13 @@ const tiers = [
     name: 'For everyone',
     id: 'tier-everyone',
     href: '#',
-    price: { monthly: '$30', annually: '$25' },
+    price: {monthly: '$30', annually: '$25'},
     timeSpan: '/month',
     description: 'For individuals who manage a moderate volume of emails.',
-    features: [{ available: true, label: 'Analyze up to 1000 email threads / month' }],
+    features: [{available: true, label: 'Analyze up to 1000 email threads / month'}],
     featuresComingSoon: [
-      { available: true, label: 'Integrations (calendar, etc.)' },
-      { available: false, label: 'Automations' },
+      {available: true, label: 'Integrations (calendar, etc.)'},
+      {available: false, label: 'Automations'},
     ],
     mostPopular: true,
     featured: false,
@@ -256,18 +279,18 @@ const tiers = [
     name: 'For power communicators',
     id: 'tier-power-communicators',
     href: '#',
-    price: { monthly: '$50', annually: '$40' },
+    price: {monthly: '$50', annually: '$40'},
     timeSpan: '/month',
     description: 'For professionals handling high-volume correspondence.',
-    features: [{ available: true, label: 'Analyze up to 3000 email threads / month' }],
+    features: [{available: true, label: 'Analyze up to 3000 email threads / month'}],
     featuresComingSoon: [
-      { available: true, label: 'Integrations (calendar, etc.)' },
-      { available: true, label: 'Automations' },
+      {available: true, label: 'Integrations (calendar, etc.)'},
+      {available: true, label: 'Automations'},
     ],
     mostPopular: false,
     featured: true,
   },
-];
+]
 
 const faqs = [
   {
@@ -283,17 +306,20 @@ const faqs = [
   },
   {
     question: 'Which systems does Blinkfeed work on?',
-    answer: 'Blinkfeed is compatible with Windows, macOS, and Linux. We are planning to release mobile versions later this year.',
+    answer:
+      'Blinkfeed is compatible with Windows, macOS, and Linux. We are planning to release mobile versions later this year.',
   },
   {
     question: 'Are there any current limitations I should be aware of with Blinkfeed?',
-    answer: 'As Blinkfeed is in its private beta phase, you may encounter occasional minor issues. We are dedicated to providing prompt support and aim for same-day resolution whenever possible. If you experience any problems, our team will work with you to resolve them quickly.',
+    answer:
+      'As Blinkfeed is in its private beta phase, you may encounter occasional minor issues. We are dedicated to providing prompt support and aim for same-day resolution whenever possible. If you experience any problems, our team will work with you to resolve them quickly.',
   },
   {
     question: 'Is using Blinkfeed safe?',
-    answer: 'Yes, Blinkfeed is designed with security as a top priority. All your data, including email cache and Gmail access tokens, remains on your computer. Parts of your emails are sent to OpenAI, which complies with CCPA, CSA STAR, GDPR, SOC2, and SOC3 standards. While Blinkfeed has not yet received official compliance ratings, it adheres to these best practices.',
+    answer:
+      'Yes, Blinkfeed is designed with security as a top priority. All your data, including email cache and Gmail access tokens, remains on your computer. Parts of your emails are sent to OpenAI, which complies with CCPA, CSA STAR, GDPR, SOC2, and SOC3 standards. While Blinkfeed has not yet received official compliance ratings, it adheres to these best practices.',
   },
-];
+]
 
 function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(' ')
@@ -392,8 +418,9 @@ function Hero() {
             <span>Never read emails again.</span>
           </h1>
           <p className='mt-6 text-lg leading-8 text-secondary'>
-            Reply to 100 emails in 10 minutes. Schedule meetings and generate replies with AI aware of
-            <br className='hidden lg:block'/>
+            Reply to 100 emails in 10 minutes. Schedule meetings and generate replies with AI aware
+            of
+            <br className='hidden lg:block' />
             <span> your calendar, preferences, and knowledge base.</span>
           </p>
         </div>
@@ -401,9 +428,7 @@ function Hero() {
       <div className='relative pt-16'>
         <Container wide={true} className='sm:px-6 md:px-12 lg:px-24'>
           <div className='relative'>
-            <div
-              className='overflow-hidden hero-video-shadow sm:rounded-2xl sm:border-2 sm:border-white'
-            >
+            <div className='overflow-hidden hero-video-shadow sm:rounded-2xl sm:border-2 sm:border-white'>
               <video
                 autoPlay
                 muted
@@ -411,7 +436,7 @@ function Hero() {
                 playsInline
                 className='mt-[-2px] object-cover aspect-[1000/944] lg:aspect-[1084/579] lg:object-contain lg:mt-[-46px] w-[800px] lg:w-[1084px]'
                 style={{
-                  objectPosition: 'left 51.5% top 0px'
+                  objectPosition: 'left 51.5% top 0px',
                 }}
               >
                 <source src='/video/hero.mov' type='video/mp4' />
@@ -712,7 +737,9 @@ function FeatureCard({title, features}: FeatureCardProps) {
                       >
                         {feature.name}
                       </div>
-                      <div className='flex grow shrink-0 text-tertiary'>{feature.comingSoon && <ComingSoon />}</div>
+                      <div className='flex grow shrink-0 text-tertiary'>
+                        {feature.comingSoon && <ComingSoon />}
+                      </div>
                     </div>
                     <div className='leading-7 text-secondary'>{feature.description}</div>
                   </div>
@@ -727,19 +754,19 @@ function FeatureCard({title, features}: FeatureCardProps) {
 
   const viz = (
     <div className='flex sm:overflow-hidden w-full lg:w-[600px] xl:w-[870px]'>
-        <video
-          ref={videoRef}
-          autoPlay
-          muted
-          loop
-          playsInline
-          className='object-cover aspect-[1000/944] xl:aspect-[1084/579] xl:object-contain -mt-[46px] xl:-ml-[60px] xl:max-w-none  xl:w-[1080px]'
-          style={{
-            objectPosition: 'left 51.5% top 2px'
-          }}
-        >
-          <source src='/video/features1.mov' type='video/mp4' />
-        </video>
+      <video
+        ref={videoRef}
+        autoPlay
+        muted
+        loop
+        playsInline
+        className='object-cover aspect-[1000/944] xl:aspect-[1084/579] xl:object-contain -mt-[46px] xl:-ml-[60px] xl:max-w-none  xl:w-[1080px]'
+        style={{
+          objectPosition: 'left 51.5% top 2px',
+        }}
+      >
+        <source src='/video/features1.mov' type='video/mp4' />
+      </video>
     </div>
   )
   return (
@@ -750,7 +777,9 @@ function FeatureCard({title, features}: FeatureCardProps) {
             <p className='text-3xl font-bold tracking-tight sm:text-4xl'>{title}</p>
           </div>
           <div className='z-0 hidden xl:flex absolute top-0 left-0 w-full justify-end'>{viz}</div>
-          <div className='z-0 xl:hidden flex justify-center md:justify-end overflow-hidden grow lg:self-center'>{viz}</div>
+          <div className='z-0 xl:hidden flex justify-center md:justify-end overflow-hidden grow lg:self-center'>
+            {viz}
+          </div>
           <div className='z-10 flex relative text-base shrink md:max-w-2xl lg:max-w-xl px-6 sm:px-0 xl:w-[42%]'>
             {description}
           </div>
@@ -1144,7 +1173,9 @@ function Pricing() {
                 <div
                   key={tier.id}
                   className={classNames(
-                    tier.featured ? 'relative bg-dark-card shadow-2xl lg:h-featured' : 'bg-white sm:mx-8 lg:mx-0 lg:h-tier',
+                    tier.featured
+                      ? 'relative bg-dark-card shadow-2xl lg:h-featured'
+                      : 'bg-white sm:mx-8 lg:mx-0 lg:h-tier',
                     tier.featured
                       ? 'rounded-3xl rounded-t-none sm:rounded-t-3xl'
                       : tierIdx === 0
@@ -1154,7 +1185,10 @@ function Pricing() {
                   )}
                 >
                   <div
-                    className={Class('flex flex-col justify-between', tier.featured && `lg:m-featured`)}
+                    className={Class(
+                      'flex flex-col justify-between',
+                      tier.featured && `lg:m-featured`,
+                    )}
                   >
                     <div>
                       <h3

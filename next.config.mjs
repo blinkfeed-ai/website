@@ -1,12 +1,13 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = { 
-    webpack: (config, { isServer }) => {
+const nextConfig = {
+  webpack: (config, {isServer}) => {
     config.module.rules.push({
-    test: /\.md$/,
-    use: 'raw-loader',
-    });
+      test: /\.md$/,
+      use: 'raw-loader',
+    })
 
-    return config;
-}};
+    return config
+  },
+}
 
-export default nextConfig;
+export default nextConfig
