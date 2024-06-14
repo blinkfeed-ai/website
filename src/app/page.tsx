@@ -424,13 +424,13 @@ function Hero() {
     <SectionT>
       <Container>
         <div className='mx-auto'>
-          <h1 className='font-bold tracking-tight text-5xl sm:text-6xl' style={{fontSize: width >= Dimensions.SIZE_LG ? '70px' : undefined}}>
+          <h1 className='font-bold tracking-tight text-5xl sm:text-6xl md:text-7xl'>
             <span>Never read emails again.</span>
           </h1>
           <p className='mt-6 text-lg leading-8 text-secondary'>
-            Reply to 100 emails in 10 minutes. Schedule meetings and generate replies with AI aware
+            Reply to 100 emails in 10 minutes. Schedule meetings and generate replies with AI aware of
             {width >= Dimensions.SIZE_LG ? <br /> : ' '}
-            of your calendar, preferences, and knowledge base.
+            your calendar, preferences, and knowledge base.
           </p>
         </div>
       </Container>

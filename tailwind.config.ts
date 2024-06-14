@@ -20,6 +20,7 @@ const config: Config = {
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       fontSize: {
+        '7xl': ['70px', '1.3'],
         '6xl': ['50px', '1.3'],
         '5xl': ['3rem', '1.2'],
         '4xl': ['2.25rem', '2.8rem'],
