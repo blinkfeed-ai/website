@@ -621,6 +621,25 @@ function FeatureCard({title, features}: FeatureCardProps) {
   const [isVisible, setIsVisible] = React.useState(false)
   const wasPlayed = React.useRef(false)
 
+  const {width} = Dimensions.useWindowDimensions()
+  const vizStyle: React.CSSProperties = {
+      maxWidth: 'none',
+      width: '1080px',
+
+      // FIXME: REMOVE!!!
+      marginTop: '-46px',
+      marginLeft: '-60px',
+  }
+
+  const vizStyleSmall: React.CSSProperties = {
+    marginTop: '-2px',
+    position: 'relative',
+    width: '800px',
+    aspectRatio: '1000/944',
+    objectFit: 'cover',
+    objectPosition: 'left 51.5% top 0px'
+  }
+
   // === Intersection observer ===
 
   React.useEffect(() => {
@@ -760,14 +779,14 @@ function FeatureCard({title, features}: FeatureCardProps) {
   )
 
   const viz = (
-    <div className='flex overflow-hidden justify-center md:justify-start' style={{width: '870px'}}>
+    <div className='flex sm:overflow-hidden' style={{width: '870px'}}>
       <video
         ref={videoRef}
         autoPlay
         muted
         loop
         playsInline
-        className='feature-video'
+        style={width >= Dimensions.SIZE_XL ? vizStyle : vizStyleSmall}
       >
         <source src='/video/features1.mov' type='video/mp4' />
       </video>
@@ -776,12 +795,13 @@ function FeatureCard({title, features}: FeatureCardProps) {
   return (
     <Section>
       <Container wide={true} className='sm:px-6 md:px-12 lg:px-24'>
-        <div ref={rootRef} className='flex flex-col lg:flex-row-reverse'>
+        <div ref={rootRef} className={width < Dimensions.SIZE_XL ? 'flex flex-col lg:flex-row-reverse' : ''}>
           <div className='z-10 flex lg:hidden flex relative text-base shrink px-6 sm:px-0 pb-12 md:pb-16'>
             <p className='text-3xl font-bold tracking-tight sm:text-4xl'>{title}</p>
           </div>
-          <div className='z-0 flex justify-center md:justify-end overflow-hidden grow lg:self-center'>{viz}</div>
-          <div className='z-10 flex relative text-base shrink md:max-w-2xl lg:max-w-xl px-6 sm:px-0'>
+          <div className='z-0 hidden xl:flex absolute top-0 left-0 w-full justify-end'>{viz}</div>
+          <div className='z-0 xl:hidden flex justify-center md:justify-end overflow-hidden grow lg:self-center'>{viz}</div>
+          <div className='z-10 flex relative text-base shrink md:max-w-2xl lg:max-w-xl px-6 sm:px-0' style={{width: width >= Dimensions.SIZE_XL ? '42%' : undefined}}>
             {description}
           </div>
         </div>

@@ -89,36 +89,6 @@ body {
   }
 }
 
-.feature-video {
-    /* max-width: none;
-    width: 1080px;
-    margin-top: -46px; */
-  margin-top: -2px;
-  padding-left: 16px;
-  position: relative;
-  width: 800px;
-  aspect-ratio: 1000/944;
-  object-fit: cover;
-  object-position: left 51.5% top 0px;
-}
-
-@media (min-width: 1024px) {
-  .feature-video {
-    padding-left: 32px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .feature-video {
-    margin-top: -2px;
-    padding-left: 0;
-    width: 1084px;
-    aspect-ratio: 1000 / 750;
-    object-fit: cover;
-    object-position: initial;
-  }
-}
-
 .tooltip {
   border-radius: 100px!important;
   background-color: rgba(0,0,0,0.8);
