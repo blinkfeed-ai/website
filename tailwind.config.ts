@@ -20,10 +20,18 @@ const config: Config = {
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       fontSize: {
+        '7xl': ['70px', '1.3'],
         '6xl': ['50px', '1.3'],
         '5xl': ['3rem', '1.2'],
         '4xl': ['2.25rem', '2.8rem'],
         base: ['15px', '1.2'],
+      },
+      margin: {
+        featured: '25px 0',
+      },
+      height: {
+        tier: '600px',
+        featured: '650px',
       },
       colors: {
         page: 'white',

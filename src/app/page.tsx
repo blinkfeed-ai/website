@@ -3,21 +3,12 @@
 import * as React from 'react'
 import Image from 'next/image'
 import {useEffect, useState} from 'react'
-import {Dialog} from '@headlessui/react'
-import {
-  ArrowPathIcon,
-  Bars3Icon,
-  CloudArrowUpIcon,
-  FingerPrintIcon,
-  LockClosedIcon,
-  XMarkIcon,
-} from '@heroicons/react/24/outline'
-import {CheckIcon, CheckCircleIcon, XCircleIcon} from '@heroicons/react/20/solid'
+import {ArrowPathIcon, CloudArrowUpIcon, LockClosedIcon} from '@heroicons/react/24/outline'
+import {CheckCircleIcon, XCircleIcon} from '@heroicons/react/20/solid'
 import {RadioGroup} from '@headlessui/react'
 import * as Navigation from '@/app/navigation'
 import {Container} from '@/app/Container'
 import {Tooltip} from 'react-tooltip'
-import {transform} from 'sucrase'
 import * as Button from '@/app/Button'
 import Class from 'classnames'
 import {Footer} from '@/app/footer'
@@ -252,6 +243,7 @@ const featuresPowerUsers = [
     ready: false,
   },
 ]
+
 const tiers = [
   {
     name: 'For developers',
@@ -299,6 +291,7 @@ const tiers = [
     featured: true,
   },
 ]
+
 const faqs = [
   {
     question: 'Which email providers are compatible with Blinkfeed?',
@@ -355,7 +348,7 @@ function Section({children, id}: {children: React.ReactNode; id?: string}) {
     return () => observer.disconnect()
   }, [])
   return (
-    <div ref={ref} className='section relative my-24 sm:my-64'>
+    <div ref={ref} className='section relative my-24 md:my-32 lg:my-64'>
       <div ref={screenRef} className='absolute left-0 top-0 w-0 h-screen pointer-events-none' />
       <div
         ref={anchorRef}
@@ -369,7 +362,7 @@ function Section({children, id}: {children: React.ReactNode; id?: string}) {
 }
 
 function SectionT({children}: {children: React.ReactNode}) {
-  return <div className='mt-16'>{children}</div>
+  return <div className='mt-6 md:mt-12 lg:mt-16'>{children}</div>
 }
 
 function ServiceIcon(props: {src: string; alt: string; comingSoon: boolean}) {
@@ -421,34 +414,29 @@ function Hero() {
     <SectionT>
       <Container>
         <div className='mx-auto'>
-          <h1 className='font-bold tracking-tight sm:text-6xl' style={{fontSize: '70px'}}>
+          <h1 className='font-bold tracking-tight text-5xl sm:text-6xl md:text-7xl'>
             <span>Never read emails again.</span>
           </h1>
           <p className='mt-6 text-lg leading-8 text-secondary'>
             Reply to 100 emails in 10 minutes. Schedule meetings and generate replies with AI aware
-            of <br />
-            your calendar, preferences, and knowledge base.
+            of
+            <br className='hidden lg:block' />
+            <span> your calendar, preferences, and knowledge base.</span>
           </p>
         </div>
       </Container>
       <div className='relative pt-16'>
-        <Container>
+        <Container wide={true} className='sm:px-6 md:px-12 lg:px-24'>
           <div className='relative'>
-            <div
-              className=' overflow-hidden hero-video-shadow rounded-2xl'
-              style={{
-                border: '2px solid rgba(255,255,255,1)',
-              }}
-            >
+            <div className='overflow-hidden hero-video-shadow sm:rounded-2xl sm:border-2 sm:border-white'>
               <video
                 autoPlay
                 muted
                 loop
+                playsInline
+                className='mt-[-2px] object-cover aspect-[1000/944] lg:aspect-[1084/579] lg:object-contain lg:mt-[-46px] w-[800px] lg:w-[1084px]'
                 style={{
-                  // FIXME: REMOVE!!!
-                  marginTop: '-46px',
-                  width: '1084px',
-                  aspectRatio: '1084 / 579',
+                  objectPosition: 'left 51.5% top 0px',
                 }}
               >
                 <source src='/video/hero.mov' type='video/mp4' />
@@ -683,7 +671,7 @@ function FeatureCard({title, features}: FeatureCardProps) {
   const description = (
     <div>
       <div className=''>
-        <p className='text-3xl font-bold tracking-tight sm:text-4xl'>{title}</p>
+        <p className='hidden lg:flex text-4xl font-bold tracking-tight'>{title}</p>
         <div className='mt-10 flex flex-col leading-7'>
           {features.map((feature, index) => {
             const style = {} // isSelected ? {boxShadow: '0px 0px 0px 2px var(--color-accent)'} : {}
@@ -749,7 +737,9 @@ function FeatureCard({title, features}: FeatureCardProps) {
                       >
                         {feature.name}
                       </div>
-                      <div className='text-tertiary'>{feature.comingSoon && <ComingSoon />}</div>
+                      <div className='flex grow shrink-0 text-tertiary'>
+                        {feature.comingSoon && <ComingSoon />}
+                      </div>
                     </div>
                     <div className='leading-7 text-secondary'>{feature.description}</div>
                   </div>
@@ -763,18 +753,16 @@ function FeatureCard({title, features}: FeatureCardProps) {
   )
 
   const viz = (
-    <div className='flex overflow-hidden' style={{width: '870px'}}>
+    <div className='flex sm:overflow-hidden w-full lg:w-[600px] xl:w-[870px]'>
       <video
         ref={videoRef}
+        autoPlay
         muted
         loop
+        playsInline
+        className='object-cover aspect-[1000/944] xl:aspect-[1084/579] xl:object-contain -mt-[46px] xl:-ml-[60px] xl:max-w-none  xl:w-[1080px]'
         style={{
-          maxWidth: 'none',
-          width: '1080px',
-
-          // FIXME: REMOVE!!!
-          marginTop: '-46px',
-          marginLeft: '-60px',
+          objectPosition: 'left 51.5% top 2px',
         }}
       >
         <source src='/video/features1.mov' type='video/mp4' />
@@ -783,10 +771,16 @@ function FeatureCard({title, features}: FeatureCardProps) {
   )
   return (
     <Section>
-      <Container>
-        <div ref={rootRef}>
-          <div className='z-0 absolute top-0 left-0 w-full flex justify-end'>{viz}</div>
-          <div className='z-10 flex relative text-base' style={{width: '42%'}}>
+      <Container wide={true} className='sm:px-6 md:px-12 lg:px-24'>
+        <div ref={rootRef} className='flex flex-col lg:flex-row-reverse xl:block'>
+          <div className='z-10 flex lg:hidden flex relative text-base shrink px-6 sm:px-0 pb-12 md:pb-16'>
+            <p className='text-3xl font-bold tracking-tight sm:text-4xl'>{title}</p>
+          </div>
+          <div className='z-0 hidden xl:flex absolute top-0 left-0 w-full justify-end'>{viz}</div>
+          <div className='z-0 xl:hidden flex justify-center md:justify-end overflow-hidden grow lg:self-center'>
+            {viz}
+          </div>
+          <div className='z-10 flex relative text-base shrink md:max-w-2xl lg:max-w-xl px-6 sm:px-0 xl:w-[42%]'>
             {description}
           </div>
         </div>
@@ -968,7 +962,7 @@ function Automations() {
   return (
     <Section>
       <Container wide={true}>
-        <div className='rounded-3xl overflow-hidden py-24 bg-dark-card'>
+        <div className='sm:rounded-3xl overflow-hidden py-6 md:py-16 lg:py-24 bg-dark-card'>
           <Container>
             <div className='mx-auto max-w-7xl'>
               <div className='mx-auto max-w-2xl sm:text-center'>
@@ -980,7 +974,7 @@ function Automations() {
                 </p>
                 <div className='mt-4 text-lg leading-8 text-gray-300'>
                   <div className='flex justify-center'>
-                    <div className='rounded-2xl bg-accent text-black font-bold text-sm py-2 px-3'>
+                    <div className='rounded-2xl bg-accent text-black text-center font-bold text-sm py-2 px-3'>
                       {`"Send a follow-up for my 'collaboration opportunity' emails if no reply in 3 days."`}
                     </div>
                   </div>
@@ -990,14 +984,17 @@ function Automations() {
                 </div>
               </div>
             </div>
-            <div className='relative overflow-hidden pt-20'>
+            <div className='relative overflow-hidden pt-12 md:pt-20'>
               <div className='mx-auto max-w-7xl'>
                 <img
                   src='/photo/automations.png'
                   alt='App screenshot'
-                  className='mb-[-12%] rounded-xl shadow-2xl ring-1 ring-white/5'
+                  className='mb-[-104px] lg:-mb-[12%] rounded-xl shadow-2xl ring-1 ring-white/5 aspect-[1/1] object-cover lg:aspect-auto '
                   width={2432}
                   height={1442}
+                  style={{
+                    objectPosition: 'left 74% top 0px',
+                  }}
                 />
                 <div className='relative' aria-hidden='true'>
                   <div className='absolute -inset-x-20 bottom-0 bg-gradient-to-t from-dark-card pt-[7%]' />
@@ -1030,10 +1027,10 @@ function Automations() {
 function About() {
   return (
     <Section>
-      <Container>
-        <div className='rounded-3xl overflow-hidden py-24 bg-dark-card'>
+      <Container wide={true} className='sm:px-6 md:px-12 lg:px-24'>
+        <div className='sm:rounded-3xl overflow-hidden py-10 sm:py-16 lg:py-24 bg-dark-card'>
           <div className='mx-auto max-w-7xl'>
-            <div className='mx-auto max-w-2xl'>
+            <div className='mx-auto px-4 sm:px-0 sm:px-12 md:px-0 md:max-w-xl lg:max-w-2xl'>
               <p
                 className='text-3xl font-bold tracking-tight text-white sm:text-4xl'
                 style={{
@@ -1077,7 +1074,7 @@ function ComingSoon({big}: {big?: boolean}) {
   return (
     <div className='flex text-xs'>
       <div
-        className='rounded-full px-2 border border-current'
+        className='rounded-full px-2 border border-current text-center'
         style={{
           paddingTop: padding,
           paddingBottom: padding,
@@ -1105,7 +1102,7 @@ function FeaturesForPowerUsers() {
             {featuresPowerUsers.map(feature => (
               <div className='relative' key={feature.name}>
                 {!feature.ready && (
-                  <div className='absolute' style={{top: '-32px'}}>
+                  <div className='sticky lg:absolute' style={{top: '-32px'}}>
                     <div className='pl-12 pb-2 text-tertiary'>
                       <ComingSoon />
                     </div>
@@ -1133,11 +1130,12 @@ function FeaturesForPowerUsers() {
 
 function Pricing() {
   const [frequency, setFrequency] = useState(frequencies[1])
+
   return (
     <Section id='pricing'>
       <Container>
         <div className='mx-auto max-w-2xl text-center lg:max-w-4xl'>
-          <p className='mt-2 text-4xl font-bold tracking-tight sm:text-5xl'>
+          <p className='mt-2 text-4xl font-bold tracking-tight lg:text-5xl'>
             Save up to 90% of your email time.
           </p>
         </div>
@@ -1145,12 +1143,12 @@ function Pricing() {
           {'Spend it on more important things.'}
         </p>
 
-        <div className='mt-16 sm:mt-16'>
-          <div className='mt-16 flex justify-center'>
+        <div className='mt-8 lg:mt-16'>
+          <div className='flex justify-center'>
             <RadioGroup
               value={frequency}
               onChange={setFrequency}
-              className='grid grid-cols-2 gap-x-1 rounded-full p-1 text-center text-xs font-semibold leading-5 ring-1 ring-inset ring-gray-200'
+              className='grid grid-cols-2 gap-x-1 rounded-full p-1 text-center text-xs font-semibold leading-5 ring-1 ring-inset ring-gray-200 mb-4 lg:mb-0'
             >
               <RadioGroup.Label className='sr-only'>Payment frequency</RadioGroup.Label>
               {frequencies.map(option => (
@@ -1169,32 +1167,28 @@ function Pricing() {
               ))}
             </RadioGroup>
           </div>
-          <div className='mx-auto grid max-w-lg grid-cols-1 items-center gap-y-6  sm:gap-y-0 lg:max-w-4xl lg:grid-cols-3 mb-44'>
+          <div className='mx-auto grid max-w-lg grid-cols-1 items-center gap-y-0 lg:max-w-4xl lg:grid-cols-3 mb-44'>
             {tiers.map((tier, tierIdx) => {
-              const featuredTierHDiff = 50
-              const tierH = 600
               return (
                 <div
                   key={tier.id}
                   className={classNames(
-                    tier.featured ? 'relative bg-dark-card shadow-2xl' : 'bg-white sm:mx-8 lg:mx-0',
                     tier.featured
-                      ? 'rounded-3xl '
+                      ? 'relative bg-dark-card shadow-2xl lg:h-featured'
+                      : 'bg-white sm:mx-8 lg:mx-0 lg:h-tier',
+                    tier.featured
+                      ? 'rounded-3xl rounded-t-none sm:rounded-t-3xl'
                       : tierIdx === 0
                         ? 'rounded-t-3xl sm:rounded-b-none lg:rounded-tr-none lg:rounded-bl-3xl'
                         : '',
-                    'relative flex p-8 ring-1 ring-pricing-card-border sm:p-10',
+                    'relative flex justify-center p-8 ring-1 ring-pricing-card-border sm:p-10 h-auto',
                   )}
-                  style={{
-                    height: tier.featured ? `${tierH + featuredTierHDiff}px` : `${tierH}px`,
-                  }}
                 >
                   <div
-                    className='flex flex-col justify-between'
-                    style={{
-                      marginTop: tier.featured ? `${featuredTierHDiff / 2}px` : 0,
-                      marginBottom: tier.featured ? `${featuredTierHDiff / 2}px` : 0,
-                    }}
+                    className={Class(
+                      'flex flex-col justify-between',
+                      tier.featured && `lg:m-featured`,
+                    )}
                   >
                     <div>
                       <h3
@@ -1237,7 +1231,7 @@ function Pricing() {
                         {tier.description}
                       </p>
                     </div>
-                    <div>
+                    <div className='pt-6 lg:pt-0'>
                       <ul
                         role='list'
                         className={classNames(
@@ -1283,7 +1277,7 @@ function Pricing() {
                         role='list'
                         className={classNames(
                           tier.featured ? 'text-primary-inv' : '',
-                          'space-y-3 text-sm leading-6 sm:mt-4',
+                          'space-y-3 text-sm leading-6 mt-4',
                         )}
                       >
                         {tier.featuresComingSoon.map(feature => (
@@ -1385,7 +1379,7 @@ function Testimontials() {
                       'space-y-8',
                       (columnGroupIdx === 0 && columnIdx === 0) ||
                         (columnGroupIdx === 1 && columnIdx === 1)
-                        ? 'pt-16'
+                        ? 'xl:pt-16'
                         : '',
                     )}
                   >

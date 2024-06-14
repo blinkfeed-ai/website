@@ -84,7 +84,7 @@ export function Footer() {
             const localHref = item.href.startsWith('#')
             const target = localHref ? '' : '_blank'
             return (
-              <div key={item.name} className='pb-6'>
+              <div key={item.name} className='pb-6 flex justify-center'>
                 <a href={item.href} target={target} className='text-sm leading-6 '>
                   {item.name}
                 </a>
