@@ -418,8 +418,6 @@ function Feeds() {
 }
 
 function Hero() {
-  const {width} = Dimensions.useWindowDimensions()
-
   return (
     <SectionT>
       <Container>
@@ -429,8 +427,9 @@ function Hero() {
           </h1>
           <p className='mt-6 text-lg leading-8 text-secondary'>
             Reply to 100 emails in 10 minutes. Schedule meetings and generate replies with AI aware of
-            {width >= Dimensions.SIZE_LG ? <br /> : ' '}
-            your calendar, preferences, and knowledge base.
+            <br className='hidden lg:block'/>
+            <span> your calendar, preferences, and knowledge base.</span>
+            {/* your calendar, preferences, and knowledge base. */}
           </p>
         </div>
       </Container>
@@ -438,8 +437,7 @@ function Hero() {
         <Container wide={true} className='sm:px-6 md:px-12 lg:px-24'>
           <div className='relative'>
             <div
-              className='overflow-hidden hero-video-shadow sm:rounded-2xl'
-              style={{border: width >= Dimensions.SIZE_SM ? '2px solid rgba(255,255,255,1)': undefined}}
+              className='overflow-hidden hero-video-shadow sm:rounded-2xl sm:border-2 sm:border-white'
             >
               <video
                 autoPlay
@@ -795,7 +793,7 @@ function FeatureCard({title, features}: FeatureCardProps) {
   return (
     <Section>
       <Container wide={true} className='sm:px-6 md:px-12 lg:px-24'>
-        <div ref={rootRef} className={width < Dimensions.SIZE_XL ? 'flex flex-col lg:flex-row-reverse' : ''}>
+        <div ref={rootRef} className='flex flex-col lg:flex-row-reverse xl:block'>
           <div className='z-10 flex lg:hidden flex relative text-base shrink px-6 sm:px-0 pb-12 md:pb-16'>
             <p className='text-3xl font-bold tracking-tight sm:text-4xl'>{title}</p>
           </div>
@@ -1216,11 +1214,7 @@ function Pricing() {
                   }}
                 >
                   <div
-                    className='flex flex-col justify-between'
-                    style={{
-                      marginTop: tier.featured && width >= Dimensions.SIZE_LG ? `${featuredTierHDiff / 2}px` : 0,
-                      marginBottom: tier.featured && width >= Dimensions.SIZE_LG ? `${featuredTierHDiff / 2}px` : 0,
-                    }}
+                    className={Class('flex flex-col justify-between', tier.featured && `lg:m-featured`)}
                   >
                     <div>
                       <h3

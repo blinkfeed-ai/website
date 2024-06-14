@@ -26,6 +26,9 @@ const config: Config = {
         '4xl': ['2.25rem', '2.8rem'],
         base: ['15px', '1.2'],
       },
+      margin: {
+        'featured': '25px 0',
+      },
       colors: {
         page: 'white',
         accent: 'var(--color-accent)',
