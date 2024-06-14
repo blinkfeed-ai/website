@@ -132,7 +132,10 @@ function Hero() {
                 muted
                 loop
                 playsInline
-                className='hero-video'
+                className='mt-[-2px] object-cover aspect-[1000/944] lg:aspect-[1084/579] lg:object-contain lg:mt-[-46px] w-[800px] lg:w-[1084px]'
+                style={{
+                  objectPosition: 'left 51.5% top 0px'
+                }}
               >
                 <source src='/video/hero.mov' type='video/mp4' />
               </video>
@@ -446,14 +449,14 @@ function FeatureCard({title, features}: FeatureCardProps) {
   )
 
   const viz = (
-    <div className='flex sm:overflow-hidden xl:w-[870px]'>
+    <div className='flex sm:overflow-hidden w-full lg:w-[600px] xl:w-[870px]'>
         <video
           ref={videoRef}
           autoPlay
           muted
           loop
           playsInline
-          className='object-cover aspect-[1000/944] xl:aspect-[1084/579] xl:object-contain -mt-[46px] xl:-ml-[60px] xl:max-w-none xl:w-[1080px]'
+          className='object-cover aspect-[1000/944] xl:aspect-[1084/579] xl:object-contain -mt-[46px] xl:-ml-[60px] xl:max-w-none  xl:w-[1080px]'
           style={{
             objectPosition: 'left 51.5% top 2px'
           }}
