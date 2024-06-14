@@ -125,7 +125,6 @@ function Hero() {
             Reply to 100 emails in 10 minutes. Schedule meetings and generate replies with AI aware of
             <br className='hidden lg:block'/>
             <span> your calendar, preferences, and knowledge base.</span>
-            {/* your calendar, preferences, and knowledge base. */}
           </p>
         </div>
       </Container>
