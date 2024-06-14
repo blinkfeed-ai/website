@@ -3,10 +3,7 @@
 import * as React from 'react'
 import Image from 'next/image'
 import {useEffect, useState} from 'react'
-import {
-  ArrowPathIcon,
-  CloudArrowUpIcon,
-} from '@heroicons/react/24/outline'
+import {ArrowPathIcon, CloudArrowUpIcon} from '@heroicons/react/24/outline'
 import {CheckCircleIcon, XCircleIcon} from '@heroicons/react/20/solid'
 import {RadioGroup} from '@headlessui/react'
 import * as Navigation from '@/app/navigation'
@@ -15,7 +12,18 @@ import {Tooltip} from 'react-tooltip'
 import * as Button from '@/app/Button'
 import Class from 'classnames'
 import {Footer} from '@/app/footer'
-import { features, features2, featuresAutomations, gregOciepkaTestimontial, featuresPowerUsers, frequencies, tiers, featuredTestimonial, testimonials, faqs } from './static-contents'
+import {
+  features, 
+  features2, 
+  featuresAutomations, 
+  gregOciepkaTestimontial, 
+  featuresPowerUsers, 
+  frequencies, 
+  tiers, 
+  featuredTestimonial, 
+  testimonials, 
+  faqs 
+} from './static-contents'
 
 function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(' ')
