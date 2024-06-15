@@ -1078,6 +1078,8 @@ function ComingSoon({big}: {big?: boolean}) {
         style={{
           paddingTop: padding,
           paddingBottom: padding,
+          paddingLeft: big ? '16px' : undefined,
+          paddingRight: big ? '16px' : undefined,
         }}
       >
         Coming Soon
