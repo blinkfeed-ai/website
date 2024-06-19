@@ -822,7 +822,7 @@ function XFeatures1() {
     <FeatureCard
       title='Understand what people want from you, in a blink.'
       features={features}
-      videoSource='/video/feat1.mov'
+      videoSource='/video/feat2.mov'
       videoMarginTop='35'
       order={'left'}
     />
@@ -857,8 +857,14 @@ function XFeatures2() {
       timeEnd: 6,
     },
   ]
-  return <FeatureCard title='Reply within seconds.' features={features} videoSource='/video/feat2.mov'
-  order={'right'} />
+  return (
+    <FeatureCard
+      title='Reply within seconds.'
+      features={features}
+      videoSource='/video/feat1.mov'
+      order={'right'}
+    />
+  )
 }
 
 function Features1() {
