@@ -434,12 +434,12 @@ function Hero() {
                 muted
                 loop
                 playsInline
-                className='mt-[-2px] object-cover aspect-[1000/944] lg:aspect-[1084/579] lg:object-contain lg:mt-[-46px] w-[800px] lg:w-[1084px]'
+                className='mt-[-2px] object-cover aspect-[1000/944] lg:aspect-[1084/579] lg:object-contain w-[800px] lg:w-[1084px]'
                 style={{
                   objectPosition: 'left 51.5% top 0px',
                 }}
               >
-                <source src='/video/hero.mov' type='video/mp4' />
+                <source src='/video/heroNew1080.mp4' type='video/mp4' />
               </video>
             </div>
           </div>
@@ -556,6 +556,8 @@ interface FeatureCardProps {
     timeEnd: number
     comingSoon?: boolean
   }[]
+  videoSource: string
+  videoMarginTop?: string
 }
 
 interface SpinnerProps {
@@ -604,7 +606,7 @@ function Spinner({progress, active}: SpinnerProps) {
   )
 }
 
-function FeatureCard({title, features}: FeatureCardProps) {
+function FeatureCard({title, features, videoSource, videoMarginTop}: FeatureCardProps) {
   const videoRef = React.useRef<HTMLVideoElement>(null)
   const [currentVideoTime, setCurrentVideoTime] = useState(0)
 
@@ -753,19 +755,19 @@ function FeatureCard({title, features}: FeatureCardProps) {
   )
 
   const viz = (
-    <div className='flex sm:overflow-hidden w-full lg:w-[600px] xl:w-[870px]'>
+    <div className={Class('flex sm:overflow-hidden w-full lg:w-[600px] xl:w-[870px]')}>
       <video
         ref={videoRef}
         autoPlay
         muted
         loop
         playsInline
-        className='object-cover aspect-[1000/944] xl:aspect-[1084/579] xl:object-contain -mt-[46px] xl:-ml-[60px] xl:max-w-none  xl:w-[1080px]'
+        className={`object-cover aspect-[1000/944] xl:aspect-[1084/579] xl:object-contain -mt-[${videoMarginTop || '46'}px] xl:-ml-[60px] xl:max-w-none  xl:w-[1080px]`}
         style={{
           objectPosition: 'left 51.5% top 2px',
         }}
       >
-        <source src='/video/features1.mov' type='video/mp4' />
+        <source src={videoSource} type='video/mp4' />
       </video>
     </div>
   )
@@ -820,6 +822,8 @@ function XFeatures1() {
     <FeatureCard
       title='Understand what people want from you, in a blink.'
       features={features}
+      videoSource='/video/feat1.mov'
+      videoMarginTop='35'
       order={'left'}
     />
   )
@@ -853,7 +857,8 @@ function XFeatures2() {
       timeEnd: 6,
     },
   ]
-  return <FeatureCard title='Reply within seconds.' features={features} order={'right'} />
+  return <FeatureCard title='Reply within seconds.' features={features} videoSource='/video/feat2.mov'
+  order={'right'} />
 }
 
 function Features1() {
