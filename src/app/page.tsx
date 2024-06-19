@@ -557,7 +557,7 @@ interface FeatureCardProps {
     comingSoon?: boolean
   }[]
   videoSource: string
-  videoMarginTop?: string
+  videoMarginTop: string
 }
 
 interface SpinnerProps {
@@ -755,14 +755,14 @@ function FeatureCard({title, features, videoSource, videoMarginTop}: FeatureCard
   )
 
   const viz = (
-    <div className={Class('flex sm:overflow-hidden w-full lg:w-[600px] xl:w-[870px]')}>
+    <div className='flex w-full lg:w-[870px] justify-end'>
       <video
         ref={videoRef}
         autoPlay
         muted
         loop
         playsInline
-        className={`object-cover aspect-[1000/944] xl:aspect-[1084/579] xl:object-contain -mt-[${videoMarginTop || '46'}px] xl:-ml-[60px] xl:max-w-none  xl:w-[1080px]`}
+        className={`object-cover aspect-[1195/1080] ${videoMarginTop} xl:-ml-[60px] xl:max-w-none xl:w-[600px]`}
         style={{
           objectPosition: 'left 51.5% top 2px',
         }}
@@ -823,7 +823,7 @@ function XFeatures1() {
       title='Understand what people want from you, in a blink.'
       features={features}
       videoSource='/video/feat2.mov'
-      videoMarginTop='35'
+      videoMarginTop='mt-[20px]'
       order={'left'}
     />
   )
@@ -862,6 +862,7 @@ function XFeatures2() {
       title='Reply within seconds.'
       features={features}
       videoSource='/video/feat1.mov'
+      videoMarginTop='-mt-[20px]'
       order={'right'}
     />
   )
