@@ -42,10 +42,9 @@ const testimonials = [
       {
         body: 'Using @blinkfeed_ai feels like flying through emails. The UI is so well designed, it makes handling emails faster than I ever thought possible.',
         author: {
-          name: 'User',
-          handle: 'user',
-          imageUrl:
-            'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+          name: 'Hanna Starowicz',
+          handle: 'StarowiczHanna',
+          imageUrl: '/photo/hanna-starowicz.jpg',
         },
       },
       {
@@ -61,10 +60,9 @@ const testimonials = [
       {
         body: 'I love how @blinkfeed_ai flags urgent messages for me. I can focus on what’s important and tackle the rest in the evening without distractions.',
         author: {
-          name: 'User',
-          handle: 'user',
-          imageUrl:
-            'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+          name: 'Maciej Pluta',
+          handle: 'maciej.pluta.54',
+          imageUrl: '/photo/maciej-pluta.jpg',
         },
       },
       {
@@ -82,10 +80,9 @@ const testimonials = [
       {
         body: "Writing emails with @blinkfeed_ai is like having a genius assistant. I just type 'Monday?' and it crafts the perfect message. I don’t even have to think about it!",
         author: {
-          name: 'User',
-          handle: 'user',
-          imageUrl:
-            'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+          name: 'Krzysztof Mikołajek',
+          handle: 'krzysztof.mikolajek',
+          imageUrl: '/photo/krzysztof-mikolajek.jpg',
         },
       },
       {
@@ -109,19 +106,17 @@ const testimonials = [
       {
         body: 'I’m really looking forward to the calendar and files integration in @blinkfeed_ai. If it’s anything like the rest of the features, it’s going to be a huge help.',
         author: {
-          name: 'User',
-          handle: 'user',
-          imageUrl:
-            'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+          name: 'Antoni Gebauer',
+          handle: 'AntoniGebauer',
+          imageUrl: '/photo/antoni-gebauer.jpg',
         },
       },
       {
         body: 'Sure, @blinkfeed_ai is a bit pricey, but the time it’s saved me has paid for itself many times over. Totally worth it!',
         author: {
-          name: 'User',
-          handle: 'user',
-          imageUrl:
-            'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+          name: 'Natasha Stechyshyna',
+          handle: 'Natasza_Ste',
+          imageUrl: '/photo/natasha-stechyshyna.jpg',
         },
       },
     ],
