@@ -34,8 +34,8 @@ const testimonials = [
       {
         body: 'I’m blown away by the summaries from @blinkfeed_ai! They’re so detailed and always get the whole thread context right. Nothing else comes close.',
         author: {
-          name: 'Leslie Alexander',
-          handle: 'lesliealexander',
+          name: 'User',
+          handle: 'user',
           imageUrl:
             'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
         },
@@ -43,8 +43,8 @@ const testimonials = [
       {
         body: 'Using @blinkfeed_ai feels like flying through emails. The UI is so well designed, it makes handling emails faster than I ever thought possible.',
         author: {
-          name: 'Leslie Alexander',
-          handle: 'lesliealexander2',
+          name: 'User',
+          handle: 'user',
           imageUrl:
             'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
         },
@@ -52,8 +52,8 @@ const testimonials = [
       {
         body: 'The auto-generated replies from @blinkfeed_ai are amazing. They’re always on point and feel like I wrote them myself, not just random text.',
         author: {
-          name: 'Leslie Alexander',
-          handle: 'lesliealexander3',
+          name: 'User',
+          handle: 'user',
           imageUrl:
             'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
         },
@@ -63,8 +63,8 @@ const testimonials = [
       {
         body: 'I love how @blinkfeed_ai flags urgent messages for me. I can focus on what’s important and tackle the rest in the evening without distractions.',
         author: {
-          name: 'Lindsay Walton',
-          handle: 'lindsaywalton',
+          name: 'User',
+          handle: 'user',
           imageUrl:
             'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
         },
@@ -72,8 +72,8 @@ const testimonials = [
       {
         body: 'The semantic spam filter from @blinkfeed_ai is a lifesaver. It’s so much better than Gmail’s, catching all the junk and letting the important stuff through.',
         author: {
-          name: 'Lindsay Walton',
-          handle: 'lindsaywalton2',
+          name: 'User',
+          handle: 'user',
           imageUrl:
             'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
         },
@@ -85,8 +85,8 @@ const testimonials = [
       {
         body: "Writing emails with @blinkfeed_ai is like having a genius assistant. I just type 'Monday?' and it crafts the perfect message. I don’t even have to think about it!",
         author: {
-          name: 'Tom Cook',
-          handle: 'tomcook',
+          name: 'User',
+          handle: 'user',
           imageUrl:
             'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
         },
@@ -94,8 +94,8 @@ const testimonials = [
       {
         body: 'Got early access to @blinkfeed_ai’s automations and wow, even if it’s a bit glitchy, it’s a total game changer for my workflow.',
         author: {
-          name: 'Tom Cook',
-          handle: 'tomcook2',
+          name: 'User',
+          handle: 'user',
           imageUrl:
             'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
         },
@@ -105,8 +105,8 @@ const testimonials = [
       {
         body: 'As a power user, @blinkfeed_ai’s all-keyboard workflow is a dream. I thought Superhuman was good, but this takes it to another level!',
         author: {
-          name: 'Leonard Krasner',
-          handle: 'leonardkrasner',
+          name: 'User',
+          handle: 'user',
           imageUrl:
             'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
         },
@@ -114,8 +114,8 @@ const testimonials = [
       {
         body: 'I’m really looking forward to the calendar and files integration in @blinkfeed_ai. If it’s anything like the rest of the features, it’s going to be a huge help.',
         author: {
-          name: 'Leonard Krasner',
-          handle: 'leonardkrasner2',
+          name: 'User',
+          handle: 'user',
           imageUrl:
             'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
         },
@@ -123,8 +123,8 @@ const testimonials = [
       {
         body: 'Sure, @blinkfeed_ai is a bit pricey, but the time it’s saved me has paid for itself many times over. Totally worth it!',
         author: {
-          name: 'Leonard Krasner',
-          handle: 'leonardkrasner3',
+          name: 'User',
+          handle: 'user',
           imageUrl:
             'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
         },
