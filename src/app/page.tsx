@@ -434,12 +434,12 @@ function Hero() {
                 muted
                 loop
                 playsInline
-                className='mt-[-2px] object-cover aspect-[1000/944] lg:aspect-[1084/579] lg:object-contain lg:mt-[-46px] w-[800px] lg:w-[1084px]'
+                className='mt-[-2px] object-cover aspect-[1000/944] lg:aspect-[1084/579] lg:object-contain w-[800px] lg:w-[1084px]'
                 style={{
                   objectPosition: 'left 51.5% top 0px',
                 }}
               >
-                <source src='/video/hero.mov' type='video/mp4' />
+                <source src='/video/hero.mp4' type='video/mp4' />
               </video>
             </div>
           </div>
@@ -556,6 +556,8 @@ interface FeatureCardProps {
     timeEnd: number
     comingSoon?: boolean
   }[]
+  videoSource: string
+  videoMarginTop: string
 }
 
 interface SpinnerProps {
@@ -604,7 +606,7 @@ function Spinner({progress, active}: SpinnerProps) {
   )
 }
 
-function FeatureCard({title, features}: FeatureCardProps) {
+function FeatureCard({title, features, videoSource, videoMarginTop}: FeatureCardProps) {
   const videoRef = React.useRef<HTMLVideoElement>(null)
   const [currentVideoTime, setCurrentVideoTime] = useState(0)
 
@@ -615,8 +617,6 @@ function FeatureCard({title, features}: FeatureCardProps) {
   // === Intersection observer ===
 
   React.useEffect(() => {
-    const thresholdIn = 0.5
-    const thresholdOut = 0
     const observer = new IntersectionObserver(
       entries => {
         entries.forEach(entry => {
@@ -648,10 +648,17 @@ function FeatureCard({title, features}: FeatureCardProps) {
 
   // === On frame video progress tracking ===
 
+  const lastRafTime = React.useRef(0)
   const raf = React.useRef<number>()
-  const onFrame = () => {
+  const onFrame = (time: DOMHighResTimeStamp) => {
     if (videoRef.current) {
-      setCurrentVideoTime(videoRef.current.currentTime)
+      const timeDiff = time - lastRafTime.current
+      lastRafTime.current = time
+      if (videoRef.current.ended) {
+        setCurrentVideoTime(t => t + timeDiff / 1000)
+      } else {
+        setCurrentVideoTime(videoRef.current.currentTime)
+      }
     }
     requestAnimationFrame()
   }
@@ -688,13 +695,18 @@ function FeatureCard({title, features}: FeatureCardProps) {
                 }}
               />
             )
+            const isLastFeature = index === features.length - 1
             const featureStartTime = nextFeatureStartTime
             nextFeatureStartTime = feature.timeEnd
             const featureTime = currentVideoTime - featureStartTime
             const duration = feature.timeEnd - featureStartTime
             const progress = Math.min(1, Math.max(0, featureTime / duration))
-
             const active = featureTime >= 0 && featureTime <= duration
+
+            if (progress == 1 && isLastFeature && videoRef.current != null) {
+              videoRef.current.currentTime = 0
+              videoRef.current.play()
+            }
 
             const opacity = active ? 1 : 0.3
             return (
@@ -703,11 +715,12 @@ function FeatureCard({title, features}: FeatureCardProps) {
                 className={'relative transition duration-500 cursor-pointer ' + cls}
                 style={{
                   opacity,
-                  paddingTop: '16px',
-                  paddingBottom: '16px',
+                  paddingTop: '24px',
+                  paddingBottom: '24px',
                   ...style,
                 }}
                 onMouseDown={() => {
+                  console.log(videoRef.current, featureStartTime)
                   if (videoRef.current) videoRef.current.currentTime = featureStartTime
                 }}
               >
@@ -727,16 +740,7 @@ function FeatureCard({title, features}: FeatureCardProps) {
                     }}
                   >
                     <div className='flex items-center gap-4'>
-                      <div
-                        className='font-semibold'
-                        style={
-                          {
-                            // fontSize: '16px',
-                          }
-                        }
-                      >
-                        {feature.name}
-                      </div>
+                      <div className='font-semibold'>{feature.name}</div>
                       <div className='flex grow shrink-0 text-tertiary'>
                         {feature.comingSoon && <ComingSoon />}
                       </div>
@@ -753,20 +757,32 @@ function FeatureCard({title, features}: FeatureCardProps) {
   )
 
   const viz = (
-    <div className='flex sm:overflow-hidden w-full lg:w-[600px] xl:w-[870px]'>
-      <video
-        ref={videoRef}
-        autoPlay
-        muted
-        loop
-        playsInline
-        className='object-cover aspect-[1000/944] xl:aspect-[1084/579] xl:object-contain -mt-[46px] xl:-ml-[60px] xl:max-w-none  xl:w-[1080px]'
-        style={{
-          objectPosition: 'left 51.5% top 2px',
-        }}
-      >
-        <source src='/video/features1.mov' type='video/mp4' />
-      </video>
+    <div
+      className='flex w-full justify-end'
+      style={{
+        paddingRight: '13px',
+      }}
+    >
+      <div className={`relative ${videoMarginTop}`}>
+        <div
+          className='absolute w-full top-0 bg-gradient-to-b from-white from-40%'
+          style={{height: '42px'}}
+        />
+        <div
+          className='absolute h-full left-0 bg-gradient-to-r from-white'
+          style={{width: '42px'}}
+        />
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          playsInline
+          preload={'none'}
+          className={`object-cover aspect-[1452/1313] xl:max-w-none xl:w-[726px]`}
+        >
+          <source src={videoSource} type='video/mp4' />
+        </video>
+      </div>
     </div>
   )
   return (
@@ -777,9 +793,6 @@ function FeatureCard({title, features}: FeatureCardProps) {
             <p className='text-3xl font-bold tracking-tight sm:text-4xl'>{title}</p>
           </div>
           <div className='z-0 hidden xl:flex absolute top-0 left-0 w-full justify-end'>{viz}</div>
-          <div className='z-0 xl:hidden flex justify-center md:justify-end overflow-hidden grow lg:self-center'>
-            {viz}
-          </div>
           <div className='z-10 flex relative text-base shrink md:max-w-2xl lg:max-w-xl px-6 sm:px-0 xl:w-[42%]'>
             {description}
           </div>
@@ -797,7 +810,7 @@ function XFeatures1() {
         'Blinkfeed analyzes entire email threads, not just the latest messages, to deliver concise summaries that capture all essential information, ensuring you never miss a detail.',
       icon: CloudArrowUpIcon,
       img: '/icon/ai-summary.svg',
-      timeEnd: 2,
+      timeEnd: 13,
     },
     {
       name: 'Urgent messages discovery',
@@ -805,7 +818,7 @@ function XFeatures1() {
         'Blinkfeed notifies you about urgent messages, so you can respond fast where it matters most.',
       icon: CloudArrowUpIcon,
       img: '/icon/important-mails-first.svg',
-      timeEnd: 4,
+      timeEnd: 20,
     },
     {
       name: 'Semantic spam filter',
@@ -813,13 +826,15 @@ function XFeatures1() {
         'Blinkfeed hides not just spam caught by your email provider, but also non-spam messages that are not important.',
       icon: ArrowPathIcon,
       img: '/icon/ai-security.svg',
-      timeEnd: 6,
+      timeEnd: 26,
     },
   ]
   return (
     <FeatureCard
       title='Understand what people want from you, in a blink.'
       features={features}
+      videoSource='/video/features1.mp4'
+      videoMarginTop='-mt-[24px]'
       order={'left'}
     />
   )
@@ -833,7 +848,7 @@ function XFeatures2() {
         'Each email summary comes with a highly-tailored responses that you can review, edit, or simply send with one click.',
       icon: CloudArrowUpIcon,
       img: '/icon/select-response.svg',
-      timeEnd: 2,
+      timeEnd: 23.5,
     },
     {
       name: 'Write entire emails with just a few words',
@@ -841,7 +856,7 @@ function XFeatures2() {
         'Type your thoughts and Blinkfeed will craft a polished email mirroring your voice and tone that you can review, edit, or simply send with one click.',
       icon: CloudArrowUpIcon,
       img: '/icon/ai-write.svg',
-      timeEnd: 4,
+      timeEnd: 38,
     },
     {
       name: 'Calendar and files, analyzed',
@@ -850,10 +865,18 @@ function XFeatures2() {
       icon: ArrowPathIcon,
       img: '/icon/data-catalog.svg',
       comingSoon: true,
-      timeEnd: 6,
+      timeEnd: 50,
     },
   ]
-  return <FeatureCard title='Reply within seconds.' features={features} order={'right'} />
+  return (
+    <FeatureCard
+      title='Reply at the speed of thought.'
+      features={features}
+      videoSource='/video/features2.mp4'
+      videoMarginTop='-mt-[24px]'
+      order={'right'}
+    />
+  )
 }
 
 function Features1() {
