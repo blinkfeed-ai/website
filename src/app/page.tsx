@@ -826,7 +826,7 @@ function XFeatures1() {
         'Blinkfeed hides not just spam caught by your email provider, but also non-spam messages that are not important.',
       icon: ArrowPathIcon,
       img: '/icon/ai-security.svg',
-      timeEnd: 26,
+      timeEnd: 30,
     },
   ]
   return (
