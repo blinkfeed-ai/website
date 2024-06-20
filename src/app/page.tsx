@@ -788,7 +788,7 @@ function FeatureCard({title, features, videoSource, videoMarginTop}: FeatureCard
     <Section>
       <Container wide={true} className='sm:px-6 md:px-12 lg:px-24'>
         <div ref={rootRef} className='flex flex-col lg:block'>
-          <div className='z-10 flex relative text-base shrink px-6 sm:px-0 pb-12 md:pb-16 lg:w-[42%]'>
+          <div className='z-10 flex relative text-base shrink px-6 sm:px-0 pb-12 md:pb-16 lg:w-[42%] lg:pb-0'>
             <p className='text-3xl font-bold tracking-tight sm:text-4xl'>{title}</p>
           </div>
           <div className='z-0 lg:absolute top-0 left-0 w-full justify-end'>{viz}</div>
