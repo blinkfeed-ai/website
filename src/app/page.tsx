@@ -747,18 +747,15 @@ function FeatureCard({title, features, videoSource, videoMarginTop}: FeatureCard
 
   const viz = (
     <div
-      className='flex w-full justify-end'
-      style={{
-        paddingRight: '13px',
-      }}
+      className='flex w-full justify-end xl:pr-[13px] lg:pr-[33px] -ml-[10vw] sm:ml-[97px] lg:ml-0'
     >
-      <div className={`relative ${videoMarginTop}`}>
+      <div className={`relative ${videoMarginTop} lg:mt-[100px] xl:mt-0`}>
         <div
           className='absolute w-full top-0 bg-gradient-to-b from-white from-40%'
           style={{height: '42px'}}
         />
         <div
-          className='absolute h-full left-0 bg-gradient-to-r from-white'
+          className='hidden lg:block absolute h-full left-0 bg-gradient-to-r from-white'
           style={{width: '42px'}}
         />
         <video
@@ -767,7 +764,7 @@ function FeatureCard({title, features, videoSource, videoMarginTop}: FeatureCard
           muted
           playsInline
           preload={'none'}
-          className={`object-cover aspect-[1452/1313] lg:mt-[200px] xl:mt-0 lg:max-w-none lg:w-[600px] xl:max-w-none xl:w-[726px]`}
+          className={`object-cover aspect-[1452/1313] max-w-none w-[120%] sm:w-[820px] lg:w-[560px] xl:w-[726px]`}
         >
           <source src={videoSource} type='video/mp4' />
         </video>
