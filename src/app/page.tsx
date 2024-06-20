@@ -34,10 +34,9 @@ const testimonials = [
       {
         body: 'I’m blown away by the summaries from @blinkfeed_ai! They’re so detailed and always get the whole thread context right. Nothing else comes close.',
         author: {
-          name: 'User',
-          handle: 'user',
-          imageUrl:
-            'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+          name: 'Mateusz Tokarz',
+          handle: 'athalante777',
+          imageUrl: '/photo/mateusz-tokarz.jpg',
         },
       },
       {
@@ -50,12 +49,11 @@ const testimonials = [
         },
       },
       {
-        body: 'The auto-generated replies from @blinkfeed_ai are amazing. They’re always on point and feel like I wrote them myself, not just random text.',
+        body: 'The auto-generated replies from @blinkfeed_ai are v v good. On point and like I wrote them myself, not just random text.',
         author: {
-          name: 'User',
-          handle: 'user',
-          imageUrl:
-            'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+          name: 'Matt Bujalski',
+          handle: 'matbujalski',
+          imageUrl: '/photo/matt-bujalski.jpg',
         },
       },
     ],
@@ -72,10 +70,9 @@ const testimonials = [
       {
         body: 'The semantic spam filter from @blinkfeed_ai is a lifesaver. It’s so much better than Gmail’s, catching all the junk and letting the important stuff through.',
         author: {
-          name: 'User',
-          handle: 'user',
-          imageUrl:
-            'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+          name: 'Artur Szymanski',
+          handle: 'arturszymanski',
+          imageUrl: '/photo/artur-szymanski.jpg',
         },
       },
     ],
@@ -94,10 +91,9 @@ const testimonials = [
       {
         body: 'Got early access to @blinkfeed_ai’s automations and wow, even if it’s a bit glitchy, it’s a total game changer for my workflow.',
         author: {
-          name: 'User',
-          handle: 'user',
-          imageUrl:
-            'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+          name: 'Chris Kobylecki',
+          handle: 'C_moose',
+          imageUrl: '/photo/chris-kobylecki.jpg',
         },
       },
     ],
@@ -105,10 +101,9 @@ const testimonials = [
       {
         body: 'As a power user, @blinkfeed_ai’s all-keyboard workflow is a dream. I thought Superhuman was good, but this takes it to another level!',
         author: {
-          name: 'User',
-          handle: 'user',
-          imageUrl:
-            'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+          name: 'Greg Szczepanczyk',
+          handle: 'stefek8',
+          imageUrl: '/photo/grzegorz-szczepanczyk.jpg',
         },
       },
       {
