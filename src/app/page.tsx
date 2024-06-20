@@ -678,7 +678,6 @@ function FeatureCard({title, features, videoSource, videoMarginTop}: FeatureCard
   const description = (
     <div>
       <div className=''>
-        <p className='hidden lg:flex text-4xl font-bold tracking-tight'>{title}</p>
         <div className='mt-10 flex flex-col leading-7'>
           {features.map((feature, index) => {
             const style = {} // isSelected ? {boxShadow: '0px 0px 0px 2px var(--color-accent)'} : {}
@@ -778,7 +777,7 @@ function FeatureCard({title, features, videoSource, videoMarginTop}: FeatureCard
           muted
           playsInline
           preload={'none'}
-          className={`object-cover aspect-[1452/1313] xl:max-w-none xl:w-[726px]`}
+          className={`object-cover aspect-[1452/1313] lg:mt-[200px] xl:mt-0 lg:max-w-none lg:w-[600px] xl:max-w-none xl:w-[726px]`}
         >
           <source src={videoSource} type='video/mp4' />
         </video>
@@ -788,12 +787,12 @@ function FeatureCard({title, features, videoSource, videoMarginTop}: FeatureCard
   return (
     <Section>
       <Container wide={true} className='sm:px-6 md:px-12 lg:px-24'>
-        <div ref={rootRef} className='flex flex-col lg:flex-row-reverse xl:block'>
-          <div className='z-10 flex lg:hidden flex relative text-base shrink px-6 sm:px-0 pb-12 md:pb-16'>
+        <div ref={rootRef} className='flex flex-col lg:block'>
+          <div className='z-10 flex relative text-base shrink px-6 sm:px-0 pb-12 md:pb-16 lg:w-[42%]'>
             <p className='text-3xl font-bold tracking-tight sm:text-4xl'>{title}</p>
           </div>
-          <div className='z-0 hidden xl:flex absolute top-0 left-0 w-full justify-end'>{viz}</div>
-          <div className='z-10 flex relative text-base shrink md:max-w-2xl lg:max-w-xl px-6 sm:px-0 xl:w-[42%]'>
+          <div className='z-0 lg:absolute top-0 left-0 w-full justify-end'>{viz}</div>
+          <div className='z-10 -mt-[60px] lg:mt-0 flex relative text-base shrink md:max-w-2xl lg:max-w-xl px-6 sm:px-0 lg:w-[42%]'>
             {description}
           </div>
         </div>
