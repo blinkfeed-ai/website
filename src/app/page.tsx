@@ -1473,6 +1473,27 @@ function Example() {
 }
 
 export default function Home() {
+  React.useEffect(() => {
+    const script1 = document.createElement('script')
+    script1.src = 'https://www.googletagmanager.com/gtag/js?id=G-1D6PG4T5MH'
+    script1.async = true
+    document.head.appendChild(script1)
+
+    const script2 = document.createElement('script')
+    script2.innerHTML = `
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-1D6PG4T5MH');
+    `
+    document.head.appendChild(script2)
+
+    return () => {
+      document.head.removeChild(script1)
+      document.head.removeChild(script2)
+    }
+  }, [])
+
   return (
     <main className='relative flex min-h-screen flex-col items-center justify-between bg-page'>
       <Tooltip id='tooltip' className='tooltip' classNameArrow='arrow' style={{fontSize: '12px'}} />
