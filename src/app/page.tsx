@@ -69,7 +69,7 @@ const testimonials = [
         body: 'The semantic spam filter from @blinkfeed_ai is a lifesaver. It’s so much better than Gmail’s, catching all the junk and letting the important stuff through.',
         author: {
           name: 'Artur Szymanski',
-          handle: 'arturszymanski',
+          handle: 'arturszymanskiartgraph',
           imageUrl: '/photo/artur-szymanski.jpg',
         },
       },
@@ -746,9 +746,7 @@ function FeatureCard({title, features, videoSource, videoMarginTop}: FeatureCard
   )
 
   const viz = (
-    <div
-      className='flex w-full justify-end xl:pr-[13px] lg:pr-[33px] -ml-[10vw] sm:ml-[97px] lg:ml-0'
-    >
+    <div className='flex w-full justify-end xl:pr-[13px] lg:pr-[33px] -ml-[10vw] sm:ml-[97px] lg:ml-0'>
       <div className={`relative ${videoMarginTop} lg:mt-[100px] xl:mt-0`}>
         <div
           className='absolute w-full top-0 bg-gradient-to-b from-white from-40%'
