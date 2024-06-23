@@ -9,7 +9,7 @@ import React from 'react'
 const items = [
   {name: 'Blinkfeed', href: '#'},
   {name: 'Pricing', href: '#pricing'},
-  {name: 'Community', href: 'https://discord.gg/NmqDddBV', target: '_blank'},
+  // {name: 'Community', href: 'https://discord.gg/NmqDddBV', target: '_blank'},
   {name: 'Feature Request', href: 'https://blinkfeed.featurebase.app', target: '_blank'},
 ]
 

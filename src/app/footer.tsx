@@ -3,7 +3,7 @@ import * as React from 'react'
 const navigation = {
   main: [
     {name: 'Pricing', href: '#pricing'},
-    {name: 'Community', href: 'https://discord.gg/NmqDddBV'},
+    // {name: 'Community', href: 'https://discord.gg/NmqDddBV'},
     {name: 'Feature Request', href: 'https://blinkfeed.featurebase.app/'},
     {name: 'Privacy', href: 'privacy'},
   ],
