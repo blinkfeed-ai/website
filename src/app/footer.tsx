@@ -6,6 +6,7 @@ const navigation = {
     // {name: 'Community', href: 'https://discord.gg/NmqDddBV'},
     {name: 'Feature Request', href: 'https://blinkfeed.featurebase.app/'},
     {name: 'Privacy', href: 'privacy'},
+    {name: 'Terms and Conditions', href: 'terms-and-conditions'},
     {name: 'Contact', href: 'mailto:maciej@blinkfeed.ai'},
   ],
   social: [
