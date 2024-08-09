@@ -39,6 +39,11 @@
     list-style: auto;
     padding-left: 32px;
   }
+  
+  ol {
+    list-style: auto;
+    padding-left: 32px;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
