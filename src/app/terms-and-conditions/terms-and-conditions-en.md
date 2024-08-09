@@ -14,7 +14,7 @@ For the purposes of the Agreement, the following concepts and terms will have th
 
 - **License**: permission granted by the Licensor to the Licensee authorizing the use of the Software under the terms specified in this Agreement.
 
-- **Licensor**: alternatively "Blinkfeed" represented by a natural person, Wojciech Daniło, residing at Cystersów 20E/8 street.
+- **Licensor**: alternatively "Blinkfeed" represented by a natural person, Wojciech Daniło, residing at ... and Maciej Mikołajek, residing at ....
 
 - **Licensee**: the party entering into this Agreement with the Licensor, who purchases the License for the Software.
 
