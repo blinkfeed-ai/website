@@ -242,7 +242,10 @@ const tiers = [
     price: {monthly: '$0', annually: '$0'},
     timeSpan: '/forever',
     description: 'Implement a plugin, free or paid. Enjoy Blinkfeed for free.',
-    features: [{available: true, label: 'Analyze up to 1000 email threads / month'}],
+    features: [
+      {available: true, label: 'Analyze up to 1000 email threads / month'},
+      // {available: true, label: 'File analysis with Data Catalog (additional per-document fee)'},
+    ],
     featuresComingSoon: [
       {available: true, label: 'Integrations (calendar, etc.)'},
       {available: true, label: 'Automations'},
@@ -257,7 +260,10 @@ const tiers = [
     price: {monthly: '$30', annually: '$25'},
     timeSpan: '/month',
     description: 'For individuals who manage a moderate volume of emails.',
-    features: [{available: true, label: 'Analyze up to 1000 email threads / month'}],
+    features: [
+      {available: true, label: 'Analyze up to 1000 email threads / month'},
+      // {available: true, label: 'File analysis with Data Catalog (additional per-document fee)'},
+    ],
     featuresComingSoon: [
       {available: true, label: 'Integrations (calendar, etc.)'},
       {available: false, label: 'Automations'},
@@ -269,10 +275,13 @@ const tiers = [
     name: 'For power communicators',
     id: 'tier-power-communicators',
     href: '#',
-    price: {monthly: '$50', annually: '$40'},
+    price: {monthly: '$40', annually: '$33'},
     timeSpan: '/month',
     description: 'For professionals handling high-volume correspondence.',
-    features: [{available: true, label: 'Analyze up to 3000 email threads / month'}],
+    features: [
+      {available: true, label: 'Analyze up to 3000 email threads / month'},
+      // {available: true, label: 'File analysis with Data Catalog (additional per-document fee)'},
+    ],
     featuresComingSoon: [
       {available: true, label: 'Integrations (calendar, etc.)'},
       {available: true, label: 'Automations'},
