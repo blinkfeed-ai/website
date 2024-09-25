@@ -235,35 +235,16 @@ const featuresPowerUsers = [
 ]
 
 const tiers = [
-  // {
-  //   name: 'For developers',
-  //   id: 'tier-developers',
-  //   href: '#',
-  //   price: {monthly: '$0', annually: '$0'},
-  //   timeSpan: '/forever',
-  //   description: 'Implement a plugin, free or paid. Enjoy Blinkfeed for free.',
-  //   features: [
-  //     {available: true, label: 'Analyze up to 1000 email threads / month'},
-  //     // {available: true, label: 'File analysis with Data Catalog (additional per-document fee)'},
-  //   ],
-  //   featuresComingSoon: [
-  //     {available: true, label: 'Integrations (calendar, etc.)'},
-  //     {available: true, label: 'Automations'},
-  //   ],
-  //   mostPopular: true,
-  //   featured: false,
-  //   submitIdeaBtn: true,
-  // },
   {
     name: 'Light',
     id: 'tier-starter',
     href: '#',
     price: {monthly: '$10', annually: '$8'},
     timeSpan: '/month',
-    description: 'For casual users seeking essential inbox management.',
+    description: 'For casual users seeking affordable inbox management.',
     features: [
       {available: true, label: 'Analyze up to 350 email threads / month'},
-      // {available: true, label: 'File analysis with Data Catalog (additional per-document fee)'},
+      {available: false, label: 'File analysis with Data Catalog'},
     ],
     featuresComingSoon: [
       {available: false, label: 'Integrations (calendar, etc.)'},
@@ -282,7 +263,7 @@ const tiers = [
     description: 'For individuals who manage a moderate volume of emails.',
     features: [
       {available: true, label: 'Analyze up to 1000 email threads / month'},
-      // {available: true, label: 'File analysis with Data Catalog (additional per-document fee)'},
+      {available: true, label: 'File analysis with Data Catalog (additional fee)'},
     ],
     featuresComingSoon: [
       {available: true, label: 'Integrations (calendar, etc.)'},
@@ -301,7 +282,7 @@ const tiers = [
     description: 'For professionals handling high-volume correspondence.',
     features: [
       {available: true, label: 'Analyze up to 3000 email threads / month'},
-      // {available: true, label: 'File analysis with Data Catalog (additional per-document fee)'},
+      {available: true, label: 'File analysis with Data Catalog (additional fee)'},
     ],
     featuresComingSoon: [
       {available: true, label: 'Integrations (calendar, etc.)'},
@@ -1270,7 +1251,7 @@ function Pricing() {
                         {tier.description}
                       </p>
                     </div>
-                    <div className='pt-6 lg:pt-0'>
+                    <div className='pt-6 lg:pt-4'>
                       <ul
                         role='list'
                         className={classNames(
