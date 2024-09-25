@@ -244,7 +244,7 @@ const tiers = [
     description: 'For casual users seeking affordable inbox management.',
     features: [
       {available: true, label: 'Analyze up to 350 email threads / month'},
-      {available: false, label: 'File analysis with Data Catalog'},
+      {available: false, label: 'File analysis with Data Catalog *'},
     ],
     featuresComingSoon: [
       {available: false, label: 'Integrations (calendar, etc.)'},
@@ -263,7 +263,7 @@ const tiers = [
     description: 'For individuals who manage a moderate volume of emails.',
     features: [
       {available: true, label: 'Analyze up to 1000 email threads / month'},
-      {available: true, label: 'File analysis with Data Catalog*'},
+      {available: true, label: 'File analysis with Data Catalog *'},
     ],
     featuresComingSoon: [
       {available: true, label: 'Integrations (calendar, etc.)'},
@@ -282,7 +282,7 @@ const tiers = [
     description: 'For professionals handling high-volume correspondence.',
     features: [
       {available: true, label: 'Analyze up to 3000 email threads / month'},
-      {available: true, label: 'File analysis with Data Catalog*'},
+      {available: true, label: 'File analysis with Data Catalog *'},
     ],
     featuresComingSoon: [
       {available: true, label: 'Integrations (calendar, etc.)'},
