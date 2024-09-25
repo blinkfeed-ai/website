@@ -263,7 +263,7 @@ const tiers = [
     description: 'For individuals who manage a moderate volume of emails.',
     features: [
       {available: true, label: 'Analyze up to 1000 email threads / month'},
-      {available: true, label: 'File analysis with Data Catalog (additional fee)'},
+      {available: true, label: 'File analysis with Data Catalog*'},
     ],
     featuresComingSoon: [
       {available: true, label: 'Integrations (calendar, etc.)'},
@@ -282,7 +282,7 @@ const tiers = [
     description: 'For professionals handling high-volume correspondence.',
     features: [
       {available: true, label: 'Analyze up to 3000 email threads / month'},
-      {available: true, label: 'File analysis with Data Catalog (additional fee)'},
+      {available: true, label: 'File analysis with Data Catalog*'},
     ],
     featuresComingSoon: [
       {available: true, label: 'Integrations (calendar, etc.)'},
@@ -1187,7 +1187,7 @@ function Pricing() {
               ))}
             </RadioGroup>
           </div>
-          <div className='mx-auto grid max-w-lg grid-cols-1 items-center gap-y-0 lg:max-w-4xl lg:grid-cols-3 mb-44'>
+          <div className='mx-auto grid max-w-lg grid-cols-1 items-center gap-y-0 lg:max-w-4xl lg:grid-cols-3'>
             {tiers.map((tier, tierIdx) => {
               return (
                 <div
@@ -1339,6 +1339,9 @@ function Pricing() {
                 </div>
               )
             })}
+          </div>
+          <div className='mx-auto mt-8 lg:mt-16 text-center text-sm text-secondary-inv mb-44'>
+            * Additional per-document fees may apply.
           </div>
         </div>
       </Container>
