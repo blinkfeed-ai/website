@@ -1251,7 +1251,7 @@ function Pricing() {
                         {tier.description}
                       </p>
                     </div>
-                    <div className='pt-6 lg:pt-4'>
+                    <div className='pt-6 lg:pt-0'>
                       <ul
                         role='list'
                         className={classNames(

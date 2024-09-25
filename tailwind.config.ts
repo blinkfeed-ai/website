@@ -30,8 +30,8 @@ const config: Config = {
         featured: '25px 0',
       },
       height: {
-        tier: '600px',
-        featured: '650px',
+        tier: '630px',
+        featured: '680px',
       },
       colors: {
         page: 'white',
