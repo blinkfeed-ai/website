@@ -235,26 +235,46 @@ const featuresPowerUsers = [
 ]
 
 const tiers = [
+  // {
+  //   name: 'For developers',
+  //   id: 'tier-developers',
+  //   href: '#',
+  //   price: {monthly: '$0', annually: '$0'},
+  //   timeSpan: '/forever',
+  //   description: 'Implement a plugin, free or paid. Enjoy Blinkfeed for free.',
+  //   features: [
+  //     {available: true, label: 'Analyze up to 1000 email threads / month'},
+  //     // {available: true, label: 'File analysis with Data Catalog (additional per-document fee)'},
+  //   ],
+  //   featuresComingSoon: [
+  //     {available: true, label: 'Integrations (calendar, etc.)'},
+  //     {available: true, label: 'Automations'},
+  //   ],
+  //   mostPopular: true,
+  //   featured: false,
+  //   submitIdeaBtn: true,
+  // },
   {
-    name: 'For developers',
-    id: 'tier-developers',
+    name: 'Light',
+    id: 'tier-starter',
     href: '#',
-    price: {monthly: '$0', annually: '$0'},
-    timeSpan: '/forever',
-    description: 'Implement a plugin, free or paid. Enjoy Blinkfeed for free.',
+    price: {monthly: '$10', annually: '$8'},
+    timeSpan: '/month',
+    description: 'For casual users seeking essential inbox management.',
     features: [
-      {available: true, label: 'Analyze up to 1000 email threads / month'},
+      {available: true, label: 'Analyze up to 350 email threads / month'},
       // {available: true, label: 'File analysis with Data Catalog (additional per-document fee)'},
     ],
     featuresComingSoon: [
-      {available: true, label: 'Integrations (calendar, etc.)'},
-      {available: true, label: 'Automations'},
+      {available: false, label: 'Integrations (calendar, etc.)'},
+      {available: false, label: 'Automations'},
     ],
-    mostPopular: true,
+    mostPopular: false,
     featured: false,
+    submitIdeaBtn: false,
   },
   {
-    name: 'For everyone',
+    name: 'Pro',
     id: 'tier-everyone',
     href: '#',
     price: {monthly: '$30', annually: '$25'},
@@ -270,9 +290,10 @@ const tiers = [
     ],
     mostPopular: true,
     featured: false,
+    submitIdeaBtn: false,
   },
   {
-    name: 'For power communicators',
+    name: 'Ultra',
     id: 'tier-power-communicators',
     href: '#',
     price: {monthly: '$40', annually: '$33'},
@@ -288,6 +309,7 @@ const tiers = [
     ],
     mostPopular: false,
     featured: true,
+    submitIdeaBtn: false,
   },
 ]
 
@@ -1173,9 +1195,8 @@ function Pricing() {
                 <RadioGroup.Option
                   key={option.value}
                   value={option}
-                  className={({checked}) =>
-                    classNames(
-                      checked ? 'bg-primary text-white' : 'text-secondary',
+                  className={classNames(
+                      option.value == frequency.value ? 'bg-primary text-white' : 'text-secondary',
                       'cursor-pointer rounded-full px-2.5 py-1',
                     )
                   }
@@ -1324,7 +1345,7 @@ function Pricing() {
                         ))}
                       </ul>
                       <div className='mt-8 sm:mt-10'>
-                        {tierIdx === 0 ? (
+                        {tier.submitIdeaBtn ? (
                           <Button.SubmitPluginIdea display='outlined' style={{marginTop: '72px'}} />
                         ) : (
                           <Button.SignUpWithDiscount
