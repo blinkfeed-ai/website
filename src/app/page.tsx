@@ -236,25 +236,26 @@ const featuresPowerUsers = [
 
 const tiers = [
   {
-    name: 'For developers',
-    id: 'tier-developers',
+    name: 'Light',
+    id: 'tier-starter',
     href: '#',
-    price: {monthly: '$0', annually: '$0'},
-    timeSpan: '/forever',
-    description: 'Implement a plugin, free or paid. Enjoy Blinkfeed for free.',
+    price: {monthly: '$10', annually: '$8'},
+    timeSpan: '/month',
+    description: 'For casual users seeking affordable inbox management.',
     features: [
-      {available: true, label: 'Analyze up to 1000 email threads / month'},
-      // {available: true, label: 'File analysis with Data Catalog (additional per-document fee)'},
+      {available: true, label: 'Analyze up to 350 email threads / month'},
+      {available: false, label: 'File analysis with Data Catalog *'},
     ],
     featuresComingSoon: [
-      {available: true, label: 'Integrations (calendar, etc.)'},
-      {available: true, label: 'Automations'},
+      {available: false, label: 'Integrations (calendar, etc.)'},
+      {available: false, label: 'Automations'},
     ],
-    mostPopular: true,
+    mostPopular: false,
     featured: false,
+    submitIdeaBtn: false,
   },
   {
-    name: 'For everyone',
+    name: 'Pro',
     id: 'tier-everyone',
     href: '#',
     price: {monthly: '$30', annually: '$25'},
@@ -262,7 +263,7 @@ const tiers = [
     description: 'For individuals who manage a moderate volume of emails.',
     features: [
       {available: true, label: 'Analyze up to 1000 email threads / month'},
-      // {available: true, label: 'File analysis with Data Catalog (additional per-document fee)'},
+      {available: true, label: 'File analysis with Data Catalog *'},
     ],
     featuresComingSoon: [
       {available: true, label: 'Integrations (calendar, etc.)'},
@@ -270,9 +271,10 @@ const tiers = [
     ],
     mostPopular: true,
     featured: false,
+    submitIdeaBtn: false,
   },
   {
-    name: 'For power communicators',
+    name: 'Ultra',
     id: 'tier-power-communicators',
     href: '#',
     price: {monthly: '$40', annually: '$33'},
@@ -280,7 +282,7 @@ const tiers = [
     description: 'For professionals handling high-volume correspondence.',
     features: [
       {available: true, label: 'Analyze up to 3000 email threads / month'},
-      // {available: true, label: 'File analysis with Data Catalog (additional per-document fee)'},
+      {available: true, label: 'File analysis with Data Catalog *'},
     ],
     featuresComingSoon: [
       {available: true, label: 'Integrations (calendar, etc.)'},
@@ -288,6 +290,7 @@ const tiers = [
     ],
     mostPopular: false,
     featured: true,
+    submitIdeaBtn: false,
   },
 ]
 
@@ -298,7 +301,7 @@ const faqs = [
       <p>
         Currently, Blinkfeed supports Gmail. We are actively working on integrating Outlook and plan
         to support additional providers soon. Please visit our{' '}
-        <a href='https://google.com'>Feature Request</a> page to vote for the next integration you
+        <a href='https://blinkfeed.featurebase.app'>Feature Request</a> page to vote for the next integration you
         need.
       </p>
     ),
@@ -1173,9 +1176,8 @@ function Pricing() {
                 <RadioGroup.Option
                   key={option.value}
                   value={option}
-                  className={({checked}) =>
-                    classNames(
-                      checked ? 'bg-primary text-white' : 'text-secondary',
+                  className={classNames(
+                      option.value == frequency.value ? 'bg-primary text-white' : 'text-secondary',
                       'cursor-pointer rounded-full px-2.5 py-1',
                     )
                   }
@@ -1185,7 +1187,7 @@ function Pricing() {
               ))}
             </RadioGroup>
           </div>
-          <div className='mx-auto grid max-w-lg grid-cols-1 items-center gap-y-0 lg:max-w-4xl lg:grid-cols-3 mb-44'>
+          <div className='mx-auto grid max-w-lg grid-cols-1 items-center gap-y-0 lg:max-w-4xl lg:grid-cols-3'>
             {tiers.map((tier, tierIdx) => {
               return (
                 <div
@@ -1249,7 +1251,7 @@ function Pricing() {
                         {tier.description}
                       </p>
                     </div>
-                    <div className='pt-6 lg:pt-0'>
+                    <div className='pt-6 lg:pt-4'>
                       <ul
                         role='list'
                         className={classNames(
@@ -1324,7 +1326,7 @@ function Pricing() {
                         ))}
                       </ul>
                       <div className='mt-8 sm:mt-10'>
-                        {tierIdx === 0 ? (
+                        {tier.submitIdeaBtn ? (
                           <Button.SubmitPluginIdea display='outlined' style={{marginTop: '72px'}} />
                         ) : (
                           <Button.SignUpWithDiscount
@@ -1337,6 +1339,9 @@ function Pricing() {
                 </div>
               )
             })}
+          </div>
+          <div className='mx-auto mt-8 lg:mt-16 text-center text-sm text-secondary-inv mb-44'>
+            * Additional per-document fees may apply.
           </div>
         </div>
       </Container>
