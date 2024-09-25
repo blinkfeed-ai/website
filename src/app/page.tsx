@@ -301,7 +301,7 @@ const faqs = [
       <p>
         Currently, Blinkfeed supports Gmail. We are actively working on integrating Outlook and plan
         to support additional providers soon. Please visit our{' '}
-        <a href='https://google.com'>Feature Request</a> page to vote for the next integration you
+        <a href='https://blinkfeed.featurebase.app'>Feature Request</a> page to vote for the next integration you
         need.
       </p>
     ),
