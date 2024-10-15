@@ -1349,6 +1349,97 @@ function Pricing() {
   )
 }
 
+const HighlightedText = ({ children, type }: { children: React.ReactNode, type: 'added' | 'removed' }) => {
+  const baseStyle = "px-1 rounded font-medium";
+  const colorStyle = type === 'removed' ? "bg-red-100 text-red-800" : "bg-green-100 text-green-800";
+  return <span className={`${baseStyle} ${colorStyle}`}>{children}</span>;
+};
+
+const EmailComparison = () => (
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12">
+    <div className="bg-gray-50 p-6 rounded-2xl">
+      <h3 className="text-lg font-semibold mb-4 text-gray-900">Original Email</h3>
+      <p className="text-gray-700 leading-relaxed">
+        Hello,<br/>
+        Your one-time code is <HighlightedText type="removed">123456</HighlightedText>.<br/>
+        Please call us at <HighlightedText type="removed">+1 (555) 123-4567</HighlightedText> if you have any questions.<br/>
+        Your account balance is <HighlightedText type="removed">$1,000.</HighlightedText><br/>
+      </p>
+    </div>
+    <div className="bg-gray-50 p-6 rounded-2xl">
+      <h3 className="text-lg font-semibold mb-4 text-gray-900">Sanitized Email</h3>
+      <p className="text-gray-700 leading-relaxed">
+        Hello,<br/>
+        Your one-time code is <HighlightedText type="added">[1]</HighlightedText>.<br/>
+        Please call us at <HighlightedText type="added">[2]</HighlightedText> if you have any questions.<br/>
+        Your account balance is <HighlightedText type="added">[3]</HighlightedText>.<br/>
+      </p>
+    </div>
+  </div>
+);
+
+function Privacy() {
+  return (
+    <Section>
+      <Container>
+        <div className='py-16 lg:py-24'>
+          <div className='mx-auto max-w-2xl text-center'>
+            <h2 className='text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl'>
+              Privacy is at our foundation
+            </h2>
+            <p className='mt-6 text-lg leading-8 text-gray-600'>
+              At Blinkfeed, we've built privacy into every aspect of our product. Your data security is not just a feature—it's our core principle.
+            </p>
+          </div>
+          
+          <div className='mx-auto max-w-2xl mt-16'>
+            <h3 className="text-2xl font-semibold text-gray-900 mb-6">How We Safeguard Your Information</h3>
+            <ul className="space-y-4 text-gray-600">
+              <li className="flex items-start gap-2">
+                <svg className="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span>All data is preprocessed and stored locally on your device.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <svg className="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Sensitive information is replaced with anonymous hashed values before passing to AI.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <svg className="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Only essential, anonymized data is shared with our AI service for processing.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <svg className="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span>We don't store your mails on our servers.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div className='mx-auto max-w-3xl mt-16'>
+            <h3 className="text-2xl font-semibold text-gray-900 mb-6 text-center">Email Sanitization in Action</h3>
+            <EmailComparison />
+          </div>
+
+          <div className='mx-auto max-w-2xl mt-16 text-center'>
+            <h3 className="text-2xl font-semibold text-gray-900 mb-4">Enterprise-Grade Security</h3>
+            <p className="text-gray-600 leading-8">
+              For our Enterprise customers, we offer an enhanced privacy solution with on-premises AI processing. 
+              This ensures that your sensitive data never leaves your secure environment. Focus on what matters most, and let Blinkfeed take care of the rest.
+            </p>
+          </div>
+        </div>
+      </Container>
+    </Section>
+  );
+}
+
 function Testimontials() {
   const backgroundColor = 'rgba(0,10,0,0.02)'
   return (
@@ -1474,6 +1565,7 @@ function Example() {
         <About />
         <XFeatures1 />
         <XFeatures2 />
+        <Privacy />
         <Automations />
         <FeaturesForPowerUsers />
         <Pricing />
