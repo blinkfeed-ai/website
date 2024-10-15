@@ -1388,7 +1388,7 @@ function Privacy() {
               Privacy is at our foundation
             </h2>
             <p className='mt-6 text-lg leading-8 text-gray-600'>
-              At Blinkfeed, we've built privacy into every aspect of our product. Your data security is not just a feature—it's our core principle.
+              At Blinkfeed, we&apos;ve built privacy into every aspect of our product. Your data security is not just a feature—it&apos;s our core principle.
             </p>
           </div>
           
@@ -1417,7 +1417,7 @@ function Privacy() {
                 <svg className="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
-                <span>We don't store your mails on our servers.</span>
+                <span>We don&apos;t store your mails on our servers.</span>
               </li>
             </ul>
           </div>
