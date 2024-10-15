@@ -199,6 +199,42 @@ const featuresAutomations = [
   },
 ]
 
+const featuresDataHub = [
+  {
+    name: 'Natural Language Queries',
+    description: 'Ask questions about your documents in plain language and get instant, accurate answers.',
+    img: '/icon/chat-bubble.svg'
+  },
+  {
+    name: 'Seamless Email Integration',
+    description: 'Seamlessly analyze attachments and extract insights directly from your email conversations.',
+    img: '/icon/mail.svg'
+  },
+  {
+    name: 'Smart Categorization',
+    description: 'Automatically organize and tag files based on content, making information retrieval effortless.',
+    img: '/icon/label.svg'
+  }
+]
+
+const featuresDataHubComingSoon = [
+  {
+    name: 'Insight Generation',
+    description: 'Uncover hidden patterns and generate actionable insights from your document collection.',
+    img: '/icon/eye.svg'
+  },
+  {
+    name: 'Cross-Document Analysis',
+    description: 'Connect information across multiple files to reveal comprehensive insights and relationships.',
+    img: '/icon/network.svg'
+  },
+  {
+    "name": "Smart Collaboration",
+    "description": "Share insights and collaborate on documents in real-time, enhancing team productivity and decision-making.",
+    "img": "/icon/users.svg"
+  }
+]
+
 const featuresPowerUsers = [
   {
     name: 'Use Markdown to edit your messages.',
@@ -1043,6 +1079,88 @@ function Automations() {
   )
 }
 
+function DataHub() {
+  return (
+   <Section>
+     <Container wide={true}>
+       <div className='sm:rounded-3xl overflow-hidden py-6 md:py-16 lg:py-24 bg-slate-100'>
+         <Container>
+           <div className='mx-auto max-w-7xl'>
+             <div className='mx-auto max-w-2xl sm:text-center'>
+               <p className='text-3xl font-bold tracking-tight sm:text-4xl'>
+                 Unlock the Power of Your Documents
+               </p>
+               <div className='mt-4 text-lg leading-8 text-gray-300'>
+                 <div className='flex justify-center'>
+                   <div className='rounded-2xl bg-accent text-white text-center font-bold text-sm py-2 px-3'>
+                     "Summarize the key points from last month's financial reports."
+                   </div>
+                 </div>
+                 <div className='mt-4 text-secondary-inv'>
+                   Interact with files and gain insights as easily as chatting with a colleague.
+                 </div>
+               </div>
+             </div>
+           </div>
+           <div className='relative overflow-hidden pt-12 md:pt-20'>
+             <div className='mx-auto max-w-7xl'>
+               <img
+                 src='/photo/data-hub.png'
+                 alt='Data Hub screenshot'
+                 className='rounded-xl shadow-2xl ring-1 ring-white/5 aspect-[1/1] object-cover lg:aspect-auto'
+                 width={2330}
+                 height={1408}
+                 style={{
+                   objectPosition: 'left top',
+                 }}
+               />
+               <div className='relative' aria-hidden='true'>
+                 <div className='absolute -inset-x-20 bottom-0 bg-gradient-to-t from-slate-100 pt-[7%]' />
+               </div>
+             </div>
+           </div>
+           <div className='mx-auto mt-16 max-w-7xl sm:mt-20 md:mt-20'>
+             <dl className='mx-auto grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10 text-base leading-7 text-gray-300 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-x-8 lg:gap-y-16'>
+               {featuresDataHub.map(feature => (
+                 <div key={feature.name} className='relative pl-12'>
+                   <div
+                     className='absolute left-0 top-0 flex h-8 w-8 items-center justify-center rounded-lg bg-primary'
+                     style={{marginTop: '7px'}}
+                   >
+                     <Image width={24} height={24} src={feature.img} alt='feature' />
+                   </div>
+                   <div className='font-bold text-primary'>{feature.name}</div>{' '}
+                   <dd className='text-secondary'>{feature.description}</dd>
+                 </div>
+               ))}
+             </dl>
+           </div>
+           <div className='mx-auto mt-16 max-w-7xl sm:mt-20 md:mt-20'>
+           <div className='mx-auto flex justify-center text-tertiary-inv mb-4'>
+             <ComingSoon big={true} />
+            </div>
+             <dl className='mx-auto grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10 text-base leading-7 text-gray-300 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-x-8 lg:gap-y-16'>
+               {featuresDataHubComingSoon.map(feature => (
+                 <div key={feature.name} className='relative pl-12'>
+                   <div
+                     className='absolute left-0 top-0 flex h-8 w-8 items-center justify-center rounded-lg bg-primary'
+                     style={{marginTop: '7px'}}
+                   >
+                     <Image width={24} height={24} src={feature.img} alt='feature' />
+                   </div>
+                   <div className='font-bold text-primary'>{feature.name}</div>{' '}
+                   <dd className='text-secondary'>{feature.description}</dd>
+                 </div>
+               ))}
+             </dl>
+           </div>
+         </Container>
+       </div>
+     </Container>
+   </Section>
+  )
+ }
+
 function About() {
   return (
     <Section>
@@ -1566,6 +1684,7 @@ function Example() {
         <XFeatures1 />
         <XFeatures2 />
         <Privacy />
+        <DataHub />
         <Automations />
         <FeaturesForPowerUsers />
         <Pricing />
