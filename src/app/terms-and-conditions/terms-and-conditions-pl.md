@@ -14,7 +14,7 @@ Na potrzeby Umowy, następujące pojęcia i terminy będą miały znaczenie zgod
 
 - **Licencja**: uprawnienie udzielane przez Licencjodawcę Licencjobiorcy uprawniające do korzystania z Oprogramowania na warunkach określonych niniejszą Umową.
 
-- **Licencjodawca**: zamiennie „Blinkfeed" reprezentowany przez osobę fizyczną, Wojciecha Daniło ... oraz Macieja Mikołajka ...
+- **Licencjodawca**: zamiennie „Blinkfeed" reprezentowany przez osobę fizyczną, Macieja Krzysztofa Mikołajka.
 
 - **Licencjobiorca**: strona zawierająca niniejszą Umowę z Licencjodawcą, która zakupuje Licencję na Oprogramowanie.
 

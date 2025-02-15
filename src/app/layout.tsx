@@ -2,9 +2,10 @@ import type {Metadata} from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Blinkfeed. Never read emails again.',
+  title: 'Blinkfeed, The AI-First Email Client.',
   description:
-    'Reply to 100 emails in 10 minutes. Schedule meetings and generate replies with AI aware of your calendar, preferences, and knowledge base.',
+    'Never read emails again. Reply to 100 emails in 10 minutes. Schedule meetings and generate replies with AI aware of your preferences, and knowledge base.',
+  keywords: 'email, reply, ai, gpt, gmail, assistant',
 }
 
 export default function RootLayout({
