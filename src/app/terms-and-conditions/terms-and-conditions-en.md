@@ -1,5 +1,7 @@
 # License Agreement for using Blinkfeed.ai
 
+**Effective Date: 3 April 2025**
+
 ## § 1 Definitions
 
 For the purposes of the Agreement, the following concepts and terms will have the meaning consistent with the definitions given below, capitalized to emphasize that it is a defined term:
@@ -14,7 +16,7 @@ For the purposes of the Agreement, the following concepts and terms will have th
 
 - **License**: permission granted by the Licensor to the Licensee authorizing the use of the Software under the terms specified in this Agreement.
 
-- **Licensor**: alternatively "Blinkfeed" represented by a natural person, Maciej Krzysztof Mikołajek.
+- **Licensor**: Blinkfeed Prosta Spółka Akcyjna, a simple joint-stock company established under Polish law, alternatively "Blinkfeed", with NIP 6751811908, registered at Al. Powstania Warszawskiego 15, 31-539 Kraków, Poland.
 
 - **Licensee**: the party entering into this Agreement with the Licensor, who purchases the License for the Software.
 
@@ -259,3 +261,5 @@ For the purposes of the Agreement, the following concepts and terms will have th
 2. Any changes and additions to the agreement require written form under pain of nullity.
 
 3. Any disputes arising from this agreement will be resolved by the common court competent for the seat of the Licensor.
+
+4. If you have any questions about this agreement, please contact us at [privacy@blinkfeed.ai](mailto:privacy@blinkfeed.ai).

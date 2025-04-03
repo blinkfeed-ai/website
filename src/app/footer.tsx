@@ -136,7 +136,7 @@ export function Footer() {
           ))}
         </div>
         <p className='mt-10 text-center text-xs leading-5 text-secondary'>
-          &copy; {new Date().getFullYear()} Blinkfeed. All rights reserved.
+          &copy; {new Date().getFullYear()} Blinkfeed P.S.A. All rights reserved.
         </p>
       </div>
     </footer>

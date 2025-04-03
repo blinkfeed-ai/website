@@ -1,5 +1,7 @@
 # Umowa Licencyjna do korzystania z Blinkfeed.ai
 
+**Data aktualizacji: 3 kwietnia 2025**
+
 ## § 1 Definicje
 
 Na potrzeby Umowy, następujące pojęcia i terminy będą miały znaczenie zgodne z podanymi poniżej definicjami, zapisane z wielkiej litery w celu podkreślenia, że jest to pojęcie zdefiniowane:
@@ -14,7 +16,7 @@ Na potrzeby Umowy, następujące pojęcia i terminy będą miały znaczenie zgod
 
 - **Licencja**: uprawnienie udzielane przez Licencjodawcę Licencjobiorcy uprawniające do korzystania z Oprogramowania na warunkach określonych niniejszą Umową.
 
-- **Licencjodawca**: zamiennie „Blinkfeed" reprezentowany przez osobę fizyczną, Macieja Krzysztofa Mikołajka.
+- **Licencjodawca**: Blinkfeed Prosta Spółka Akcyjna, prosta spółka akcyjna ustanowiona zgodnie z prawem Polskim, zamiennie “Blinkfeed”, NIP 6751811908, zarejestrowana przy Al. Powstania Warszawskiego 15, 31-539 Kraków, Polska.
 
 - **Licencjobiorca**: strona zawierająca niniejszą Umowę z Licencjodawcą, która zakupuje Licencję na Oprogramowanie.
 
@@ -254,5 +256,9 @@ Na potrzeby Umowy, następujące pojęcia i terminy będą miały znaczenie zgod
 
 ## § 14 Postanowienia końcowe
 1. W sprawach nieuregulowanych w niniejszej umowie stosuje się przepisy ustawy o prawie autorskim i prawach pokrewnych oraz kodeksu cywilnego.
+   
 2. Wszelkie zmiany i uzupełnienia umowy wymagają formy pisemnej pod rygorem nieważności.
+   
 3. Ewentualne spory wynikające z niniejszej umowy będą rozstrzygane przez sąd przez sąd powszechny właściwy miejscowo dla siedziby Licencjodawcy.
+   
+4. Jeśli masz jakiejkolwiek pytania dotyczące niniejszej umowy, skontaktuj się z nami na adres [privacy@blinkfeed.ai](mailto:privacy@blinkfeed.ai).

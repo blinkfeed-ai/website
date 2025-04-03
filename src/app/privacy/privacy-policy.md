@@ -6,7 +6,7 @@
 
 Welcome to Blinkfeed!
 
-Blinkfeed (“we,” “us,” or “our”) is an AI-first email client available on macOS. We are committed to protecting your privacy and ensuring you have a positive experience while using our services. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our application. By using Blinkfeed, you agree to the collection and use of information in accordance with this policy.
+Blinkfeed (“we,” “us,” or “our”) is an AI-native email client available on macOS/Windows/Linux. We are committed to protecting your privacy and ensuring you have a positive experience while using our services. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our application. By using Blinkfeed, you agree to the collection and use of information in accordance with this policy.
 
 ## 2. Information We Collect
 
@@ -14,7 +14,7 @@ Blinkfeed (“we,” “us,” or “our”) is an AI-first email client availab
 
 - **User Names and Email Addresses**: Collected to verify if the user is a paying customer via Stripe.
 - **Payment Information**: Collected and processed by Stripe; we do not store payment information.
-- **Location Data**: Collected via Google Analytics.
+- **Approximate Location Data**: Collected via Google Analytics.
 - **Email Data**: Processed via OpenAI but not stored on our servers; stored locally on your device.
 
 ### 2.2 Usage Data
@@ -27,7 +27,7 @@ Blinkfeed (“we,” “us,” or “our”) is an AI-first email client availab
 
 - To verify user status through Stripe API.
 - To synchronize emails with your email provider and store them locally.
-- To process parts of emails via OpenAI to provide AI-generated responses.
+- To process parts of emails via OpenAI to provide AI-generated summaries and responses.
 
 ### 3.2 For Analytics and Improvement
 
@@ -36,7 +36,7 @@ Blinkfeed (“we,” “us,” or “our”) is an AI-first email client availab
 ## 4. Sharing Your Information
 
 - **Google Analytics**: Usage data is shared with Google for analytics purposes.
-- **OpenAI**: Parts of your emails are sent to OpenAI for processing AI-generated responses.
+- **OpenAI**: Parts of your emails are sent to OpenAI for processing AI-generated summaries and responses.
 - **Stripe**: User email addresses and names are shared with Stripe for payment processing.
 
 We do not sell or rent your personal data to third parties.
@@ -46,7 +46,7 @@ We do not sell or rent your personal data to third parties.
 ### 5.1 Data Storage
 
 - Email content is stored locally on your device.
-- User names and email addresses are stored in a Redis Cloud database.
+- User's email address is stored in a Redis Cloud database, alongside number of analyzed emails during the current payment period.
 
 ### 5.2 Security Measures
 
